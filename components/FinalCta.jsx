@@ -1,493 +1,203 @@
 'use client';
-
-import { useEffect, useState } from 'react';
-import { TrendingUp, BarChart2, Target, Mail, Search, ArrowRight, ShieldCheck } from 'lucide-react';
-
-const FEED = [
-  { dot: '#34D399', msg: 'Meta Ads · 1,240 leads synced · CTR 8.4% · ROAS 4.2x' },
-  { dot: '#60A5FA', msg: 'GA4 · 12,841 sessions · Bounce 28% · CVR 4.2%' },
-  { dot: '#F472B6', msg: 'SEMrush · 87 SEO issues fixed · Domain Rating 42' },
-  { dot: '#FBBF24', msg: 'Zapier · 340 zaps triggered · 0 errors · 99.9% uptime' },
-  { dot: '#A78BFA', msg: 'Google Ads PMAX · Impression share 68% · CPC ₹12.4' },
-  { dot: '#34D399', msg: 'Klaviyo · 42% open rate · 8.1% CTR · ₹3.2L revenue' },
-  { dot: '#60A5FA', msg: 'LinkedIn Ads · 220 B2B leads · CPL ₹184 · CTR 1.8%' },
-];
-
-const BARS = [32, 48, 42, 62, 55, 70, 58, 78, 64, 85, 72, 91];
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { TreqoDoodle, DoodleBadge } from './Doodles';
+import ApplyModal from './ApplyModal';
 
 export default function FinalCta() {
-  const [feedIdx, setFeedIdx] = useState(0);
-  const [metricTick, setMetricTick] = useState(0);
-
-  useEffect(() => {
-    const f = setInterval(() => setFeedIdx(i => (i + 1) % FEED.length), 2200);
-    const m = setInterval(() => setMetricTick(t => t + 1), 3000);
-    return () => { clearInterval(f); clearInterval(m); };
-  }, []);
-
-  const metrics = [
-    { label: 'CTR',  value: metricTick % 2 === 0 ? '8.4%'  : '9.1%',  up: true  },
-    { label: 'ROAS', value: metricTick % 2 === 0 ? '4.2x'  : '4.7x',  up: true  },
-    { label: 'CPL',  value: metricTick % 2 === 0 ? '₹184'  : '₹171',  up: false },
-    { label: 'CVR',  value: metricTick % 2 === 0 ? '4.2%'  : '4.9%',  up: true  },
-  ];
+  const [modalOpen, setModalOpen] = useState(false);
+  const [portfolioOpen, setPortfolioOpen] = useState(false);
 
   return (
-    <section className="final-cta" id="apply" style={{
-      position: 'relative',
-      fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-      overflow: 'hidden',
-    }}>
+    <>
+      <ApplyModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
-      {/* ══ TOP HALF (DARK NAVY / PURPLE GLOW) ══ */}
-      <div className="ls-top" style={{
-        background: 'linear-gradient(180deg, #140B30 0%, #1A0D4B 60%, #1F0D59 100%)',
-        paddingTop: 75,
-        paddingBottom: 360,
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        {/* Decorative Grid Lines */}
-        <div style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.25,
-          backgroundImage: 'radial-gradient(circle, rgba(167,139,250,0.18) 1px, transparent 1px)',
-          backgroundSize: '36px 36px',
-        }} />
-        
-        {/* Radial Purple Aura */}
-        <div style={{
-          position: 'absolute', top: '-10%', left: '50%', transform: 'translateX(-50%)',
-          width: 800, height: 450, borderRadius: '50%',
-          background: 'radial-gradient(ellipse, rgba(79,38,210,0.3) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }} />
+      <section
+        id="final-cta"
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          textAlign: 'center',
+          background: '#0A0A0A',
+          color: '#FAF9F8',
+          padding: '60px clamp(20px, 4vw, 56px)',
+          position: 'relative',
+          overflow: 'hidden',
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* Glow ambient background in Treqo Purple */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '-20%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '800px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(109, 40, 255, 0.3) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+            pointerEvents: 'none',
+          }}
+        />
 
-        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: 1120, margin: '0 auto', padding: '0 5%' }}>
-          
-          {/* Applications Badge */}
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: 'rgba(79,38,210,0.15)', border: '1px solid rgba(167,139,250,0.3)',
-            borderRadius: 999, padding: '6px 18px', marginBottom: 24,
-            boxShadow: '0 4px 20px rgba(79,38,210,0.25)',
-          }}>
-            <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#34D399', boxShadow: '0 0 10px #34D399' }} />
-            <span style={{
-              fontSize: 11, fontWeight: 800, color: '#A78BFA',
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-              fontFamily: "'JetBrains Mono', monospace"
-            }}>
-              Applications Open — Cohort 2026
-            </span>
+        <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '20px' }}>
+            <DoodleBadge text="FINAL ADMISSIONS CALL" highlight={true} rotate={-2} />
           </div>
 
-          {/* Heading with Playfair Serif Accent */}
-          <h2 style={{ margin: '0 0 18px', lineHeight: 1.08, letterSpacing: '-0.035em' }}>
-            <span className="ls-title" style={{
-              display: 'block',
-              fontSize: 'clamp(32px, 4.5vw, 56px)',
+          <h2
+            style={{
+              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+              fontSize: 'clamp(2rem, 3.8vw, 3.2rem)',
               fontWeight: 900,
-              color: '#ffffff'
-            }}>
-              Ready to Think Differently?
-            </span>
-            <span className="ls-title" style={{
-              display: 'block',
-              fontSize: 'clamp(32px, 4.5vw, 56px)',
-              fontWeight: 900,
-              fontStyle: 'italic',
-              fontFamily: "'Playfair Display', Georgia, serif",
-              background: 'linear-gradient(90deg, #A78BFA 0%, #C4B5FD 40%, #ffffff 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}>
-              Your Live Dashboard From Day One.
+              letterSpacing: '-0.04em',
+              lineHeight: 1.05,
+              margin: '0 0 20px',
+              textTransform: 'uppercase',
+              color: '#F3F0E7',
+            }}
+          >
+            BECOME THE MARKETER <br />
+            <span
+              style={{
+                color: '#6D28FF',
+                textShadow: '0 0 40px rgba(109, 40, 255, 0.4)',
+              }}
+            >
+              COMPANIES FIGHT FOR.
             </span>
           </h2>
 
-          {/* Subtitle */}
-          <p className="ls-desc" style={{
-            fontSize: 16,
-            color: 'rgba(255,255,255,0.65)',
-            lineHeight: 1.7,
-            maxWidth: 620,
-            margin: '0 auto 36px',
-            fontWeight: 400,
-            fontFamily: "'Inter', sans-serif"
-          }}>
-            Learn marketing the way founders, strategists &amp; growth leaders do. Run live campaigns with real budgets and measure real revenue. Not theory — active execution.
+          <p
+            style={{
+              fontSize: 'clamp(15px, 1.2vw, 17px)',
+              color: 'rgba(243, 240, 231, 0.8)',
+              maxWidth: '520px',
+              margin: '0 auto 36px',
+              lineHeight: 1.6,
+            }}
+          >
+            Don&apos;t spend another 6 months collecting theoretical certificates. Build and deploy live revenue campaigns with Hyderabad&apos;s top growth leaders.
           </p>
 
-          {/* CTA Action Buttons */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 44 }}>
-            <a
-              href="#demo"
+          {/* Interactive Unfolding Portfolio Demonstration */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '40px' }}>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              onClick={() => setPortfolioOpen(!portfolioOpen)}
               style={{
-                display: 'inline-flex', alignItems: 'center', gap: 10,
-                padding: '14px 32px', borderRadius: 999,
-                background: 'linear-gradient(90deg, #4F26D2 0%, #6D28FF 100%)',
-                color: '#ffffff', fontSize: 14, fontWeight: 800,
-                textDecoration: 'none',
-                boxShadow: '0 8px 32px rgba(79,38,210,0.5)',
-                transition: 'all 0.25s',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1.5px solid #6D28FF',
+                borderRadius: '16px',
+                padding: '12px 24px',
+                boxShadow: '4px 4px 0px #6D28FF',
               }}
             >
-              Book a Free Demo Session
-              <ArrowRight size={16} />
-            </a>
+              <TreqoDoodle state="holding_portfolio" size={48} />
+              <div style={{ textAlign: 'left' }}>
+                <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#ffffff', fontWeight: 800, textTransform: 'uppercase' }}>
+                  Click to {portfolioOpen ? 'Close' : 'Inspect'} Portfolio
+                </span>
+                <strong style={{ display: 'block', fontSize: '14px', color: '#6D28FF' }}>
+                  Rahul&apos;s Capstone Vault (30+ Projects)
+                </strong>
+              </div>
+            </motion.div>
 
-            <a
-              href="#curriculum"
+            {portfolioOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                style={{
+                  marginTop: '16px',
+                  display: 'flex',
+                  gap: '10px',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                }}
+              >
+                {['Meta 247 Leads', 'Google ₹42 CAC', 'SEO +186% Traffic', 'Brand 0-to-1', 'Retention CRM'].map((p, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      background: '#6D28FF',
+                      color: '#ffffff',
+                      fontFamily: "var(--ff-mono, monospace)",
+                      fontSize: '11px',
+                      fontWeight: 900,
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                    }}
+                  >
+                    ✓ {p}
+                  </span>
+                ))}
+              </motion.div>
+            )}
+          </div>
+
+          {/* Primary Action Button */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
+            <button
+              onClick={() => setModalOpen(true)}
               style={{
-                display: 'inline-flex', alignItems: 'center', gap: 10,
-                padding: '14px 28px', borderRadius: 999,
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.2)',
-                color: '#ffffff', fontSize: 14, fontWeight: 700,
-                textDecoration: 'none',
-                transition: 'all 0.25s',
+                background: '#6D28FF',
+                color: '#ffffff',
+                border: '3px solid #ffffff',
+                borderRadius: '999px',
+                padding: '18px 48px',
+                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                fontWeight: 900,
+                fontSize: '16px',
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 12,
+                boxShadow: '8px 8px 0px #ffffff',
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translate(-3px, -3px)';
+                e.currentTarget.style.boxShadow = '12px 12px 0px #ffffff';
+                e.currentTarget.style.background = '#581bd6';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.boxShadow = '8px 8px 0px #ffffff';
+                e.currentTarget.style.background = '#6D28FF';
               }}
             >
-              Explore Full Curriculum
-            </a>
-          </div>
+              <span>APPLY TO TREQO 2026</span>
+              <ArrowRight size={20} />
+            </button>
 
-          {/* Key Stats Row */}
-          <div className="ls-stats" style={{ display: 'flex', justifyContent: 'center', gap: 56 }}>
-            {[
-              ['30+', 'Live Projects'],
-              ['100%', 'Placement Support'],
-              ['6 Mo', 'Founder-Level PGDM']
-            ].map(([num, lbl]) => (
-              <div key={lbl} style={{ textAlign: 'center' }}>
-                <div className="ls-stat-num" style={{
-                  fontSize: 34, fontWeight: 900, color: '#ffffff',
-                  letterSpacing: '-0.03em', fontFamily: "'Plus Jakarta Sans', sans-serif"
-                }}>
-                  {num}
-                </div>
-                <div style={{
-                  fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.45)',
-                  textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 4,
-                  fontFamily: "'JetBrains Mono', monospace"
-                }}>
-                  {lbl}
-                </div>
-              </div>
-            ))}
+            <span
+              style={{
+                fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                fontSize: '11.5px',
+                color: 'rgba(243, 240, 231, 0.65)',
+                letterSpacing: '0.08em',
+              }}
+            >
+              Cohort 2026 · Applications Currently Open · 45-Second Fast Apply
+            </span>
           </div>
 
         </div>
-      </div>
-
-      {/* ══ BOTTOM HALF (LAVENDER / LIGHT THEME BRIDGE) ══ */}
-      <div className="ls-bottom" style={{
-        background: 'linear-gradient(180deg, #F5F2FB 0%, #FAF8FF 60%, #FFFFFF 100%)',
-        paddingTop: 340,
-        paddingBottom: 80,
-        position: 'relative',
-      }}>
-
-        {/* Grid texture */}
-        <div style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.3,
-          backgroundImage: 'linear-gradient(rgba(79,38,210,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(79,38,210,0.05) 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-        }} />
-
-        {/* Live Channel Badges Strip */}
-        <div className="ls-badges" style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap', padding: '0 5%' }}>
-          {[
-            { icon: Target,    label: 'Meta Ads',     val: 'ROAS 4.2x',    color: '#4F26D2' },
-            { icon: Search,    label: 'SEO Engine',   val: 'DR 42 ↑',      color: '#6D28FF' },
-            { icon: Mail,      label: 'Email / CRM',  val: '42% Open Rate',color: '#10B981' },
-            { icon: BarChart2, label: 'GA4 Analytics',val: '12k Sessions', color: '#F59E0B' },
-          ].map(({ icon: Icon, label, val, color }) => (
-            <div className="ls-badge" key={label} style={{
-              display: 'flex', alignItems: 'center', gap: 12,
-              background: '#ffffff', borderRadius: 16,
-              padding: '14px 22px',
-              boxShadow: '0 8px 30px rgba(79,38,210,0.08)',
-              border: '1.5px solid rgba(79,38,210,0.12)',
-            }}>
-              <div style={{
-                width: 38, height: 38, borderRadius: 10,
-                background: color + '15',
-                border: `1px solid ${color}30`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <Icon size={18} color={color} />
-              </div>
-              <div>
-                <div style={{
-                  fontSize: 10, fontWeight: 800, color: 'rgba(20,11,48,0.45)',
-                  textTransform: 'uppercase', letterSpacing: '0.1em',
-                  fontFamily: "'JetBrains Mono', monospace"
-                }}>
-                  {label}
-                </div>
-                <div style={{
-                  fontSize: 14, fontWeight: 900, color: '#140B30',
-                  fontFamily: "'Plus Jakarta Sans', sans-serif"
-                }}>
-                  {val}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Footnote */}
-        <p style={{
-          textAlign: 'center', fontSize: 12, color: '#8A7EB0',
-          marginTop: 36, position: 'relative', zIndex: 2,
-          fontFamily: "'Inter', sans-serif", fontWeight: 500
-        }}>
-          No obligation. 30-minute session with our senior program advisor.
-        </p>
-
-      </div>
-
-      {/* ══ INTERACTIVE 3D LAPTOP SHOWCASE ══ */}
-      <div className="ls-laptop" style={{
-        position: 'absolute',
-        top: '54%',
-        left: '50%',
-        transform: 'translate(-50%, -46%)',
-        width: 'min(1020px, 92vw)',
-        zIndex: 20,
-        filter: 'drop-shadow(0 40px 80px rgba(10,10,12,0.5)) drop-shadow(0 12px 36px rgba(79,38,210,0.3))',
-      }}>
-
-        {/* Floating Top Badge */}
-        <div className="ls-chip-top" style={{
-          position: 'absolute', top: -16, right: '8%', zIndex: 30,
-          background: '#ffffff', borderRadius: 14, padding: '10px 18px',
-          boxShadow: '0 10px 32px rgba(79,38,210,0.22)',
-          border: '1.5px solid rgba(79,38,210,0.18)',
-          display: 'flex', alignItems: 'center', gap: 10,
-          animation: 'floatA 3.2s ease-in-out infinite',
-        }}>
-          <TrendingUp size={16} color="#4F26D2" />
-          <div>
-            <div style={{ fontSize: 12, fontWeight: 900, color: '#140B30' }}>ROAS 4.2x ↑</div>
-            <div style={{ fontSize: 9, color: '#4F26D2', fontWeight: 800, letterSpacing: '0.08em', fontFamily: "'JetBrains Mono', monospace" }}>LIVE CAMPAIGN</div>
-          </div>
-        </div>
-
-        {/* Floating Bottom Badge */}
-        <div className="ls-chip-btm" style={{
-          position: 'absolute', bottom: 56, left: '4%', zIndex: 30,
-          background: '#140B30', borderRadius: 14, padding: '10px 18px',
-          boxShadow: '0 10px 32px rgba(0,0,0,0.4)',
-          border: '1px solid rgba(167,139,250,0.25)',
-          display: 'flex', alignItems: 'center', gap: 10,
-          animation: 'floatB 3.8s ease-in-out infinite',
-        }}>
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#34D399', boxShadow: '0 0 10px #34D399' }} />
-          <div style={{ fontSize: 12, fontWeight: 800, color: '#ffffff' }}>Meta Campaign Live</div>
-        </div>
-
-        {/* SVG Laptop Frame */}
-        <svg viewBox="0 0 900 580" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', display: 'block' }}>
-          <defs>
-            <linearGradient id="lidTop" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2A2A2E" />
-              <stop offset="100%" stopColor="#1A1A1E" />
-            </linearGradient>
-            <linearGradient id="lidSide" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#111113" />
-              <stop offset="100%" stopColor="#222226" />
-            </linearGradient>
-            <linearGradient id="baseTop" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2E2E32" />
-              <stop offset="100%" stopColor="#222226" />
-            </linearGradient>
-            <linearGradient id="baseFront" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1A1A1E" />
-              <stop offset="100%" stopColor="#111113" />
-            </linearGradient>
-            <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#0D0622" />
-              <stop offset="100%" stopColor="#0A0418" />
-            </linearGradient>
-            <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#6D28FF" />
-              <stop offset="100%" stopColor="#4F26D2" />
-            </linearGradient>
-            <clipPath id="screenClip">
-              <rect x="72" y="26" width="756" height="454" rx="6" />
-            </clipPath>
-          </defs>
-
-          <path d="M60 18 Q450 8 840 18 L830 26 Q450 16 70 26 Z" fill="#111113" />
-          <rect x="60" y="18" width="780" height="466" rx="10" fill="url(#lidTop)" />
-          <rect x="60" y="18" width="780" height="80" rx="10" fill="rgba(255,255,255,0.03)" />
-          <path d="M60 18 L50 26 L50 492 L60 484 Z" fill="url(#lidSide)" />
-          <path d="M840 18 L850 26 L850 492 L840 484 Z" fill="url(#lidSide)" />
-          <rect x="68" y="22" width="764" height="462" rx="8" fill="#111113" />
-          <rect x="72" y="26" width="756" height="454" rx="6" fill="url(#screenGrad)" />
-
-          <g clipPath="url(#screenClip)">
-            {/* Window Top Bar */}
-            <rect x="72" y="26" width="756" height="32" fill="#140B30" />
-            <circle cx="96"  cy="42" r="5.5" fill="#FF5F57" />
-            <circle cx="114" cy="42" r="5.5" fill="#FFBD2E" />
-            <circle cx="132" cy="42" r="5.5" fill="#28CA42" />
-            <rect x="240" y="33" width="360" height="18" rx="9" fill="rgba(255,255,255,0.08)" />
-            <text x="420" y="45.5" fill="rgba(255,255,255,0.45)" fontSize="9" textAnchor="middle" fontFamily="monospace">dashboard.treqo.co/live-campaigns</text>
-
-            {/* Sidebar Navigation */}
-            <rect x="72" y="58" width="80" height="422" fill="#0A0418" />
-            <rect x="88" y="72" width="48" height="14" rx="4" fill="#4F26D2" />
-            {[0,1,2,3,4,5].map(i => (
-              <g key={i}>
-                <rect x="84" y={102 + i*52} width="48" height="36" rx="8"
-                  fill={i===0 ? 'rgba(79,38,210,0.4)' : 'rgba(255,255,255,0.03)'} />
-                <rect x="92" y={115 + i*52} width="16" height="10" rx="3"
-                  fill={i===0 ? '#6D28FF' : 'rgba(255,255,255,0.12)'} />
-              </g>
-            ))}
-
-            {/* Main Content Area */}
-            <text x="168" y="80" fill="white" fontSize="13" fontWeight="bold" fontFamily="'Plus Jakarta Sans', sans-serif">Live Campaign Overview</text>
-            <text x="168" y="93" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="monospace">Last updated: just now · Auto-refreshing</text>
-
-            {/* Ticker Cards Row */}
-            {metrics.map((m, i) => (
-              <g key={m.label}>
-                <rect x={168 + i*147} y="104" width="133" height="68" rx="10"
-                  fill="rgba(79,38,210,0.15)" stroke="rgba(167,139,250,0.3)" strokeWidth="0.8" />
-                <rect x={168 + i*147} y="104" width="133" height="3" rx="2" fill="#4F26D2" opacity="0.8" />
-                <text x={178 + i*147} y="122" fill="rgba(255,255,255,0.5)" fontSize="8" fontFamily="monospace">{m.label}</text>
-                <text x={178 + i*147} y="147" fill="white" fontSize="18" fontWeight="bold" fontFamily="monospace">{m.value}</text>
-                <text x={278 + i*147} y="147" fill={m.up ? '#34D399' : '#F87171'} fontSize="8" fontFamily="monospace">{m.up ? '↑' : '↓'}</text>
-              </g>
-            ))}
-
-            {/* Conversions Bar Chart */}
-            <rect x="168" y="184" width="330" height="160" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
-            <text x="180" y="201" fill="rgba(255,255,255,0.45)" fontSize="8" fontFamily="monospace">Conversions · Last 30 days</text>
-            {[0,1,2,3].map(i => (
-              <line key={i} x1="180" y1={316 - i*34} x2="488" y2={316 - i*34} stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" />
-            ))}
-            {BARS.map((h, i) => {
-              const barH = h * 1.05;
-              return (
-                <g key={i}>
-                  <rect x={182 + i*25} y={316 - barH} width="18" height={barH} rx="4"
-                    fill={i === BARS.length-1 ? 'url(#barGrad)' : `rgba(79,38,210,${0.28 + i*0.055})`} />
-                  {i === BARS.length-1 && (
-                    <rect x={182 + i*25} y={316 - barH} width="18" height="4" rx="2" fill="#A78BFA" opacity="0.8">
-                      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite" />
-                    </rect>
-                  )}
-                </g>
-              );
-            })}
-
-            {/* Channel Mix Pie Chart */}
-            <rect x="508" y="184" width="164" height="160" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
-            <text x="520" y="201" fill="rgba(255,255,255,0.45)" fontSize="8" fontFamily="monospace">Channel Mix</text>
-            <circle cx="590" cy="280" r="42" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="18" />
-            <circle cx="590" cy="280" r="42" fill="none" stroke="#4F26D2" strokeWidth="18" strokeDasharray="88 176" strokeDashoffset="44" />
-            <circle cx="590" cy="280" r="42" fill="none" stroke="#60A5FA" strokeWidth="18" strokeDasharray="52 176" strokeDashoffset="-44" />
-            <circle cx="590" cy="280" r="42" fill="none" stroke="#34D399" strokeWidth="18" strokeDasharray="36 176" strokeDashoffset="-96" />
-            <text x="590" y="276" fill="white" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="monospace">50%</text>
-            <text x="590" y="287" fill="rgba(255,255,255,0.4)" fontSize="7" textAnchor="middle" fontFamily="monospace">Meta</text>
-            {[['#4F26D2','Meta','50%'],['#60A5FA','Google','30%'],['#34D399','Email','20%']].map(([c,l,v],i)=>(
-              <g key={l}>
-                <rect x="520" y={300+i*13} width="8" height="8" rx="2" fill={c} />
-                <text x="532" y={308+i*13} fill="rgba(255,255,255,0.5)" fontSize="7" fontFamily="monospace">{l} {v}</text>
-              </g>
-            ))}
-
-            {/* Live Activity Ticker Feed */}
-            <rect x="168" y="354" width="504" height="96" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
-            <text x="180" y="371" fill="rgba(255,255,255,0.45)" fontSize="8" fontFamily="monospace">Live Activity Feed</text>
-            <circle cx="516" cy="368" r="3" fill="#34D399">
-              <animate attributeName="opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite" />
-            </circle>
-            <text x="522" y="372" fill="#34D399" fontSize="7" fontFamily="monospace">LIVE</text>
-            {FEED.slice(0, 4).map((item, i) => (
-              <g key={i}>
-                <circle cx="184" cy={388 + i*16} r="3" fill={item.dot} />
-                <text x="194" y={392 + i*16} fill={i === 0 ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.4)'} fontSize="8" fontFamily="monospace">
-                  {item.msg}
-                </text>
-              </g>
-            ))}
-            <rect x="656" y="434" width="2" height="10" rx="1" fill="#4F26D2">
-              <animate attributeName="opacity" values="1;0;1" dur="0.9s" repeatCount="indefinite" />
-            </rect>
-            <path d="M72 26 L200 26 L72 120 Z" fill="rgba(255,255,255,0.015)" />
-          </g>
-
-          <circle cx="450" cy="22" r="3.5" fill="#0A0320" />
-          <circle cx="450" cy="22" r="1.5" fill="#1a1a2e" />
-          <rect x="50" y="484" width="800" height="10" rx="3" fill="#111113" />
-          <rect x="50" y="484" width="800" height="4" rx="2" fill="rgba(255,255,255,0.05)" />
-          <path d="M18 494 Q450 490 882 494 L900 520 Q450 516 0 520 Z" fill="url(#baseTop)" />
-          <rect x="340" y="496" width="220" height="130" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
-          {[0,1,2,3].map(row => (
-            Array.from({ length: row === 0 ? 13 : row === 3 ? 6 : 12 }).map((_, col) => (
-              <rect
-                key={`${row}-${col}`}
-                x={row === 3 ? 270 + col * 60 : 90 + col * 57 + row * 4}
-                y={502 + row * 22}
-                width={row === 3 ? 52 : 48}
-                height="16"
-                rx="4"
-                fill="rgba(255,255,255,0.05)"
-                stroke="rgba(255,255,255,0.07)"
-                strokeWidth="0.5"
-              />
-            ))
-          ))}
-          <path d="M0 520 Q450 516 900 520 L900 540 Q450 538 0 540 Z" fill="url(#baseFront)" />
-          <path d="M0 540 Q450 538 900 540 L890 548 Q450 546 10 548 Z" fill="#0D0D10" />
-          <ellipse cx="450" cy="555" rx="380" ry="12" fill="rgba(79,38,210,0.18)" />
-          <ellipse cx="450" cy="560" rx="300" ry="8" fill="rgba(0,0,0,0.3)" />
-        </svg>
-      </div>
-
-      <style>{`
-        @keyframes floatA {
-          0%,100% { transform: translateY(0) rotate(-1deg); }
-          50%      { transform: translateY(-12px) rotate(1deg); }
-        }
-        @keyframes floatB {
-          0%,100% { transform: translateY(0) rotate(1deg); }
-          50%      { transform: translateY(-9px) rotate(-1deg); }
-        }
-
-        @media (max-width: 900px) {
-          .ls-top    { padding-bottom: 220px !important; }
-          .ls-bottom { padding-top: 200px !important; }
-          .ls-laptop { width: min(820px, 94vw) !important; }
-        }
-
-        @media (max-width: 640px) {
-          .ls-top    { padding-top: 60px !important; padding-bottom: 160px !important; }
-          .ls-bottom { padding-top: 140px !important; padding-bottom: 48px !important; }
-          .ls-title  { font-size: clamp(28px, 8vw, 44px) !important; }
-          .ls-desc   { font-size: 14px !important; margin-bottom: 28px !important; }
-          .ls-stats  { gap: 28px !important; }
-          .ls-stat-num { font-size: 26px !important; }
-          .ls-laptop { width: min(680px, 96vw) !important; top: 50% !important; }
-          .ls-chip-top { display: none !important; }
-          .ls-chip-btm { display: none !important; }
-          .ls-badges { gap: 10px !important; }
-          .ls-badge  { padding: 10px 14px !important; }
-        }
-
-        @media (max-width: 420px) {
-          .ls-top    { padding-bottom: 120px !important; }
-          .ls-bottom { padding-top: 100px !important; }
-          .ls-laptop { width: 98vw !important; top: 48% !important; }
-          .ls-stats  { gap: 20px !important; flex-wrap: wrap !important; justify-content: center !important; }
-        }
-      `}</style>
-    </section>
+      </section>
+    </>
   );
 }

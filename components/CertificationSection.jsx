@@ -58,60 +58,151 @@ function CertCard({ cert }) {
     <div style={{
       display: "flex", flexDirection: "column", justifyContent: "space-between",
       width: "100%",
-      background: "rgba(255,255,255,0.03)",
+      background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
       backdropFilter: "blur(20px)",
-      border: "1px solid rgba(255,255,255,0.08)",
-      borderRadius: 16,
-      padding: "16px",
-      boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
+      border: "1px solid rgba(180,151,207,0.2)",
+      borderRadius: 14,
+      padding: "16px 16px 14px",
+      boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.35)",
       position: "relative",
       overflow: "hidden",
       boxSizing: "border-box",
       marginBottom: 14,
     }}>
-      {/* subtle top accent */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(to right, ${cert.color}, transparent)` }} />
+      {/* Certificate Gold/Accent Top Ribbon Banner */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 3,
+        background: `linear-gradient(to right, ${cert.color}, #B497CF, ${cert.color})`,
+      }} />
 
-      {/* icon + provider */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+      {/* Header: Certificate Seal Rosette + Provider Badge */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+        {/* Certificate Seal Emblem */}
         <div style={{
-          width: 32, height: 32, borderRadius: 10,
-          background: cert.color + "18",
-          border: `1px solid ${cert.color}30`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          color: cert.color,
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
         }}>
-          {cert.icon}
+          <div style={{
+            width: 34,
+            height: 34,
+            borderRadius: "50%",
+            background: `radial-gradient(circle, ${cert.color}25 0%, ${cert.color}10 100%)`,
+            border: `1.5px solid ${cert.color}`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: cert.color,
+            boxShadow: `0 0 12px ${cert.color}40, inset 0 0 4px ${cert.color}60`,
+            position: "relative",
+          }}>
+            <Award size={16} />
+            {/* Mini ribbon tab under seal */}
+            <div style={{
+              position: "absolute",
+              bottom: -4,
+              width: 12,
+              height: 4,
+              background: cert.color,
+              borderRadius: "0 0 2px 2px",
+              opacity: 0.85,
+            }} />
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span style={{
+              fontSize: 8,
+              fontWeight: 800,
+              color: "rgba(255,255,255,0.45)",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+            }}>
+              Certificate
+            </span>
+            <span style={{
+              fontSize: 9,
+              fontWeight: 800,
+              color: cert.color,
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+            }}>
+              {cert.provider}
+            </span>
+          </div>
         </div>
+
+        {/* Certificate Accreditation Pill */}
         <div style={{
-          fontSize: 9, fontWeight: 800,
-          background: badge.bg, color: badge.text,
-          borderRadius: 999, padding: "2px 8px",
-          letterSpacing: "0.08em", textTransform: "uppercase",
+          fontSize: 8.5,
+          fontWeight: 800,
+          background: badge.bg,
+          color: badge.text,
+          border: `1px solid ${cert.color}40`,
+          borderRadius: 6,
+          padding: "3px 8px",
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+          display: "flex",
+          alignItems: "center",
+          gap: 4,
         }}>
-          {cert.provider}
+          <BadgeCheck size={11} />
+          <span>Accredited</span>
         </div>
       </div>
 
-      {/* name */}
-      <p style={{ margin: "0 0 8px", fontSize: 12, fontWeight: 800, color: "white", lineHeight: 1.3 }}>
+      {/* Certificate Name */}
+      <p style={{
+        margin: "0 0 10px",
+        fontSize: 13,
+        fontWeight: 800,
+        color: "#ffffff",
+        lineHeight: 1.35,
+        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+        letterSpacing: "-0.01em",
+      }}>
         {cert.name}
       </p>
 
-      {/* footer */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        {cert.price ? (
-          <span style={{ fontSize: 9, fontWeight: 800, color: cert.color, background: cert.color + "15", borderRadius: 4, padding: "2px 6px" }}>
-            {cert.price} exam
+      {/* Footer: Certificate Status & Verification */}
+      <div style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingTop: 8,
+        borderTop: "1px solid rgba(255,255,255,0.07)",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+          <CheckCircle2 size={11} color={cert.color} />
+          <span style={{
+            fontSize: 9,
+            fontWeight: 700,
+            color: "rgba(255,255,255,0.6)",
+            fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+          }}>
+            Verified Credential
           </span>
-        ) : (
-          <span style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-            Included
-          </span>
-        )}
-        <div style={{ display: "flex", alignItems: "center", gap: 2, color: cert.color, fontSize: 9, fontWeight: 800, textTransform: "uppercase" }}>
-          <span>View</span><ArrowRight size={9} />
         </div>
+
+        <span style={{
+          fontSize: 8.5,
+          fontWeight: 700,
+          color: cert.color,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+          opacity: 0.85,
+        }}>
+          Industry Standard
+        </span>
       </div>
     </div>
   );
@@ -149,7 +240,7 @@ export default function CertificationSection() {
       overflow: "hidden",
       borderTop: "1px solid rgba(139,92,246,0.12)",
       borderBottom: "1px solid rgba(139,92,246,0.12)",
-      fontFamily: "'DM Sans','Segoe UI',system-ui,sans-serif",
+      fontFamily: "var(--ff-body, 'Outfit', 'Plus Jakarta Sans', sans-serif)",
       position: "relative",
     }}>
       {/* ambient background glow */}
@@ -163,18 +254,18 @@ export default function CertificationSection() {
           borderRadius: 999, padding: "6px 18px", marginBottom: 18,
         }}>
           <ShieldCheck size={12} color="#A78BFA" />
-          <span style={{ fontSize: 10, fontWeight: 800, color: "#A78BFA", letterSpacing: "0.2em", textTransform: "uppercase" }}>
+          <span style={{ fontSize: 10, fontWeight: 800, color: "#A78BFA", letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)" }}>
             Proof That Travels
           </span>
         </div>
 
         <h2 style={{ margin: "0 0 14px", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-          <span style={{ display: "block", fontSize: "clamp(34px, 4.8vw, 56px)", fontWeight: 900, color: "white" }}>
+          <span style={{ display: "block", fontSize: "clamp(34px, 4.8vw, 56px)", fontWeight: 900, color: "white", fontFamily: "var(--ff-display, 'Outfit', sans-serif)" }}>
             Credentials Built For The
           </span>
           <span style={{
             display: "inline-block", fontSize: "clamp(34px, 4.8vw, 56px)", fontWeight: 900, fontStyle: "italic",
-            fontFamily: "'Playfair Display', Georgia, serif",
+            fontFamily: "'Fraunces', Georgia, serif",
             background: "linear-gradient(90deg, #A78BFA 0%, #7C3AED 100%)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           }}>

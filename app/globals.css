@@ -3,7 +3,7 @@
 :root {
   --black: #0a0a0a;
   --ink: #131113;
-  --white: #faf9f8;
+  --white: #F3F0E7;
   --purple: #6d28ff;
   --purple-light: #9c7bff;
   --purple-deep: #1c0a3e;
@@ -11,7 +11,7 @@
   --grey-lt: #c9c6cf;
   --grey-on-black: #948da3;
   --line: rgba(10, 10, 10, 0.12);
-  --line-on-black: rgba(250, 249, 248, 0.14);
+  --line-on-black: rgba(243, 240, 231, 0.14);
   --ff-display: 'Outfit', 'Space Grotesk', sans-serif;
   --ff-body: 'Outfit', 'Inter', sans-serif;
   --ff-mono: 'JetBrains Mono', monospace;
@@ -41,7 +41,7 @@ html {
 }
 
 body {
-  background: #ffffff;
+  background: #F3F0E7;
   color: var(--black);
   font-family: var(--ff-body);
   font-size: 16px;
@@ -1466,7 +1466,7 @@ header.nav.on-light .nav-burger span {
   font-family: var(--ff-display);
   font-size: clamp(2.4rem, 4.8vw, 3.8rem);
   font-weight: 800;
-  color: #1A0D4B;
+  color: #4320AF;
   letter-spacing: -.02em;
   line-height: 1.1;
 }
@@ -1489,7 +1489,7 @@ header.nav.on-light .nav-burger span {
   border-radius: 50%;
   border: 1px solid rgba(79, 38, 210, 0.25);
   background: #ffffff;
-  color: #1A0D4B;
+  color: #4320AF;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -1501,9 +1501,9 @@ header.nav.on-light .nav-burger span {
 
 .choose-arrow-btn:hover,
 .choose-arrow-btn.active {
-  background: #1A0D4B;
+  background: #4320AF;
   color: #ffffff;
-  border-color: #1A0D4B;
+  border-color: #4320AF;
 }
 
 /* CAROUSEL TRACK — ULTRA SMOOTH 2 BLOCKS PER VIEW */
@@ -1581,7 +1581,7 @@ header.nav.on-light .nav-burger span {
   position: absolute;
   top: 14px;
   left: 14px;
-  background: #1A0D4B;
+  background: #4320AF;
   color: #ffffff;
   font-family: var(--ff-mono);
   font-size: 0.65rem;
@@ -1601,7 +1601,7 @@ header.nav.on-light .nav-burger span {
   height: 46px;
   border-radius: 50%;
   background: #ffffff;
-  color: #1A0D4B;
+  color: #4320AF;
   font-size: 0.9rem;
   border: none;
   display: flex;
@@ -1623,7 +1623,7 @@ header.nav.on-light .nav-burger span {
   font-family: var(--ff-display);
   font-size: 1.45rem;
   font-weight: 800;
-  color: #1A0D4B;
+  color: #4320AF;
   line-height: 1.25;
   margin-bottom: 10px;
 }
@@ -1679,7 +1679,7 @@ header.nav.on-light .nav-burger span {
 
 .spec-detail {
   font-size: 0.82rem;
-  color: #1A0D4B;
+  color: #4320AF;
   font-weight: 600;
   margin-top: 2px;
   line-height: 1.35;
@@ -1687,8 +1687,8 @@ header.nav.on-light .nav-burger span {
 
 .course-cta-btn {
   margin-top: auto;
-  border: 1.5px solid #1A0D4B;
-  background: #1A0D4B;
+  border: 1.5px solid #4320AF;
+  background: #4320AF;
   color: #ffffff;
   font-family: var(--ff-mono);
   font-size: 0.78rem;
@@ -1764,7 +1764,7 @@ header.nav.on-light .nav-burger span {
   font-family: var(--ff-display);
   font-size: clamp(2.4rem, 4.5vw, 3.6rem);
   font-weight: 800;
-  color: #1A0D4B;
+  color: #4320AF;
   letter-spacing: -.02em;
   line-height: 1.1;
   margin-bottom: 12px;
@@ -1818,14 +1818,14 @@ header.nav.on-light .nav-burger span {
 }
 
 .why-tab-btn:hover {
-  color: #1A0D4B;
+  color: #4320AF;
   border-color: rgba(79, 38, 210, 0.35);
 }
 
 .why-tab-btn.active {
-  background: #1A0D4B;
+  background: #4320AF;
   color: #ffffff;
-  border-color: #1A0D4B;
+  border-color: #4320AF;
   box-shadow: 0 10px 25px rgba(26, 13, 75, 0.18);
   font-weight: 700;
 }
@@ -1904,7 +1904,7 @@ header.nav.on-light .nav-burger span {
 .why-badge-pill {
   background: rgba(79, 38, 210, 0.08);
   border: 1px solid rgba(79, 38, 210, 0.2);
-  color: #1A0D4B;
+  color: #4320AF;
   font-family: var(--ff-mono);
   font-size: 0.72rem;
   font-weight: 700;
@@ -1916,7 +1916,7 @@ header.nav.on-light .nav-burger span {
   font-family: var(--ff-display);
   font-size: clamp(1.8rem, 2.5vw, 2.3rem);
   font-weight: 800;
-  color: #1A0D4B;
+  color: #4320AF;
   line-height: 1.25;
   margin-bottom: 16px;
   letter-spacing: -.01em;
@@ -1939,7 +1939,7 @@ header.nav.on-light .nav-burger span {
 .why-quote-text {
   font-size: 0.96rem;
   font-style: italic;
-  color: #1A0D4B;
+  color: #4320AF;
   line-height: 1.5;
   font-weight: 500;
 }
@@ -1999,7 +1999,7 @@ header.nav.on-light .nav-burger span {
 .h-val {
   font-family: var(--ff-display);
   font-size: 0.92rem;
-  color: #1A0D4B;
+  color: #4320AF;
   font-weight: 700;
 }
 
@@ -2044,7 +2044,7 @@ header.nav.on-light .nav-burger span {
   border-radius: 50%;
   border: 1px solid rgba(79, 38, 210, 0.2);
   background: #ffffff;
-  color: #1A0D4B;
+  color: #4320AF;
   font-size: 1.3rem;
   display: flex;
   align-items: center;
@@ -2059,9 +2059,9 @@ header.nav.on-light .nav-burger span {
 }
 
 .why-nav-arrow.active {
-  background: #1A0D4B;
+  background: #4320AF;
   color: #ffffff;
-  border-color: #1A0D4B;
+  border-color: #4320AF;
 }
 
 .why-nav-arrow.active:hover {
@@ -2560,7 +2560,7 @@ header.nav.on-light .nav-burger span {
   font-family: var(--ff-display);
   font-size: clamp(2.4rem, 4.8vw, 3.8rem);
   font-weight: 800;
-  color: #1A0D4B;
+  color: #4320AF;
   letter-spacing: -.02em;
   line-height: 1.1;
   margin-bottom: 14px;
@@ -2581,7 +2581,7 @@ header.nav.on-light .nav-burger span {
 }
 
 .training-light-sub .hl {
-  color: #1A0D4B;
+  color: #4320AF;
   font-weight: 700;
 }
 
@@ -2679,7 +2679,7 @@ header.nav.on-light .nav-burger span {
   height: 52px;
   border-radius: 50%;
   background: #ffffff;
-  color: #1A0D4B;
+  color: #4320AF;
   font-size: 1rem;
   border: none;
   display: flex;
@@ -2707,7 +2707,7 @@ header.nav.on-light .nav-burger span {
 }
 
 .card-phase-pill {
-  background: #1A0D4B;
+  background: #4320AF;
   color: #ffffff;
   font-family: var(--ff-mono);
   font-size: 0.72rem;
@@ -2723,7 +2723,7 @@ header.nav.on-light .nav-burger span {
   font-family: var(--ff-display);
   font-size: clamp(1.75rem, 2.6vw, 2.35rem);
   font-weight: 800;
-  color: #1A0D4B;
+  color: #4320AF;
   line-height: 1.25;
   margin-bottom: 12px;
 }
@@ -2770,14 +2770,14 @@ header.nav.on-light .nav-burger span {
   font-family: var(--ff-display);
   font-size: 1.85rem;
   font-weight: 800;
-  color: #1A0D4B;
+  color: #4320AF;
   line-height: 1;
 }
 
 .card-download-btn {
   background: #ffffff;
   border: 1.5px solid rgba(79, 38, 210, 0.25);
-  color: #1A0D4B;
+  color: #4320AF;
   font-family: var(--ff-mono);
   font-size: 0.78rem;
   font-weight: 800;
