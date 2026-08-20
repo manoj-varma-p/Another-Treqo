@@ -155,8 +155,8 @@ export default function HeroSection() {
               <Link
                 href="/how-it-works"
                 style={{
-                  background: '#6D28FF',
-                  color: '#ffffff',
+                  background: 'transparent',
+                  color: '#0A0A0A',
                   border: '2.5px solid #0A0A0A',
                   borderRadius: '999px',
                   padding: '20px 48px',
@@ -174,12 +174,14 @@ export default function HeroSection() {
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translate(-2px, -2px)';
                   e.currentTarget.style.boxShadow = '8px 8px 0px #0A0A0A';
-                  e.currentTarget.style.background = '#581bd6';
+                  e.currentTarget.style.background = '#6D28FF';
+                  e.currentTarget.style.color = '#ffffff';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'none';
                   e.currentTarget.style.boxShadow = '6px 6px 0px #0A0A0A';
-                  e.currentTarget.style.background = '#6D28FF';
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.color = '#0A0A0A';
                 }}
               >
                 <span>See How It Works</span>
