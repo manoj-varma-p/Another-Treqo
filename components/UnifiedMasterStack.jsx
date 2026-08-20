@@ -981,13 +981,6 @@ export default function UnifiedMasterStack() {
               >
                 {/* ── Top Header & Title ── */}
                 <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#E5DFD0', border: '1.5px solid #0A0A0A', borderRadius: '999px', padding: '4px 14px', marginBottom: '10px', boxShadow: '2px 2px 0px #0A0A0A' }}>
-                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
-                    <span style={{ fontSize: '10.5px', fontWeight: 900, color: '#0A0A0A', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: "var(--ff-mono, monospace)" }}>
-                      Learn Live · Build Real · Get Hired
-                    </span>
-                  </div>
-
                   <h3
                     style={{
                       fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
