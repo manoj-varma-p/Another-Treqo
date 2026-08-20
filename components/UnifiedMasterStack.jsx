@@ -1156,25 +1156,36 @@ export default function UnifiedMasterStack() {
                           </p>
                         </div>
 
-                        {/* Tag Pills */}
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginTop: 'auto' }}>
+                        {/* Keyword Tags (Unboxed Clean Modern Highlight) */}
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 8px', marginTop: 'auto', paddingTop: '8px' }}>
                           {tool.tags.map((tag, t) => (
                             <span
                               key={t}
                               style={{
-                                fontSize: '10px',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '5px',
+                                fontSize: '11px',
                                 fontWeight: 800,
+                                fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
                                 color: isHov ? '#0A0A0A' : '#444444',
-                                background: '#ffffff',
-                                border: '1px solid #0A0A0A',
+                                background: isHov ? `${tool.color}18` : 'rgba(10, 10, 10, 0.04)',
+                                padding: '3px 8px',
                                 borderRadius: '6px',
-                                padding: '3px 7px',
-                                boxShadow: isHov ? '1.5px 1.5px 0px #6D28FF' : '1px 1px 0px #0A0A0A',
-                                whiteSpace: 'nowrap',
                                 transition: 'all 0.2s ease',
                               }}
                             >
-                              {tag}
+                              <span
+                                style={{
+                                  width: '5px',
+                                  height: '5px',
+                                  borderRadius: '50%',
+                                  background: tool.color,
+                                  flexShrink: 0,
+                                  boxShadow: isHov ? `0 0 6px ${tool.color}` : 'none',
+                                }}
+                              />
+                              <span>{tag}</span>
                             </span>
                           ))}
                         </div>
