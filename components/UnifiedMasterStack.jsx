@@ -204,7 +204,7 @@ export default function UnifiedMasterStack() {
   const TABS = [
     { id: 'tutors', label: 'Tutors & Mentors', icon: Users, count: 'The Masters' },
     { id: 'certifications', label: 'Certifications & Proof', icon: Award, count: '6 Verified' },
-    { id: 'system', label: 'Master Marketing System', icon: Layers, count: 'Live OS' },
+    { id: 'system', label: 'Dashboard', icon: Layers, count: 'Live OS' },
   ];
 
   return (
