@@ -10,6 +10,8 @@ import {
   Clock,
   X,
   Flame,
+  TrendingUp,
+  Zap,
 } from 'lucide-react';
 import { DoodleBadge, DoodleArrow } from './Doodles';
 
@@ -18,10 +20,10 @@ export default function HeroSection() {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    // Pops in from right bottom after 1.2 seconds
+    // Pops in from screen bottom right after 1.5 seconds
     const timer = setTimeout(() => {
       setShowPop(true);
-    }, 1200);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -32,10 +34,12 @@ export default function HeroSection() {
         style={{
           background: '#E5DFD0',
           color: '#0A0A0A',
-          padding: '110px 80px 80px',
+          padding: '120px 80px 100px',
           position: 'relative',
           overflow: 'hidden',
-          minHeight: '620px',
+          minHeight: '660px',
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
         {/* Subtle Background Grid */}
@@ -55,23 +59,19 @@ export default function HeroSection() {
 
         <div
           style={{
-            maxWidth: '1540px',
+            maxWidth: '1440px',
             margin: '0 auto',
             position: 'relative',
             zIndex: 1,
-            display: 'grid',
-            gridTemplateColumns: '1.2fr 0.8fr',
-            gap: '56px',
-            alignItems: 'center',
+            width: '100%',
           }}
-          className="hero-grid-layout"
         >
           {/* ══════════════════════════════════════════════════
-              LEFT: Hero Copy & Value Proposition
+              HERO CONTENT (Clean, Focused, High-Impact)
           ══════════════════════════════════════════════════ */}
-          <div>
+          <div style={{ maxWidth: '880px' }}>
             {/* Live Admissions Chip */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 24, flexWrap: 'wrap' }}>
               <div
                 style={{
                   display: 'inline-flex',
@@ -108,12 +108,12 @@ export default function HeroSection() {
             <h1
               style={{
                 fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                fontSize: 'clamp(3rem, 5.5vw, 5.2rem)',
+                fontSize: 'clamp(3.2rem, 6vw, 5.5rem)',
                 fontWeight: 900,
                 color: '#0A0A0A',
                 lineHeight: 1.0,
                 letterSpacing: '-0.04em',
-                margin: '0 0 20px',
+                margin: '0 0 24px',
                 textTransform: 'uppercase',
               }}
             >
@@ -123,12 +123,12 @@ export default function HeroSection() {
                 style={{
                   background: '#6D28FF',
                   color: '#ffffff',
-                  padding: '4px 20px',
+                  padding: '4px 22px',
                   display: 'inline-block',
                   border: '3.5px solid #0A0A0A',
                   boxShadow: '7px 7px 0px #0A0A0A',
                   transform: 'rotate(-1deg)',
-                  marginTop: '6px',
+                  marginTop: '8px',
                 }}
               >
                 DO IT.
@@ -141,8 +141,8 @@ export default function HeroSection() {
                 fontSize: 'clamp(18px, 1.5vw, 22px)',
                 color: '#2A2A2A',
                 lineHeight: 1.55,
-                maxWidth: '720px',
-                margin: '0 0 32px',
+                maxWidth: '740px',
+                margin: '0 0 36px',
                 fontWeight: 500,
               }}
             >
@@ -203,146 +203,133 @@ export default function HeroSection() {
               </span>
             </div>
           </div>
-
-          {/* ══════════════════════════════════════════════════
-              RIGHT BOTTOM: Clean Rectangle Pop Coming from Right Bottom
-          ══════════════════════════════════════════════════ */}
-          <div
-            style={{
-              position: 'relative',
-              width: '100%',
-              minHeight: '300px',
-              display: 'flex',
-              alignItems: 'flex-end',
-              justifyContent: 'flex-end',
-            }}
-          >
-            <AnimatePresence>
-              {showPop && !dismissed && (
-                <motion.div
-                  initial={{ opacity: 0, x: 120, y: 60, scale: 0.95 }}
-                  animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: 80, y: 40, scale: 0.95 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                  whileHover={{ y: -4, boxShadow: '8px 8px 0px #6D28FF' }}
-                  style={{
-                    background: '#ffffff',
-                    border: '2.5px solid #0A0A0A',
-                    borderRadius: '18px',
-                    padding: '22px 24px',
-                    boxShadow: '6px 6px 0px #0A0A0A',
-                    width: '100%',
-                    maxWidth: '420px',
-                    position: 'relative',
-                    transition: 'box-shadow 0.2s ease',
-                  }}
-                >
-                  {/* Top Bar: Category & Dismiss */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span
-                        style={{
-                          background: '#6D28FF',
-                          color: '#ffffff',
-                          fontFamily: "var(--ff-mono, monospace)",
-                          fontSize: '10.5px',
-                          fontWeight: 900,
-                          padding: '3px 8px',
-                          borderRadius: '6px',
-                          border: '1px solid #0A0A0A',
-                          letterSpacing: '0.04em',
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        FOUNDER BLOG
-                      </span>
-                      <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#666666', fontWeight: 700 }}>
-                        4 MIN READ
-                      </span>
-                    </div>
-
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setDismissed(true);
-                      }}
-                      style={{
-                        background: 'transparent',
-                        border: 'none',
-                        color: '#888888',
-                        cursor: 'pointer',
-                        padding: '2px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                      title="Dismiss"
-                    >
-                      <X size={16} />
-                    </button>
-                  </div>
-
-                  {/* Title */}
-                  <Link href="/how-it-works" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <h4
-                      style={{
-                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                        fontSize: '18px',
-                        fontWeight: 900,
-                        color: '#0A0A0A',
-                        margin: '0 0 6px',
-                        lineHeight: 1.25,
-                        textTransform: 'uppercase',
-                        letterSpacing: '-0.01em',
-                      }}
-                    >
-                      How Treqo Actually Works: The Death of Theory
-                    </h4>
-
-                    <p style={{ fontSize: '13px', color: '#555555', lineHeight: 1.45, margin: '0 0 16px', fontWeight: 500 }}>
-                      An unfiltered essay on how students manage ₹50k live ad spend and land marketing roles.
-                    </p>
-
-                    {/* Bottom CTA Pill inside Rectangle */}
-                    <div
-                      style={{
-                        background: '#0A0A0A',
-                        color: '#ffffff',
-                        border: '1.5px solid #0A0A0A',
-                        borderRadius: '10px',
-                        padding: '10px 16px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                        fontSize: '12.5px',
-                        fontWeight: 900,
-                        letterSpacing: '0.04em',
-                        textTransform: 'uppercase',
-                        boxShadow: '2px 2px 0px #6D28FF',
-                      }}
-                    >
-                      <span>Read Essay Breakdown</span>
-                      <ArrowRight size={14} />
-                    </div>
-                  </Link>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
         </div>
       </section>
 
-      <style jsx>{`
-        @media (max-width: 1024px) {
-          .hero-grid-layout {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-          }
-        }
-      `}</style>
+      {/* ══════════════════════════════════════════════════
+          FIXED BOTTOM-RIGHT RECTANGLE POP-UP
+      ══════════════════════════════════════════════════ */}
+      <AnimatePresence>
+        {showPop && !dismissed && (
+          <motion.div
+            initial={{ opacity: 0, y: 100, x: 60, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 80, x: 40, scale: 0.9 }}
+            transition={{
+              type: 'spring',
+              stiffness: 220,
+              damping: 20,
+              mass: 0.9,
+            }}
+            whileHover={{ y: -4, boxShadow: '8px 8px 0px #6D28FF' }}
+            style={{
+              position: 'fixed',
+              bottom: '24px',
+              right: '24px',
+              zIndex: 9999,
+              background: '#ffffff',
+              border: '2.5px solid #0A0A0A',
+              borderRadius: '18px',
+              padding: '20px 22px',
+              boxShadow: '6px 6px 0px #0A0A0A',
+              width: 'calc(100vw - 48px)',
+              maxWidth: '390px',
+              transition: 'box-shadow 0.2s ease',
+            }}
+          >
+            {/* Top Bar: Category Pill & Dismiss Button */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span
+                  style={{
+                    background: '#6D28FF',
+                    color: '#ffffff',
+                    fontFamily: "var(--ff-mono, monospace)",
+                    fontSize: '10px',
+                    fontWeight: 900,
+                    padding: '3px 8px',
+                    borderRadius: '6px',
+                    border: '1px solid #0A0A0A',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  FOUNDER BLOG
+                </span>
+                <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#777777', fontWeight: 700 }}>
+                  4 MIN READ
+                </span>
+              </div>
+
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setDismissed(true);
+                }}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#888888',
+                  cursor: 'pointer',
+                  padding: '2px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                title="Dismiss"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Clickable Card Body */}
+            <Link href="/how-it-works" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+              <h4
+                style={{
+                  fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                  fontSize: '17px',
+                  fontWeight: 900,
+                  color: '#0A0A0A',
+                  margin: '0 0 6px',
+                  lineHeight: 1.25,
+                  textTransform: 'uppercase',
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                How Treqo Actually Works: The Death of Theory
+              </h4>
+
+              <p style={{ fontSize: '12.5px', color: '#555555', lineHeight: 1.45, margin: '0 0 14px', fontWeight: 500 }}>
+                An unfiltered breakdown on managing ₹50k live ad spend and landing jobs.
+              </p>
+
+              {/* Action Button */}
+              <div
+                style={{
+                  background: '#0A0A0A',
+                  color: '#ffffff',
+                  border: '1.5px solid #0A0A0A',
+                  borderRadius: '10px',
+                  padding: '10px 14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                  fontSize: '12px',
+                  fontWeight: 900,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  boxShadow: '2px 2px 0px #6D28FF',
+                }}
+              >
+                <span>Read Essay Breakdown</span>
+                <ArrowRight size={14} />
+              </div>
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
