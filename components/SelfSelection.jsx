@@ -51,7 +51,7 @@ export default function SelfSelection() {
               fontWeight: 800,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#666666',
+              color: '#0A0A0A',
               display: 'inline-block',
             }}
           >
