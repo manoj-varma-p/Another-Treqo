@@ -3,8 +3,9 @@ import HeroSection from '@/components/HeroSection';
 import SelfSelection from '@/components/SelfSelection';
 import WhySection from '@/components/WhySection';
 import ChooseSystem from '@/components/ChooseSystem';
-import JourneyAndInterview from '@/components/Curriculm';
+//import JourneyAndInterview from '@/components/Curriculm';
 import TrainingSection from '@/components/ScrollStack';
+import UnifiedMasterStack from '@/components/UnifiedMasterStack';
 import RealWorkConveyor from '@/components/RealWorkConveyor';
 import FinalCta from '@/components/FinalCta';
 import Footer from '@/components/Footer';
@@ -26,11 +27,11 @@ export default function Home() {
         {/* Section 04: Choose Your Learning System (Curated Tracks Carousel) */}
         <ChooseSystem />
 
-        {/* Section 05: 16-Term Curriculum, Extra Proof & Interview Dashboard */}
-        <JourneyAndInterview />
-
-        {/* Section 06: Training Model (The Art of Building & Marketing) */}
+        {/* Section 05: Training Model (The Art of Building & Marketing) */}
         <TrainingSection />
+
+        {/* Section 06: Unified Master Stack (Master System, Tutors, Certifications, Toolkit) */}
+        <UnifiedMasterStack />
 
         {/* Section 07: Real Work > Homework Horizontal Conveyor */}
         <RealWorkConveyor />
