@@ -1,12 +1,23 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, ArrowUpRight, MessageCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Sparkles, Bell, MousePointer, X } from 'lucide-react';
 import { DoodleBadge, DoodleArrow } from './Doodles';
 
 export default function HeroSection() {
+  const [showNotification, setShowNotification] = useState(false);
+
+  useEffect(() => {
+    // Notification pops in from right precisely after 2 seconds
+    const timer = setTimeout(() => {
+      setShowNotification(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <section
@@ -16,6 +27,7 @@ export default function HeroSection() {
           padding: '110px 80px 80px',
           position: 'relative',
           overflow: 'hidden',
+          minHeight: '620px',
         }}
       >
         {/* Subtle Background Grid */}
@@ -185,150 +197,174 @@ export default function HeroSection() {
           </div>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT: ONE Single Eye-Catching Notification Message
+              RIGHT: Pops in from Right after 2 Seconds
           ══════════════════════════════════════════════════ */}
-          <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Link
-              href="/how-it-works"
-              style={{ textDecoration: 'none', color: 'inherit', width: '100%', maxWidth: '480px', display: 'block' }}
-            >
-              <motion.div
-                initial={{ opacity: 0, x: 70, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ x: -6, y: -4, boxShadow: '10px 10px 0px #6D28FF' }}
-                whileTap={{ scale: 0.98 }}
-                style={{
-                  background: '#ffffff',
-                  border: '3px solid #0A0A0A',
-                  borderRadius: '24px',
-                  padding: '28px 28px',
-                  boxShadow: '6px 6px 0px #0A0A0A',
-                  cursor: 'pointer',
-                  transition: 'box-shadow 0.2s ease',
-                  position: 'relative',
-                }}
-              >
-                {/* Notification Top Meta */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    {/* Avatar with Live Indicator */}
-                    <div style={{ position: 'relative', flexShrink: 0 }}>
-                      <img
-                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
-                        alt="Lokesh Dama"
-                        style={{
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: '14px',
-                          border: '2px solid #0A0A0A',
-                          objectFit: 'cover',
-                        }}
-                      />
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              minHeight: '320px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <AnimatePresence>
+              {showNotification && (
+                <Link
+                  href="/how-it-works"
+                  style={{ textDecoration: 'none', color: 'inherit', width: '100%', maxWidth: '480px', display: 'block' }}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, x: 240, scale: 0.9, rotate: 3 }}
+                    animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, x: 180, scale: 0.9 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 180,
+                      damping: 18,
+                      mass: 0.9,
+                    }}
+                    whileHover={{ x: -6, y: -4, boxShadow: '12px 12px 0px #6D28FF' }}
+                    whileTap={{ scale: 0.98 }}
+                    style={{
+                      background: '#ffffff',
+                      border: '3px solid #0A0A0A',
+                      borderRadius: '26px',
+                      padding: '28px 28px',
+                      boxShadow: '8px 8px 0px #0A0A0A',
+                      cursor: 'pointer',
+                      transition: 'box-shadow 0.2s ease',
+                      position: 'relative',
+                    }}
+                  >
+                    {/* Top Push Notification Header Bar */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        {/* Avatar with Live Green Status */}
+                        <div style={{ position: 'relative', flexShrink: 0 }}>
+                          <img
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+                            alt="Lokesh Dama"
+                            style={{
+                              width: '48px',
+                              height: '48px',
+                              borderRadius: '14px',
+                              border: '2px solid #0A0A0A',
+                              objectFit: 'cover',
+                            }}
+                          />
+                          <div
+                            style={{
+                              position: 'absolute',
+                              bottom: '-2px',
+                              right: '-2px',
+                              width: '12px',
+                              height: '12px',
+                              borderRadius: '50%',
+                              background: '#22C55E',
+                              border: '2px solid #ffffff',
+                              boxShadow: '0 0 6px #22C55E',
+                            }}
+                          />
+                        </div>
+
+                        <div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <span style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '16px', fontWeight: 900, color: '#0A0A0A' }}>
+                              Lokesh Dama
+                            </span>
+                            <span
+                              style={{
+                                background: '#6D28FF18',
+                                color: '#6D28FF',
+                                border: '1px solid #6D28FF',
+                                borderRadius: '4px',
+                                padding: '1px 6px',
+                                fontSize: '10px',
+                                fontWeight: 900,
+                                fontFamily: "var(--ff-mono, monospace)",
+                              }}
+                            >
+                              FOUNDER @ TAC
+                            </span>
+                          </div>
+                          <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#777777', fontWeight: 700 }}>
+                            Just now · Live Ping 🟢
+                          </span>
+                        </div>
+                      </div>
+
                       <div
                         style={{
-                          position: 'absolute',
-                          bottom: '-2px',
-                          right: '-2px',
-                          width: '12px',
-                          height: '12px',
-                          borderRadius: '50%',
                           background: '#22C55E',
-                          border: '2px solid #ffffff',
+                          color: '#ffffff',
+                          fontFamily: "var(--ff-mono, monospace)",
+                          fontSize: '10px',
+                          fontWeight: 900,
+                          padding: '3px 8px',
+                          borderRadius: '6px',
+                          letterSpacing: '0.06em',
+                          border: '1.5px solid #0A0A0A',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
                         }}
-                      />
-                    </div>
-
-                    <div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '16px', fontWeight: 900, color: '#0A0A0A' }}>
-                          Lokesh Dama
-                        </span>
-                        <span
-                          style={{
-                            background: '#6D28FF18',
-                            color: '#6D28FF',
-                            border: '1px solid #6D28FF',
-                            borderRadius: '4px',
-                            padding: '1px 6px',
-                            fontSize: '10px',
-                            fontWeight: 900,
-                            fontFamily: "var(--ff-mono, monospace)",
-                          }}
-                        >
-                          FOUNDER @ TAC
-                        </span>
+                      >
+                        <Bell size={10} />
+                        <span>NEW MESSAGE</span>
                       </div>
-                      <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#777777', fontWeight: 700 }}>
-                        Just now · Live Ping 🟢
-                      </span>
                     </div>
-                  </div>
 
-                  <span
-                    style={{
-                      background: '#22C55E',
-                      color: '#ffffff',
-                      fontFamily: "var(--ff-mono, monospace)",
-                      fontSize: '10px',
-                      fontWeight: 900,
-                      padding: '3px 8px',
-                      borderRadius: '6px',
-                      letterSpacing: '0.06em',
-                      border: '1.5px solid #0A0A0A',
-                    }}
-                  >
-                    NEW
-                  </span>
-                </div>
+                    {/* Notification Body Box */}
+                    <div
+                      style={{
+                        background: '#E5DFD0',
+                        border: '1.5px solid #0A0A0A',
+                        borderRadius: '16px',
+                        padding: '16px 18px',
+                        marginBottom: '18px',
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: '14.5px',
+                          color: '#0A0A0A',
+                          lineHeight: 1.5,
+                          margin: 0,
+                          fontWeight: 600,
+                        }}
+                      >
+                        “Curious how our students manage <span style={{ color: '#6D28FF', fontWeight: 900 }}>₹50k live ad spend</span>, get weekly founder teardowns, and land high-paying roles?”
+                      </p>
+                    </div>
 
-                {/* Message Body Content */}
-                <div
-                  style={{
-                    background: '#F3F0E7',
-                    border: '1.5px solid #0A0A0A',
-                    borderRadius: '16px',
-                    padding: '16px 18px',
-                    marginBottom: '18px',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: '14.5px',
-                      color: '#0A0A0A',
-                      lineHeight: 1.5,
-                      margin: 0,
-                      fontWeight: 600,
-                    }}
-                  >
-                    “Curious how our students manage <span style={{ color: '#6D28FF', fontWeight: 900 }}>₹50k live ad spend</span>, get weekly founder teardowns, and land high-paying roles?”
-                  </p>
-                </div>
-
-                {/* Actionable Prompt Button inside the Message */}
-                <div
-                  style={{
-                    background: '#6D28FF',
-                    color: '#ffffff',
-                    border: '2px solid #0A0A0A',
-                    borderRadius: '14px',
-                    padding: '12px 20px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    boxShadow: '3px 3px 0px #0A0A0A',
-                    fontWeight: 900,
-                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                    fontSize: '14px',
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  <span>See How It Works [Interactive]</span>
-                  <ArrowRight size={18} />
-                </div>
-              </motion.div>
-            </Link>
+                    {/* Interactive Action Button */}
+                    <div
+                      style={{
+                        background: '#6D28FF',
+                        color: '#ffffff',
+                        border: '2px solid #0A0A0A',
+                        borderRadius: '14px',
+                        padding: '12px 20px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        boxShadow: '3px 3px 0px #0A0A0A',
+                        fontWeight: 900,
+                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                        fontSize: '14px',
+                        letterSpacing: '0.04em',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      <span>See How It Works [Interactive]</span>
+                      <ArrowRight size={18} />
+                    </div>
+                  </motion.div>
+                </Link>
+              )}
+            </AnimatePresence>
           </div>
 
         </div>
