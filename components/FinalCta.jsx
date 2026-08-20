@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
+import { ArrowRight, Calendar, CheckCircle2, Flame, Sparkles, Trophy } from 'lucide-react';
 import ApplyModal from './ApplyModal';
 import { DoodleArrow } from './Doodles';
 
@@ -16,14 +16,9 @@ export default function FinalCta() {
       <section
         id="final-cta"
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
           background: '#E5DFD0',
           color: '#0A0A0A',
-          padding: '60px 40px 60px',
+          padding: '40px 40px 60px',
           position: 'relative',
           overflow: 'hidden',
           boxSizing: 'border-box',
@@ -44,27 +39,42 @@ export default function FinalCta() {
           }}
         />
 
+        {/* Wide Framed Card to fill left and right horizontal space */}
         <div
           style={{
-            maxWidth: '960px',
+            maxWidth: '1360px',
             margin: '0 auto',
             width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
+            background: '#ffffff',
+            border: '2.5px solid #0A0A0A',
+            borderRadius: '24px',
+            padding: '50px 48px 44px',
+            boxShadow: '3px 3px 0px #0A0A0A',
             position: 'relative',
             zIndex: 2,
+            boxSizing: 'border-box',
           }}
         >
-          {/* Admissions Pill */}
-          <div style={{ marginBottom: '16px' }}>
+          {/* Top Bar with Status and Quick Metrics */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '16px',
+              borderBottom: '1.5px solid rgba(10, 10, 10, 0.1)',
+              paddingBottom: '20px',
+              marginBottom: '36px',
+            }}
+          >
+            {/* Live Admissions Pill */}
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 8,
-                background: '#ffffff',
+                background: '#E5DFD0',
                 border: '1.5px solid #0A0A0A',
                 color: '#0A0A0A',
                 padding: '5px 14px',
@@ -86,136 +96,178 @@ export default function FinalCta() {
                   boxShadow: '0 0 8px #22C55E',
                 }}
               />
-              <span>YOUR TURN · COHORT 2026</span>
+              <span>COHORT ADMISSIONS OPEN · 2026</span>
+            </div>
+
+            {/* Quick Guarantees / Highlights across the width */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '24px',
+                fontFamily: "var(--ff-mono, monospace)",
+                fontSize: '11.5px',
+                fontWeight: 800,
+                color: '#444444',
+                textTransform: 'uppercase',
+                flexWrap: 'wrap',
+              }}
+            >
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <CheckCircle2 size={14} color="#6D28FF" /> 30+ Live Projects
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <CheckCircle2 size={14} color="#6D28FF" /> 100% Placement Support
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <CheckCircle2 size={14} color="#6D28FF" /> Zero Theory Slides
+              </span>
             </div>
           </div>
 
-          {/* 3-Line Stacked Headline in Neo-Brutalist Theme */}
-          <h2
+          {/* Main 2-Column / Split Layout filling horizontal space */}
+          <div
             style={{
-              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-              fontSize: 'clamp(2.4rem, 4.8vw, 4.2rem)',
-              fontWeight: 900,
-              letterSpacing: '-0.04em',
-              lineHeight: 1.05,
-              textTransform: 'uppercase',
-              margin: '0 0 16px',
-              display: 'flex',
-              flexDirection: 'column',
+              display: 'grid',
+              gridTemplateColumns: '1.2fr 0.8fr',
+              gap: '40px',
               alignItems: 'center',
             }}
+            className="final-cta-grid"
           >
-            <span style={{ color: '#0A0A0A' }}>
-              READY TO
-            </span>
-            <span style={{ color: '#0A0A0A' }}>
-              ACTUALLY DO
-            </span>
-            <span
-              style={{
-                background: '#6D28FF',
-                color: '#ffffff',
-                padding: '4px 22px',
-                display: 'inline-block',
-                border: '2.5px solid #0A0A0A',
-                boxShadow: '3px 3px 0px #0A0A0A',
-                transform: 'rotate(-1deg)',
-                marginTop: '6px',
-              }}
-            >
-              MARKETING?
-            </span>
-          </h2>
+            {/* Left: Bold Stacked Headline */}
+            <div>
+              <h2
+                style={{
+                  fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                  fontSize: 'clamp(2.4rem, 4.4vw, 3.8rem)',
+                  fontWeight: 900,
+                  letterSpacing: '-0.04em',
+                  lineHeight: 1.05,
+                  textTransform: 'uppercase',
+                  margin: '0 0 14px',
+                  color: '#0A0A0A',
+                }}
+              >
+                READY TO <br />
+                ACTUALLY DO <br />
+                <span
+                  style={{
+                    background: '#6D28FF',
+                    color: '#ffffff',
+                    padding: '3px 20px',
+                    display: 'inline-block',
+                    border: '2.5px solid #0A0A0A',
+                    boxShadow: '3px 3px 0px #0A0A0A',
+                    transform: 'rotate(-1deg)',
+                    marginTop: '6px',
+                  }}
+                >
+                  MARKETING?
+                </span>
+              </h2>
+            </div>
 
-          {/* Subtitle */}
-          <p
-            style={{
-              fontSize: 'clamp(15px, 1.2vw, 18px)',
-              color: '#333333',
-              maxWidth: '580px',
-              margin: '0 auto 24px',
-              fontWeight: 500,
-              lineHeight: 1.5,
-            }}
-          >
-            Your first live campaign starts here. Zero theory lectures, real budgets, and verified placement support.
-          </p>
+            {/* Right: Subtitle, Action Buttons, and Annotation */}
+            <div>
+              <p
+                style={{
+                  fontSize: 'clamp(15px, 1.2vw, 17.5px)',
+                  color: '#444444',
+                  lineHeight: 1.55,
+                  margin: '0 0 24px',
+                  fontWeight: 500,
+                }}
+              >
+                Deploy real ad budgets on Meta & Google, execute growth funnels, and build a verified hiring portfolio that speaks for itself.
+              </p>
 
-          {/* CTA Buttons Group */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
-            {/* Primary Apply Button */}
-            <motion.button
-              whileHover={{ y: -2, x: -2, boxShadow: '4px 4px 0px #0A0A0A' }}
-              whileTap={{ y: 0, x: 0, boxShadow: '2px 2px 0px #0A0A0A' }}
-              onClick={() => setModalOpen(true)}
-              style={{
-                background: '#6D28FF',
-                color: '#ffffff',
-                border: '2.5px solid #0A0A0A',
-                borderRadius: '999px',
-                padding: '15px 38px',
-                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                fontWeight: 900,
-                fontSize: '14.5px',
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                boxShadow: '3px 3px 0px #0A0A0A',
-                transition: 'background 0.2s',
-              }}
-            >
-              <span>APPLY TO TREQO</span>
-              <ArrowRight size={17} />
-            </motion.button>
+              {/* Action Buttons */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap', marginBottom: '18px' }}>
+                {/* Primary Apply Button */}
+                <motion.button
+                  whileHover={{ y: -2, x: -2, boxShadow: '4px 4px 0px #0A0A0A' }}
+                  whileTap={{ y: 0, x: 0, boxShadow: '2px 2px 0px #0A0A0A' }}
+                  onClick={() => setModalOpen(true)}
+                  style={{
+                    background: '#6D28FF',
+                    color: '#ffffff',
+                    border: '2.5px solid #0A0A0A',
+                    borderRadius: '999px',
+                    padding: '14px 34px',
+                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                    fontWeight: 900,
+                    fontSize: '14px',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    boxShadow: '3px 3px 0px #0A0A0A',
+                    transition: 'background 0.2s',
+                  }}
+                >
+                  <span>APPLY TO TREQO</span>
+                  <ArrowRight size={17} />
+                </motion.button>
 
-            {/* Secondary Book a Demo Button */}
-            <motion.button
-              whileHover={{ y: -2, x: -2, boxShadow: '4px 4px 0px #0A0A0A', background: '#ffffff' }}
-              whileTap={{ y: 0, x: 0, boxShadow: '2px 2px 0px #0A0A0A' }}
-              onClick={() => setModalOpen(true)}
-              style={{
-                background: '#ffffff',
-                color: '#0A0A0A',
-                border: '2.5px solid #0A0A0A',
-                borderRadius: '999px',
-                padding: '15px 34px',
-                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                fontWeight: 900,
-                fontSize: '14.5px',
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                boxShadow: '3px 3px 0px #0A0A0A',
-                transition: 'all 0.2s',
-              }}
-            >
-              <Calendar size={16} color="#6D28FF" />
-              <span>BOOK A DEMO</span>
-            </motion.button>
-          </div>
+                {/* Secondary Book a Demo Button */}
+                <motion.button
+                  whileHover={{ y: -2, x: -2, boxShadow: '4px 4px 0px #0A0A0A', background: '#F8F6F0' }}
+                  whileTap={{ y: 0, x: 0, boxShadow: '2px 2px 0px #0A0A0A' }}
+                  onClick={() => setModalOpen(true)}
+                  style={{
+                    background: '#ffffff',
+                    color: '#0A0A0A',
+                    border: '2.5px solid #0A0A0A',
+                    borderRadius: '999px',
+                    padding: '14px 30px',
+                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                    fontWeight: 900,
+                    fontSize: '14px',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    boxShadow: '3px 3px 0px #0A0A0A',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  <Calendar size={15} color="#6D28FF" />
+                  <span>BOOK A DEMO</span>
+                </motion.button>
+              </div>
 
-          {/* Handwritten Annotation */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 18 }}>
-            <DoodleArrow direction="right" color="#6D28FF" size={28} />
-            <span
-              style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontStyle: 'italic',
-                fontWeight: 600,
-                fontSize: '14.5px',
-                color: '#6D28FF',
-              }}
-            >
-              Admissions reviewed on a rolling basis.
-            </span>
+              {/* Handwritten Annotation */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <DoodleArrow direction="right" color="#6D28FF" size={26} />
+                <span
+                  style={{
+                    fontFamily: "'Fraunces', Georgia, serif",
+                    fontStyle: 'italic',
+                    fontWeight: 600,
+                    fontSize: '14px',
+                    color: '#6D28FF',
+                  }}
+                >
+                  Admissions reviewed on a rolling basis.
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <style jsx>{`
+          @media (max-width: 900px) {
+            .final-cta-grid {
+              grid-template-columns: 1fr !important;
+              gap: 28px !important;
+            }
+          }
+        `}</style>
       </section>
     </>
   );
