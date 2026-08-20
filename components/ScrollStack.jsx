@@ -194,7 +194,6 @@ export default function TrainingSection() {
               <Sparkles size={13} color="#6D28FF" />
               <span>OUR TRAINING MODEL</span>
             </div>
-            <DoodleBadge text="5-STAGE SCROLL STACK" rotate={-1} highlight={true} />
           </div>
 
           <h2
@@ -216,8 +215,8 @@ export default function TrainingSection() {
                 color: '#ffffff',
                 padding: '2px 14px',
                 display: 'inline-block',
-                border: '3px solid #0A0A0A',
-                boxShadow: '4px 4px 0px #0A0A0A',
+                border: '2.5px solid #0A0A0A',
+                boxShadow: '2px 2px 0px #0A0A0A',
                 transform: 'rotate(-1deg)',
               }}
             >
@@ -267,9 +266,9 @@ export default function TrainingSection() {
                 <div
                   style={{
                     background: '#ffffff',
-                    border: '3px solid #0A0A0A',
-                    borderRadius: '26px',
-                    boxShadow: '8px 8px 0px #0A0A0A',
+                    border: '2.5px solid #0A0A0A',
+                    borderRadius: '24px',
+                    boxShadow: '4px 4px 0px #0A0A0A',
                     padding: '36px clamp(20px, 3.5vw, 40px)',
                     display: 'grid',
                     gridTemplateColumns: '1.05fr 1.25fr',
@@ -284,8 +283,8 @@ export default function TrainingSection() {
                     style={{
                       background: '#0A0A0A',
                       color: '#FAF9F8',
-                      border: '2.5px solid #0A0A0A',
-                      borderRadius: '20px',
+                      border: '2px solid #0A0A0A',
+                      borderRadius: '18px',
                       minHeight: '310px',
                       position: 'relative',
                       overflow: 'hidden',
@@ -293,7 +292,7 @@ export default function TrainingSection() {
                       flexDirection: 'column',
                       justifyContent: 'space-between',
                       padding: '28px 24px',
-                      boxShadow: '5px 5px 0px #6D28FF',
+                      boxShadow: '2px 2px 0px #6D28FF',
                     }}
                   >
                     {/* Background Image */}
