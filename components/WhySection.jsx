@@ -127,30 +127,7 @@ export default function WhySection() {
 
           {/* ── SECTION HEADER ── */}
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '10px' }}>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  background: '#ffffff',
-                  border: '1.5px solid #6D28FF',
-                  color: '#6D28FF',
-                  padding: '4px 14px',
-                  borderRadius: '999px',
-                  fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                  fontSize: '11px',
-                  fontWeight: 800,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  boxShadow: '2px 2px 0px rgba(109, 40, 255, 0.25)',
-                }}
-              >
-                <Sparkles size={12} color="#6D28FF" />
-                <span>THE 5 TREQO PILLARS</span>
-              </div>
-              <DoodleBadge text="SCROLL TO EXPLORE" rotate={2} highlight={false} />
-            </div>
+
 
             <h2
               style={{
