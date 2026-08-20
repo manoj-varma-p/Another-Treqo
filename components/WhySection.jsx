@@ -20,7 +20,6 @@ export default function WhySection() {
       highlights: [
         { label: '30+ LIVE CAMPAIGNS', val: 'Not classroom exercises.' },
         { label: 'REAL MONEY', val: 'Work with actual budgets.' },
-        { label: 'REAL RESULTS', val: 'Numbers you can show.' },
         { label: 'REAL PROOF', val: 'Something better than “I completed a course.”' }
       ]
     },
@@ -35,8 +34,7 @@ export default function WhySection() {
       highlights: [
         { label: 'NO TOOL COLLECTING', val: "You don't need 20 tools on your resume." },
         { label: 'NO BUTTON PUSHING', val: "Knowing where to click isn't marketing." },
-        { label: 'REAL THINKING', val: "Know what you're doing and why." },
-        { label: 'GOOD MARKETERS', val: 'Think first. Execute second.' }
+        { label: 'REAL THINKING', val: "Know what you're doing and why." }
       ]
     },
     {
@@ -95,26 +93,20 @@ export default function WhySection() {
 
   return (
     <section
-      id="why"
-      data-stage="WHY"
+      id="transformation"
+      data-stage="TRANSFORMATION"
       style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
         background: '#F3F0E7',
         color: '#0A0A0A',
         padding: '70px 80px',
         position: 'relative',
-        overflow: 'hidden',
-        boxSizing: 'border-box',
       }}
     >
-      <div style={{ maxWidth: '1540px', margin: '0 auto', width: '100%' }}>
+      <div style={{ maxWidth: '1540px', margin: '0 auto' }}>
 
-        {/* ── SECTION HEADER ── */}
+        {/* ── SECTION EYEBROW & HEADLINE ── */}
         <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '14px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '12px' }}>
             <div
               style={{
                 display: 'inline-flex',
@@ -123,7 +115,7 @@ export default function WhySection() {
                 background: '#ffffff',
                 border: '1.5px solid #6D28FF',
                 color: '#6D28FF',
-                padding: '6px 16px',
+                padding: '5px 14px',
                 borderRadius: '999px',
                 fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
                 fontSize: '11px',
@@ -134,31 +126,31 @@ export default function WhySection() {
               }}
             >
               <Sparkles size={13} color="#6D28FF" />
-              <span>THE 5 CORE PILLARS</span>
+              <span>THE 5 TREQO PILLARS</span>
             </div>
-            <DoodleBadge text="WHY CHOOSE TREQO" rotate={-1} highlight={true} />
+            <DoodleBadge text="PROOF OVER THEORY" rotate={2} highlight={false} />
           </div>
 
           <h2
             style={{
               fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-              fontSize: 'clamp(1.85rem, 3.4vw, 2.75rem)',
+              fontSize: 'clamp(2.2rem, 4.2vw, 3.8rem)',
               fontWeight: 900,
               letterSpacing: '-0.03em',
-              margin: '0 0 12px',
+              lineHeight: 1.05,
               textTransform: 'uppercase',
+              margin: '0 0 10px',
               color: '#0A0A0A',
-              lineHeight: 1.1,
             }}
           >
-            Why Choose{' '}
+            WHY LEARN WITH{' '}
             <span
               style={{
-                background: '#6D28FF',
                 color: '#ffffff',
+                background: '#6D28FF',
                 padding: '2px 14px',
                 display: 'inline-block',
-                border: '3px solid #0A0A0A',
+                border: '2.5px solid #0A0A0A',
                 boxShadow: '4px 4px 0px #0A0A0A',
                 transform: 'rotate(-1deg)',
               }}
@@ -169,19 +161,19 @@ export default function WhySection() {
 
           <p
             style={{
-              fontSize: 'clamp(14.5px, 1.2vw, 16.5px)',
-              color: '#555555',
-              maxWidth: '540px',
+              fontSize: 'clamp(15px, 1.2vw, 17px)',
+              color: '#444444',
+              maxWidth: '680px',
               margin: '0 auto',
-              lineHeight: 1.6,
+              lineHeight: 1.45,
               fontWeight: 500,
             }}
           >
-            We engineered an educational system around live revenue, verifiable proof, and active founder mentorship.
+            We threw away standard college slide decks and rebuilt marketing education around live budgets, real ROAS targets, and proven founder execution.
           </p>
         </div>
 
-        {/* ── 5 PILLARS BUTTON DECK ── */}
+        {/* ── 5 INTERACTIVE PILLAR TABS ── */}
         <div
           style={{
             display: 'grid',
@@ -189,80 +181,75 @@ export default function WhySection() {
             gap: '12px',
             marginBottom: '28px',
           }}
-          className="pillars-nav-grid"
+          className="pillar-tabs-row"
         >
           {cards.map((card, idx) => {
             const isActive = idx === activeIdx;
-            const isParchmentBox = card.num === '02' || card.num === '05';
-
             return (
               <motion.button
                 key={card.num}
                 type="button"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.97 }}
                 onClick={() => setActiveIdx(idx)}
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
                 style={{
-                  background: isActive
-                    ? '#6D28FF'
-                    : isParchmentBox
-                    ? '#F3F0E7'
-                    : '#ffffff',
+                  background: isActive ? '#0A0A0A' : '#ffffff',
                   color: isActive ? '#ffffff' : '#0A0A0A',
-                  border: '2.5px solid #0A0A0A',
-                  borderRadius: '16px',
-                  padding: '14px 12px',
+                  border: '2px solid #0A0A0A',
+                  borderRadius: '14px',
+                  padding: '14px 16px',
                   cursor: 'pointer',
-                  textAlign: 'center',
+                  textAlign: 'left',
+                  boxShadow: isActive ? '4px 4px 0px #6D28FF' : '3px 3px 0px #0A0A0A',
+                  transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                   display: 'flex',
                   flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '4px',
-                  boxShadow: isActive ? '4px 4px 0px #0A0A0A' : '2px 2px 0px #0A0A0A',
-                  transform: isActive ? 'translateY(-2px)' : 'none',
-                  transition: 'all 0.18s ease',
+                  gap: '6px',
+                  position: 'relative',
                 }}
               >
-                <span
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                      fontSize: '11px',
+                      fontWeight: 900,
+                      color: isActive ? '#6D28FF' : '#666666',
+                    }}
+                  >
+                    0{idx + 1}
+                  </span>
+                  {isActive && <CheckCircle2 size={14} color="#6D28FF" />}
+                </div>
+
+                <div
                   style={{
-                    fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                    fontSize: '11px',
+                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                    fontSize: '13px',
                     fontWeight: 900,
-                    color: isActive ? '#ffffff' : '#6D28FF',
-                  }}
-                >
-                  {card.num}
-                </span>
-                <span
-                  style={{
-                    fontSize: '12px',
-                    fontWeight: 800,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.02em',
+                    letterSpacing: '-0.01em',
                     lineHeight: 1.2,
+                    textTransform: 'uppercase',
+                    color: isActive ? '#ffffff' : '#0A0A0A',
                   }}
                 >
                   {card.shortTitle}
-                </span>
+                </div>
               </motion.button>
             );
           })}
         </div>
 
-        {/* ── SHOWCASE INTERACTIVE PILLAR CARD ── */}
+        {/* ── SHOWCASE COMPACT PILLAR CARD ── */}
         <div
           style={{
             background: '#ffffff',
-            border: '3px solid #0A0A0A',
-            borderRadius: '28px',
-            boxShadow: '10px 10px 0px #0A0A0A',
-            padding: '36px clamp(24px, 4vw, 48px)',
+            border: '2.5px solid #0A0A0A',
+            borderRadius: '24px',
+            boxShadow: '8px 8px 0px #0A0A0A',
+            padding: '30px clamp(20px, 3vw, 36px)',
             position: 'relative',
             overflow: 'hidden',
-            minHeight: '480px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
           }}
         >
           {/* Progress Indicator */}
@@ -271,7 +258,7 @@ export default function WhySection() {
               position: 'absolute',
               top: 0,
               left: 0,
-              height: '5px',
+              height: '4px',
               background: '#6D28FF',
               width: `${((activeIdx + 1) / cards.length) * 100}%`,
               transition: 'width 0.35s ease',
@@ -281,65 +268,64 @@ export default function WhySection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={current.num}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, x: -16 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 display: 'grid',
-                gridTemplateColumns: '1.2fr 0.85fr',
-                gap: '36px',
-                alignItems: 'stretch',
+                gridTemplateColumns: '1.2fr 0.95fr',
+                gap: '32px',
+                alignItems: 'center',
                 width: '100%',
-                minHeight: '390px',
               }}
               className="pillar-card-grid"
             >
               {/* Left Details */}
-              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span
+                    style={{
+                      background: '#6D28FF',
+                      color: '#ffffff',
+                      fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                      fontSize: '11px',
+                      fontWeight: 900,
+                      padding: '3px 10px',
+                      borderRadius: '6px',
+                      letterSpacing: '0.08em',
+                      border: '1.5px solid #0A0A0A',
+                    }}
+                  >
+                    PILLAR {current.num}
+                  </span>
+
+                  <span
+                    style={{
+                      background: '#F3F0E7',
+                      color: '#6D28FF',
+                      border: '1.5px solid #0A0A0A',
+                      fontFamily: "var(--ff-mono, monospace)",
+                      fontSize: '11px',
+                      fontWeight: 800,
+                      padding: '3px 10px',
+                      borderRadius: '6px',
+                    }}
+                  >
+                    {current.tag}
+                  </span>
+                </div>
+
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-                    <span
-                      style={{
-                        background: '#6D28FF',
-                        color: '#ffffff',
-                        fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                        fontSize: '11px',
-                        fontWeight: 900,
-                        padding: '4px 12px',
-                        borderRadius: '6px',
-                        letterSpacing: '0.08em',
-                        border: '1.5px solid #0A0A0A',
-                      }}
-                    >
-                      PILLAR {current.num}
-                    </span>
-
-                    <span
-                      style={{
-                        background: '#F3F0E7',
-                        color: '#6D28FF',
-                        border: '1.5px solid #0A0A0A',
-                        fontFamily: "var(--ff-mono, monospace)",
-                        fontSize: '11px',
-                        fontWeight: 800,
-                        padding: '4px 10px',
-                        borderRadius: '6px',
-                      }}
-                    >
-                      {current.tag}
-                    </span>
-                  </div>
-
                   <h3
                     style={{
                       fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                      fontSize: 'clamp(22px, 2.6vw, 32px)',
+                      fontSize: 'clamp(20px, 2.2vw, 28px)',
                       fontWeight: 900,
                       color: '#0A0A0A',
                       lineHeight: 1.15,
-                      margin: '0 0 14px',
-                      letterSpacing: '-0.03em',
+                      margin: '0 0 10px',
+                      letterSpacing: '-0.02em',
                     }}
                   >
                     {current.title}
@@ -347,10 +333,10 @@ export default function WhySection() {
 
                   <p
                     style={{
-                      fontSize: '15px',
-                      color: '#444444',
-                      lineHeight: 1.6,
-                      margin: '0 0 20px',
+                      fontSize: '14.5px',
+                      color: '#333333',
+                      lineHeight: 1.5,
+                      margin: 0,
                       fontWeight: 500,
                     }}
                   >
@@ -361,24 +347,23 @@ export default function WhySection() {
                 {/* Quote Box */}
                 <div
                   style={{
-                    borderLeft: '4px solid #6D28FF',
+                    borderLeft: '3.5px solid #6D28FF',
                     background: '#FAF9F8',
                     borderTop: '1px solid rgba(10, 10, 10, 0.1)',
                     borderRight: '1px solid rgba(10, 10, 10, 0.1)',
                     borderBottom: '1px solid rgba(10, 10, 10, 0.1)',
-                    borderRadius: '0 12px 12px 0',
-                    padding: '12px 16px',
-                    marginTop: 'auto',
+                    borderRadius: '0 10px 10px 0',
+                    padding: '10px 14px',
                   }}
                 >
                   <p
                     style={{
                       fontFamily: "'Fraunces', Georgia, serif",
                       fontStyle: 'italic',
-                      fontSize: '14px',
+                      fontSize: '13.5px',
                       color: '#6D28FF',
                       margin: 0,
-                      lineHeight: 1.5,
+                      lineHeight: 1.45,
                       fontWeight: 600,
                     }}
                   >
@@ -387,25 +372,24 @@ export default function WhySection() {
                 </div>
               </div>
 
-              {/* Right: Highlights Matrix in #F3F0E7 */}
+              {/* Right: Highlights Matrix in #F3F0E7 (Exactly 3 Cards) */}
               <div
                 style={{
                   background: '#F3F0E7',
                   color: '#0A0A0A',
-                  border: '2.5px solid #0A0A0A',
-                  borderRadius: '20px',
-                  padding: '24px',
-                  boxShadow: '6px 6px 0px #6D28FF',
+                  border: '2px solid #0A0A0A',
+                  borderRadius: '18px',
+                  padding: '20px',
+                  boxShadow: '5px 5px 0px #6D28FF',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  minHeight: '390px',
+                  gap: '14px',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span
                     style={{
-                      fontSize: '11px',
+                      fontSize: '10.5px',
                       fontFamily: "var(--ff-mono, monospace)",
                       fontWeight: 900,
                       color: '#6D28FF',
@@ -421,7 +405,7 @@ export default function WhySection() {
                       color: '#ffffff',
                       fontSize: '10px',
                       fontWeight: 900,
-                      padding: '4px 10px',
+                      padding: '3px 9px',
                       borderRadius: '6px',
                       border: '1.5px solid #0A0A0A',
                     }}
@@ -430,43 +414,43 @@ export default function WhySection() {
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {current.highlights.map((h, i) => (
                     <div
                       key={i}
                       style={{
                         display: 'flex',
                         alignItems: 'flex-start',
-                        gap: '12px',
+                        gap: '10px',
                         background: '#ffffff',
                         border: '1.5px solid #0A0A0A',
-                        borderRadius: '12px',
-                        padding: '11px 14px',
+                        borderRadius: '10px',
+                        padding: '9px 12px',
                         boxShadow: '2px 2px 0px #0A0A0A',
                       }}
                     >
                       <div
                         style={{
-                          width: '26px',
-                          height: '26px',
-                          borderRadius: '8px',
+                          width: '24px',
+                          height: '24px',
+                          borderRadius: '6px',
                           background: '#0A0A0A',
                           color: '#ffffff',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           flexShrink: 0,
-                          marginTop: '2px',
+                          marginTop: '1px',
                         }}
                       >
-                        <Sparkles size={13} color="#ffffff" />
+                        <Sparkles size={12} color="#ffffff" />
                       </div>
 
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
                         <span
                           style={{
                             fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                            fontSize: '11px',
+                            fontSize: '10px',
                             fontWeight: 900,
                             color: '#6D28FF',
                             letterSpacing: '0.08em',
@@ -477,10 +461,10 @@ export default function WhySection() {
                         </span>
                         <span
                           style={{
-                            fontSize: '13px',
+                            fontSize: '12.5px',
                             fontWeight: 700,
                             color: '#0A0A0A',
-                            lineHeight: 1.4,
+                            lineHeight: 1.35,
                           }}
                         >
                           {h.val}
@@ -491,27 +475,37 @@ export default function WhySection() {
                 </div>
 
                 {/* Left/Right Controls */}
-                <div style={{ display: 'flex', gap: '10px', marginTop: '18px' }}>
+                <div style={{ display: 'flex', gap: '8px' }}>
                   <button
                     type="button"
                     onClick={handlePrev}
                     style={{
                       flex: 1,
-                      padding: '10px',
-                      borderRadius: '10px',
+                      padding: '9px',
+                      borderRadius: '8px',
                       background: '#ffffff',
                       color: '#0A0A0A',
-                      border: '2px solid #0A0A0A',
+                      border: '1.5px solid #0A0A0A',
                       fontWeight: 800,
-                      fontSize: '12px',
+                      fontSize: '11.5px',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: 6,
+                      gap: 4,
+                      boxShadow: '2px 2px 0px #0A0A0A',
+                      transition: 'all 0.15s',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#0A0A0A';
+                      e.currentTarget.style.color = '#ffffff';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#ffffff';
+                      e.currentTarget.style.color = '#0A0A0A';
                     }}
                   >
-                    <ArrowLeft size={14} />
+                    <ArrowLeft size={13} />
                     <span>Prev</span>
                   </button>
 
@@ -520,44 +514,51 @@ export default function WhySection() {
                     onClick={handleNext}
                     style={{
                       flex: 1,
-                      padding: '10px',
-                      borderRadius: '10px',
+                      padding: '9px',
+                      borderRadius: '8px',
                       background: '#6D28FF',
                       color: '#ffffff',
-                      border: '2px solid #0A0A0A',
+                      border: '1.5px solid #0A0A0A',
                       fontWeight: 800,
-                      fontSize: '12px',
+                      fontSize: '11.5px',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: 6,
+                      gap: 4,
+                      boxShadow: '2px 2px 0px #0A0A0A',
+                      transition: 'all 0.15s',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#581bd6';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#6D28FF';
                     }}
                   >
                     <span>Next</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={13} />
                   </button>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
-
       </div>
 
       <style jsx>{`
         @media (max-width: 960px) {
-          .pillars-nav-grid {
-            grid-template-columns: repeat(3, 1fr) !important;
+          .pillar-tabs-row {
+            grid-template-columns: repeat(2, 1fr) !important;
           }
           .pillar-card-grid {
             grid-template-columns: 1fr !important;
             gap: 24px !important;
           }
         }
-        @media (max-width: 600px) {
-          .pillars-nav-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+        @media (max-width: 640px) {
+          .pillar-tabs-row {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>
