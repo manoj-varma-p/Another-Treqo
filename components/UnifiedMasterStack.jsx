@@ -214,14 +214,14 @@ export default function UnifiedMasterStack() {
       style={{
         background: '#E5DFD0',
         color: '#0A0A0A',
-        padding: '80px 80px 90px',
+        padding: '50px 80px 50px',
         position: 'relative',
       }}
     >
       <div style={{ maxWidth: '1540px', margin: '0 auto' }}>
 
         {/* ── SECTION HEADER ── */}
-        <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '12px' }}>
             <div
               style={{
@@ -979,11 +979,11 @@ export default function UnifiedMasterStack() {
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.25 }}
               >
-                {/* ── Top Header & Stats ── */}
-                <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#F3F0E7', border: '1.5px solid #0A0A0A', borderRadius: '999px', padding: '5px 16px', marginBottom: '16px', boxShadow: '2px 2px 0px #0A0A0A' }}>
+                {/* ── Top Header & Title ── */}
+                <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#E5DFD0', border: '1.5px solid #0A0A0A', borderRadius: '999px', padding: '4px 14px', marginBottom: '10px', boxShadow: '2px 2px 0px #0A0A0A' }}>
                     <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
-                    <span style={{ fontSize: '11px', fontWeight: 900, color: '#0A0A0A', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: "var(--ff-mono, monospace)" }}>
+                    <span style={{ fontSize: '10.5px', fontWeight: 900, color: '#0A0A0A', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: "var(--ff-mono, monospace)" }}>
                       Learn Live · Build Real · Get Hired
                     </span>
                   </div>
@@ -991,10 +991,10 @@ export default function UnifiedMasterStack() {
                   <h3
                     style={{
                       fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                      fontSize: 'clamp(26px, 3.2vw, 42px)',
+                      fontSize: 'clamp(22px, 2.6vw, 34px)',
                       fontWeight: 900,
                       color: '#0A0A0A',
-                      margin: '0 0 10px',
+                      margin: '0 0 6px',
                       textTransform: 'uppercase',
                       letterSpacing: '-0.02em',
                       lineHeight: 1.1,
@@ -1018,53 +1018,24 @@ export default function UnifiedMasterStack() {
 
                   <p
                     style={{
-                      fontSize: '14px',
+                      fontSize: '13px',
                       color: '#555555',
-                      lineHeight: 1.55,
+                      lineHeight: 1.45,
                       maxWidth: '620px',
-                      margin: '0 auto 24px',
+                      margin: '0 auto',
                       fontWeight: 500,
                     }}
                   >
                     Every metric you see below is what you'll move — live campaigns, real spend, real results. Not theory. Execution.
                   </p>
-
-                  {/* 3 Stats in Treqo Theme */}
-                  <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(20px, 4vw, 48px)', flexWrap: 'wrap' }}>
-                    {[
-                      ['30+', 'Live Projects'],
-                      ['16', 'Sprints & Terms'],
-                      ['100%', 'Placement Track'],
-                    ].map(([num, lbl]) => (
-                      <div
-                        key={lbl}
-                        style={{
-                          background: '#FAF9F8',
-                          border: '2px solid #0A0A0A',
-                          borderRadius: '14px',
-                          padding: '12px 24px',
-                          boxShadow: '3px 3px 0px #0A0A0A',
-                          minWidth: '140px',
-                          textAlign: 'center',
-                        }}
-                      >
-                        <div style={{ fontSize: '26px', fontWeight: 900, color: '#6D28FF', fontFamily: "var(--ff-display, 'Outfit', sans-serif)", letterSpacing: '-0.02em' }}>
-                          {num}
-                        </div>
-                        <div style={{ fontSize: '10.5px', fontWeight: 900, color: '#444444', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: "var(--ff-mono, monospace)", marginTop: '2px' }}>
-                          {lbl}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
                 {/* ── Laptop Chassis & Interactive SVG Screen ── */}
                 <div
                   style={{
                     position: 'relative',
-                    maxWidth: '920px',
-                    margin: '0 auto 28px',
+                    maxWidth: '780px',
+                    margin: '0 auto 16px',
                   }}
                 >
                   {/* Floating badge top-right */}
