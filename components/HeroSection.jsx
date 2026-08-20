@@ -244,21 +244,21 @@ export default function HeroSection() {
               <strong style={{ color: '#6D28FF', fontWeight: 900 }}>30+ live projects</strong>, <strong style={{ color: '#0A0A0A', fontWeight: 900 }}>100% placement support</strong>, and a training model built around real revenue — not theory.
             </p>
 
-            {/* CTA Action Buttons */}
+            {/* CTA Action Button */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-              <button
-                onClick={() => setModalOpen(true)}
+              <Link
+                href="/how-it-works"
                 style={{
                   background: '#6D28FF',
                   color: '#ffffff',
                   border: '2.5px solid #0A0A0A',
                   borderRadius: '999px',
-                  padding: '20px 44px',
+                  padding: '20px 48px',
                   fontWeight: 900,
                   fontSize: '16px',
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  cursor: 'pointer',
+                  textDecoration: 'none',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 10,
@@ -276,39 +276,8 @@ export default function HeroSection() {
                   e.currentTarget.style.background = '#6D28FF';
                 }}
               >
-                <span>Apply Now</span>
-                <ArrowRight size={20} />
-              </button>
-
-              <Link
-                href="/how-it-works"
-                style={{
-                  background: '#ffffff',
-                  color: '#0A0A0A',
-                  border: '2.5px solid #0A0A0A',
-                  borderRadius: '999px',
-                  padding: '20px 36px',
-                  fontWeight: 800,
-                  fontSize: '16px',
-                  letterSpacing: '0.04em',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  boxShadow: '5px 5px 0px #0A0A0A',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translate(-2px, -2px)';
-                  e.currentTarget.style.boxShadow = '7px 7px 0px #0A0A0A';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'none';
-                  e.currentTarget.style.boxShadow = '5px 5px 0px #0A0A0A';
-                }}
-              >
                 <span>See How It Works</span>
-                <ArrowRight size={18} />
+                <ArrowRight size={20} />
               </Link>
             </div>
 
