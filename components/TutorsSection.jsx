@@ -1,345 +1,393 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Target, Wrench, CheckCircle2, Sparkles } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Plus,
+  Sparkles,
+  ArrowRight,
+  Linkedin,
+  Briefcase,
+  Star,
+} from "lucide-react";
+import { DoodleBadge } from "./Doodles";
 
-/* ─── shared panel wrapper ─── */
-const Panel = ({ children }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 18 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -18 }}
-    transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-    style={{ width: "100%", maxWidth: 1280, margin: "0 auto" }}
-  >
-    {children}
-  </motion.div>
-);
+const tutorData = [
+  {
+    id: 1,
+    name: "Lokesh Dama",
+    role: "Product Management",
+    experience: "Founder",
+    details:
+      "Founder of TAC. Teaches product thinking, execution, and scaling digital products.",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
+    company: "TAC",
+    linkedin:
+      "https://www.linkedin.com/in/lokeshdama2030",
+  },
+  {
+    id: 2,
+    name: "Valli Sayyad",
+    role: "Digital Marketing",
+    experience: "7 Years",
+    details:
+      "Chief Growth Officer at TAC. Expert in performance marketing and scaling brands.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    company: "TAC",
+    linkedin:
+      "https://www.linkedin.com/in/vali-sayyad-895402160",
+  },
+  {
+    id: 3,
+    name: "Durga Sai Vasagiri",
+    role: "AI in Marketing",
+    experience: "Co-Founder",
+    details:
+      "Co-founder of TAC. Focuses on AI-driven marketing strategies and automation.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    company: "TAC",
+    linkedin:
+      "https://www.linkedin.com/in/durgasaiv",
+  },
+  ...Array.from({ length: 4 }).map((_, i) => ({
+    id: i + 4,
+    name: "Coming Soon",
+    role: "TBA",
+    experience: "Industry Leader",
+    details: "New expert mentors will be revealed soon.",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+    company: "TAC",
+    linkedin: "#",
+  })),
+];
 
-/* ─── shared sub-header ─── */
-const SubHeader = ({ icon, badge, title, right }) => (
-  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 32, flexWrap: "wrap", gap: 12 }}>
-    <div>
-      <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(79,38,210,0.08)", border: "1px solid rgba(79,38,210,0.16)", padding: "4px 12px", borderRadius: 999, marginBottom: 8 }}>
-        {icon}
-        <span style={{ fontSize: 10, fontWeight: 800, color: "#4F26D2", letterSpacing: "0.14em", textTransform: "uppercase" }}>{badge}</span>
-      </div>
-      <h3 style={{ fontSize: "clamp(18px,2.2vw,26px)", fontWeight: 800, color: "#140B30", margin: 0, letterSpacing: "-0.02em" }}>{title}</h3>
-    </div>
-    {right}
-  </div>
-);
-
-export default function TutorsSection() {
-  const [activeTab, setActiveTab] = useState('tutors');
-  const [activeToolCat, setActiveToolCat] = useState('All');
-
-  const tabs = [
-    { id: 'tutors',    label: 'Tutors'    },
-    { id: 'framework', label: 'Framework' },
-    { id: 'toolkit',   label: 'Toolkit'   },
-  ];
-
-  const tutorsList = [
-    { name: "Mohit Geat",      role: "Consultant",              company: "McKinsey & Company", sessions: "1220", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop&crop=faces" },
-    { name: "Geetika Bajaj",   role: "Head – Corporate Channel", company: "MakeMyTrip",        sessions: "423",  img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop&crop=faces" },
-    { name: "Megha Punjabi",   role: "Growth Consultant",       company: "American Express",    sessions: "239",  img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop&crop=faces" },
-    { name: "Akshit Aggarwal", role: "Senior Associate",        company: "American Express",    sessions: "184",  img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop&crop=faces" },
-    { name: "Prabhav Narang",  role: "Associate Lead",          company: "EY Parthenon",        sessions: "512",  img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop&crop=faces" },
-  ];
-
-  const frameworks = [
-    { num: "01", tag: "INDUSTRY FIRST",  icon: "📖", title: "Learn",     desc: "Master what the industry actually needs — not what textbooks say. Focus on high-impact skills that drive immediate results in today's market.", pills: ["Market Realities", "Core Execution", "Strategy"] },
-    { num: "02", tag: "ACTION ORIENTED", icon: "🎯", title: "Apply",     desc: "Use real tools on real problems — learning by doing, not just watching. Bridge the gap between theory and practical application.", pills: ["Live Tools", "Problem Solving", "Agility"] },
-    { num: "03", tag: "PROOF OF WORK",   icon: "🚀", title: "Build",     desc: "Create a portfolio that speaks before you do. Develop a body of work that demonstrates your expertise to global employers.", pills: ["Asset Building", "Portfolio", "Case Studies"] },
-    { num: "04", tag: "INDUSTRY ENTRY",  icon: "💼", title: "Get Hired", desc: "Enter the room with proof, not just a degree. Secure your spot in the industry with direct hiring partner access and interview mastery.", pills: ["Placements", "Networking", "Career Launch"] },
-  ];
-
-  const tools = [
-    { name: "Google Analytics 4",  cat: "Analytics", level: "Advanced", desc: "Event tracking & attribution"     },
-    { name: "Meta Ads Manager",    cat: "Ads",        level: "Expert",   desc: "CBO & Scaling campaigns"          },
-    { name: "Google Ads",          cat: "Ads",        level: "Expert",   desc: "PMax & Search Bidding"            },
-    { name: "SEMrush",             cat: "SEO",        level: "Advanced", desc: "Keyword research & audit"         },
-    { name: "Shopify",             cat: "Funnel",     level: "Master",   desc: "D2C storefront & checkout"        },
-    { name: "Framer",              cat: "Funnel",     level: "Master",   desc: "High-speed landing pages"         },
-    { name: "Notion AI",           cat: "AI",         level: "Advanced", desc: "Prompt workflow automation"       },
-    { name: "Klaviyo",             cat: "Retention",  level: "Expert",   desc: "Automated email sequences"        },
-    { name: "PostHog",             cat: "Analytics",  level: "Advanced", desc: "Product analytics & heatmaps"     },
-    { name: "Looker Studio",       cat: "Analytics",  level: "Expert",   desc: "Custom reporting dashboards"      },
-  ];
-
-  const filteredTools = activeToolCat === 'All' ? tools : tools.filter(t => t.cat === activeToolCat);
+export default function TutorExperience() {
+  const [activeId, setActiveId] = useState(1);
 
   return (
     <section
-      id="tutors"
-      data-stage="TUTORS"
+      className="relative w-full py-20 overflow-hidden"
       style={{
-        background: "#F5F2FB",
-        width: "100%",
-        boxSizing: "border-box",
-        fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+        background: "#F3F0E7",
+        color: "#0A0A0A",
+        padding: "80px 80px",
       }}
     >
-
-      {/* ══ TOP: fixed header + pill nav ══ */}
-      <div style={{
-        padding: "72px 5% 0",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}>
-
-        {/* Section headline */}
-        <div style={{ textAlign: "center", marginBottom: 36, maxWidth: 640 }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 7,
-            background: "rgba(79,38,210,0.08)", border: "1px solid rgba(79,38,210,0.18)",
-            borderRadius: 999, padding: "5px 16px", marginBottom: 14,
-          }}>
-            <Sparkles size={11} color="#4F26D2" />
-            <span style={{ fontSize: 10, fontWeight: 800, color: "#4F26D2", letterSpacing: "0.18em", textTransform: "uppercase" }}>
-              The Execution Ecosystem
-            </span>
+      <div style={{ maxWidth: 1540, margin: "0 auto" }}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: "12px" }}>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: "#ffffff",
+                border: "1.5px solid #6D28FF",
+                color: "#6D28FF",
+                padding: "5px 14px",
+                borderRadius: "999px",
+                fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                fontSize: "11px",
+                fontWeight: 800,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                boxShadow: "2px 2px 0px rgba(109, 40, 255, 0.25)",
+              }}
+            >
+              <Sparkles size={12} color="#6D28FF" />
+              <span>Meet the Masters</span>
+            </div>
+            <DoodleBadge text="THE PRACTITIONERS" rotate={2} />
           </div>
 
-          <h2 style={{ margin: "0 0 10px", lineHeight: 1.12, letterSpacing: "-0.03em" }}>
-            <span style={{ display: "block", fontSize: "clamp(28px, 3.8vw, 46px)", fontWeight: 900, color: "#140B30" }}>
-              Everything You Need For
-            </span>
-            <span style={{
-              display: "inline-block",
-              fontSize: "clamp(28px, 3.8vw, 46px)",
+          <h2
+            style={{
+              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+              fontSize: "clamp(2.2rem, 4.2vw, 3.8rem)",
               fontWeight: 900,
-              fontStyle: "italic",
-              fontFamily: "'Playfair Display', Georgia, serif",
-              background: "linear-gradient(90deg, #4F26D2, #8B5CF6)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              color: "transparent",
-            }}>
-              Real Market Scale
+              letterSpacing: "-0.03em",
+              lineHeight: 1.05,
+              textTransform: "uppercase",
+              margin: "0 0 12px",
+              color: "#0A0A0A",
+            }}
+          >
+            The Treqo{" "}
+            <span
+              style={{
+                color: "#ffffff",
+                background: "#6D28FF",
+                padding: "2px 14px",
+                display: "inline-block",
+                border: "2.5px solid #0A0A0A",
+                boxShadow: "4px 4px 0px #0A0A0A",
+                transform: "rotate(-1deg)",
+              }}
+            >
+              Tutors
             </span>
           </h2>
-
-          <p style={{ fontSize: 14, color: "#6B5F85", margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
-            Explore who teaches, our 4-stage framework, and the industry stack you&apos;ll master.
-          </p>
         </div>
 
-        {/* Pill nav */}
-        <div style={{ display: "flex", gap: 10, marginBottom: 0, flexWrap: "wrap", justifyContent: "center" }}>
-          {tabs.map(tab => {
-            const on = activeTab === tab.id;
+        {/* Horizontal Accordion in Treqo Neo-Brutalist Theme */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "12px",
+            height: "500px",
+            width: "100%",
+          }}
+          className="tutor-accordion-wrap"
+        >
+          {tutorData.map((tutor) => {
+            const isActive = activeId === tutor.id;
+
             return (
-              <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
-                padding: "11px 30px",
-                borderRadius: 999,
-                fontSize: 14,
-                fontWeight: 700,
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                cursor: "pointer",
-                outline: "none",
-                transition: "all 0.28s cubic-bezier(0.16,1,0.3,1)",
-                background: on ? "linear-gradient(90deg,#4F26D2,#6D28FF)" : "#fff",
-                border: on ? "1.5px solid #4F26D2" : "1.5px solid rgba(79,38,210,0.18)",
-                color: on ? "#fff" : "#140B30",
-                boxShadow: on ? "0 6px 22px rgba(79,38,210,0.28)" : "0 2px 10px rgba(26,13,75,0.04)",
-                letterSpacing: "-0.01em",
-              }}>
-                {tab.label}
-              </button>
+              <motion.div
+                key={tutor.id}
+                layout
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                onClick={() => setActiveId(tutor.id)}
+                style={{
+                  flex: isActive ? 6.5 : 1,
+                  minWidth: isActive ? "320px" : "64px",
+                  background: isActive ? "#FAF9F8" : "#0A0A0A",
+                  border: "2.5px solid #0A0A0A",
+                  borderRadius: "18px",
+                  boxShadow: isActive ? "6px 6px 0px #6D28FF" : "3px 3px 0px #0A0A0A",
+                  position: "relative",
+                  cursor: "pointer",
+                  overflow: "hidden",
+                  display: "flex",
+                }}
+              >
+                {/* Collapsed */}
+                {!isActive && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "24px 0",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "rgba(255, 255, 255, 0.4)",
+                        fontFamily: "var(--ff-mono, monospace)",
+                        fontWeight: 900,
+                        fontSize: "12px",
+                      }}
+                    >
+                      0{tutor.id}
+                    </span>
+                    <p
+                      style={{
+                        color: "#ffffff",
+                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                        fontWeight: 900,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.22em",
+                        transform: "rotate(180deg)",
+                        writingMode: "vertical-lr",
+                        fontSize: "11px",
+                        opacity: 0.85,
+                        margin: 0,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {tutor.name}
+                    </p>
+                    <Plus size={16} color="rgba(255, 255, 255, 0.5)" />
+                  </div>
+                )}
+
+                {/* Expanded */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      style={{
+                        display: "flex",
+                        width: "100%",
+                        height: "100%",
+                        padding: "20px",
+                        gap: "24px",
+                        alignItems: "center",
+                      }}
+                      className="tutor-card-inner"
+                    >
+                      {/* Image */}
+                      <div
+                        style={{
+                          position: "relative",
+                          width: "42%",
+                          height: "100%",
+                          borderRadius: "14px",
+                          overflow: "hidden",
+                          border: "2px solid #0A0A0A",
+                          flexShrink: 0,
+                          background: "#0A0A0A",
+                        }}
+                      >
+                        <img
+                          src={tutor.image}
+                          alt={tutor.name}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+
+                        <div
+                          style={{
+                            position: "absolute",
+                            bottom: "12px",
+                            left: "12px",
+                            background: "rgba(10, 10, 10, 0.85)",
+                            backdropFilter: "blur(8px)",
+                            color: "#ffffff",
+                            border: "1.5px solid #6D28FF",
+                            padding: "4px 12px",
+                            borderRadius: "8px",
+                            fontSize: "11px",
+                            fontWeight: 900,
+                            fontFamily: "var(--ff-mono, monospace)",
+                          }}
+                        >
+                          {tutor.company}
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div
+                        style={{
+                          flex: 1,
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          paddingRight: "12px",
+                        }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
+                          <Star size={14} color="#6D28FF" />
+                          <span
+                            style={{
+                              fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                              fontSize: "11px",
+                              fontWeight: 900,
+                              color: "#6D28FF",
+                              letterSpacing: "0.1em",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {tutor.role}
+                          </span>
+                        </div>
+
+                        <h3
+                          style={{
+                            fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                            fontSize: "clamp(24px, 2.6vw, 34px)",
+                            fontWeight: 900,
+                            color: "#0A0A0A",
+                            margin: "0 0 10px",
+                            letterSpacing: "-0.02em",
+                          }}
+                        >
+                          {tutor.name}
+                        </h3>
+
+                        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "14px", flexWrap: "wrap" }}>
+                          {tutor.experience && (
+                            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                              <Briefcase size={14} color="#6D28FF" />
+                              <span style={{ fontSize: "13px", fontWeight: 800, color: "#333333", fontFamily: "var(--ff-mono, monospace)" }}>
+                                {tutor.experience}
+                              </span>
+                            </div>
+                          )}
+
+                          {tutor.linkedin !== "#" && (
+                            <a
+                              href={tutor.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: "6px",
+                                color: "#6D28FF",
+                                fontSize: "13px",
+                                fontWeight: 800,
+                                textDecoration: "none",
+                                background: "#ffffff",
+                                border: "1.5px solid #6D28FF",
+                                padding: "3px 10px",
+                                borderRadius: "6px",
+                              }}
+                            >
+                              <Linkedin size={13} />
+                              <span>LinkedIn Profile</span>
+                            </a>
+                          )}
+                        </div>
+
+                        <p
+                          style={{
+                            fontSize: "14px",
+                            color: "#444444",
+                            lineHeight: "1.55",
+                            margin: "0 0 20px",
+                            fontWeight: 500,
+                            maxWidth: "460px",
+                          }}
+                        >
+                          {tutor.details}
+                        </p>
+
+                        <div>
+                          <button
+                            type="button"
+                            style={{
+                              background: "#6D28FF",
+                              color: "#ffffff",
+                              border: "2px solid #0A0A0A",
+                              borderRadius: "10px",
+                              padding: "12px 22px",
+                              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                              fontSize: "13px",
+                              fontWeight: 900,
+                              letterSpacing: "0.04em",
+                              textTransform: "uppercase",
+                              cursor: "pointer",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "8px",
+                              boxShadow: "3px 3px 0px #0A0A0A",
+                            }}
+                          >
+                            <span>View Case Studies</span>
+                            <ArrowRight size={14} />
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>
       </div>
-
-      {/* ══ PANEL AREA — no wrapper box, full width ══ */}
-      <div style={{ padding: "48px 5% 80px" }}>
-        <AnimatePresence mode="wait">
-
-          {/* ─── TUTORS ─── */}
-          {activeTab === 'tutors' && (
-            <Panel key="tutors">
-              <SubHeader
-                icon={<ShieldCheck size={12} color="#4F26D2" />}
-                badge="Practitioners Only"
-                title="Taught By Active Growth Leads & Strategy Partners"
-                right={
-                  <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#fff", border: "1px solid rgba(79,38,210,0.14)", padding: "6px 14px", borderRadius: 24 }}>
-                    <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ADE80", boxShadow: "0 0 8px #4ADE80" }} />
-                    <span style={{ fontSize: 12, fontWeight: 700, color: "#140B30" }}>Online For 1-on-1 Sessions</span>
-                  </div>
-                }
-              />
-
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 20 }}>
-                {tutorsList.map((t, i) => (
-                  <motion.div key={i}
-                    whileHover={{ y: -6, boxShadow: "0 24px 56px rgba(79,38,210,0.15)" }}
-                    transition={{ duration: 0.22 }}
-                    style={{
-                      background: "#13082E",
-                      border: "1px solid rgba(139,92,246,0.22)",
-                      borderRadius: 22,
-                      overflow: "hidden",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}>
-
-                    {/* Portrait */}
-                    <div style={{ height: 220, background: "linear-gradient(145deg,#EDE5FE,#D8C8FC)", overflow: "hidden", position: "relative" }}>
-                      <div style={{ position: "absolute", top: -24, right: -24, width: 100, height: 100, borderRadius: "50%", background: "rgba(79,38,210,0.18)" }} />
-                      <img
-                        src={t.img} alt={t.name}
-                        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
-                      />
-                    </div>
-
-                    {/* Info */}
-                    <div style={{ padding: "14px 15px 13px" }}>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: "#fff", marginBottom: 3 }}>{t.name}</div>
-                      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontStyle: "italic", fontFamily: "'Playfair Display',Georgia,serif", marginBottom: 6 }}>{t.role}</div>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "#A78BFA", marginBottom: 10 }}>{t.company}</div>
-                      <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 9, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <span style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontWeight: 600 }}>Successful Sessions</span>
-                        <span style={{ fontSize: 13, fontWeight: 900, color: "#fff" }}>{t.sessions}</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </Panel>
-          )}
-
-          {/* ─── FRAMEWORK ─── */}
-          {activeTab === 'framework' && (
-            <Panel key="framework">
-              <SubHeader
-                icon={<Target size={12} color="#4F26D2" />}
-                badge="Our Learning Execution Framework"
-                title="Four Stages That Turn Learners Into Operators"
-              />
-
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
-                {frameworks.map((card, i) => (
-                  <motion.div key={i}
-                    whileHover={{ y: -6, boxShadow: "0 24px 56px rgba(79,38,210,0.13)" }}
-                    transition={{ duration: 0.22 }}
-                    style={{
-                      background: "#fff",
-                      border: "1.5px solid rgba(79,38,210,0.1)",
-                      borderRadius: 22,
-                      padding: "28px 24px 22px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      position: "relative",
-                      overflow: "hidden",
-                    }}>
-
-                    {/* Watermark number */}
-                    <span style={{
-                      position: "absolute", top: 16, right: 20,
-                      fontSize: 64, fontWeight: 900,
-                      color: "rgba(79,38,210,0.06)",
-                      lineHeight: 1, userSelect: "none",
-                      fontFamily: "'Plus Jakarta Sans',sans-serif",
-                    }}>{card.num}</span>
-
-                    <div style={{ flex: 1 }}>
-                      {/* Icon */}
-                      <div style={{
-                        width: 46, height: 46, borderRadius: 14,
-                        background: "rgba(79,38,210,0.08)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        fontSize: 22, marginBottom: 16,
-                      }}>{card.icon}</div>
-
-                      <div style={{ fontSize: 10, fontWeight: 800, color: "#4F26D2", letterSpacing: "0.13em", textTransform: "uppercase", marginBottom: 8 }}>
-                        {card.tag}
-                      </div>
-                      <div style={{ fontSize: 26, fontWeight: 800, color: "#140B30", marginBottom: 12, letterSpacing: "-0.025em" }}>
-                        {card.title}
-                      </div>
-                      <p style={{ fontSize: 13, color: "#6B5F85", lineHeight: 1.65, margin: 0, fontFamily: "'Inter',sans-serif" }}>
-                        {card.desc}
-                      </p>
-                    </div>
-
-                    {/* Keyword pills */}
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 20 }}>
-                      {card.pills.map((pill, pi) => (
-                        <span key={pi} style={{
-                          fontSize: 11, fontWeight: 700, color: "#4F26D2",
-                          background: "rgba(79,38,210,0.07)",
-                          border: "1px solid rgba(79,38,210,0.15)",
-                          padding: "4px 10px", borderRadius: 8,
-                        }}>{pill}</span>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </Panel>
-          )}
-
-          {/* ─── TOOLKIT ─── */}
-          {activeTab === 'toolkit' && (
-            <Panel key="toolkit">
-              <SubHeader
-                icon={<Wrench size={12} color="#4F26D2" />}
-                badge="Industry Stack"
-                title="The Toolkit You'll Master Hands-On"
-                right={
-                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    {["All", "Ads", "Analytics", "Funnel", "SEO", "AI", "Retention"].map(c => (
-                      <button key={c} onClick={() => setActiveToolCat(c)} style={{
-                        padding: "5px 13px", borderRadius: 10, fontSize: 12, fontWeight: 700, cursor: "pointer",
-                        border: "1.5px solid rgba(79,38,210,0.16)",
-                        background: activeToolCat === c ? "#4F26D2" : "#fff",
-                        color: activeToolCat === c ? "#fff" : "#140B30",
-                        transition: "all 0.2s",
-                      }}>{c}</button>
-                    ))}
-                  </div>
-                }
-              />
-
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 16 }}>
-                {filteredTools.map((t, i) => (
-                  <motion.div key={i}
-                    whileHover={{ y: -4, boxShadow: "0 16px 40px rgba(79,38,210,0.12)", borderColor: "#8B5CF6" }}
-                    transition={{ duration: 0.2 }}
-                    style={{
-                      background: "#fff",
-                      border: "1.5px solid rgba(79,38,210,0.1)",
-                      borderRadius: 18,
-                      padding: "20px 18px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                    }}>
-                    <div>
-                      <span style={{ fontSize: 10, fontWeight: 800, color: "#4F26D2", background: "rgba(79,38,210,0.08)", padding: "3px 8px", borderRadius: 7 }}>{t.cat}</span>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: "#140B30", margin: "10px 0 5px", lineHeight: 1.2 }}>{t.name}</div>
-                      <div style={{ fontSize: 12, color: "#9D8FC0", fontFamily: "'Inter',sans-serif", lineHeight: 1.5 }}>{t.desc}</div>
-                    </div>
-                    <div style={{ paddingTop: 12, marginTop: 12, borderTop: "1px solid rgba(79,38,210,0.08)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: "#4F26D2" }}>{t.level}</span>
-                      <Sparkles size={12} color="#8B5CF6" />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </Panel>
-          )}
-
-        </AnimatePresence>
-      </div>
-
     </section>
   );
 }

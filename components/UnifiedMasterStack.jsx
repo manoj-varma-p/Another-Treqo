@@ -20,8 +20,8 @@ import {
   Star,
   Zap,
   Mail,
-  BadgeCheck,
-  ExternalLink,
+  Linkedin,
+  Plus,
   ChevronRight,
 } from 'lucide-react';
 import { DoodleBadge } from './Doodles';
@@ -93,75 +93,55 @@ const SYSTEM_MODULES = [
     duration: '2 Weeks',
     projects: '2 Financial Models',
     tools: ['Sheets', 'Looker Studio', 'Zapier', 'Klaviyo'],
-    desc: 'Calculate blended CAC, payback periods, cohort retention retention curves, and email lifecycle automation to make businesses profitable.',
+    desc: 'Calculate blended CAC, payback periods, cohort retention curves, and email lifecycle automation to make businesses profitable.',
     deliverable: 'Financial Growth Model & Retention Automation Workflow',
   },
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   DATA 2: TUTORS & INDUSTRY MENTORS
+   DATA 2: ACCORDION TUTORS DATA (The Treqo Masters)
 ───────────────────────────────────────────────────────────── */
-const TUTORS = [
+const TUTOR_DATA = [
   {
-    name: 'Mohit Geat',
-    role: 'Growth Consultant',
-    company: 'McKinsey & Company',
-    experience: '8+ Years',
-    sessions: '1,220+ Sessions',
-    expertise: 'GTM Strategy & Enterprise Growth',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop&crop=faces',
-    badge: 'Strategy Mentor',
+    id: 1,
+    name: 'Lokesh Dama',
+    role: 'Product Management',
+    experience: 'Founder',
+    details: 'Founder of TAC. Teaches product thinking, execution, and scaling digital products.',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
+    company: 'TAC',
+    linkedin: 'https://www.linkedin.com/in/lokeshdama2030',
   },
   {
-    name: 'Geetika Bajaj',
-    role: 'Head – Corporate Channel',
-    company: 'MakeMyTrip',
-    experience: '7+ Years',
-    sessions: '420+ Sessions',
-    expertise: 'Funnel Optimization & Partnerships',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop&crop=faces',
-    badge: 'Channel Lead',
+    id: 2,
+    name: 'Valli Sayyad',
+    role: 'Digital Marketing',
+    experience: '7 Years',
+    details: 'Chief Growth Officer at TAC. Expert in performance marketing and scaling brands.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
+    company: 'TAC',
+    linkedin: 'https://www.linkedin.com/in/vali-sayyad-895402160',
   },
   {
-    name: 'Megha Punjabi',
-    role: 'Senior Growth Consultant',
-    company: 'American Express',
-    experience: '6+ Years',
-    sessions: '240+ Sessions',
-    expertise: 'Performance Marketing & Unit Economics',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop&crop=faces',
-    badge: 'Unit Economics',
+    id: 3,
+    name: 'Durga Sai Vasagiri',
+    role: 'AI in Marketing',
+    experience: 'Co-Founder',
+    details: 'Co-founder of TAC. Focuses on AI-driven marketing strategies and automation.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
+    company: 'TAC',
+    linkedin: 'https://www.linkedin.com/in/durgasaiv',
   },
-  {
-    name: 'Prabhav Narang',
-    role: 'Associate Lead',
-    company: 'EY Parthenon',
-    experience: '5+ Years',
-    sessions: '510+ Sessions',
-    expertise: 'Market Sizing & Commercial Due Diligence',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop&crop=faces',
-    badge: 'Commercial Due Diligence',
-  },
-  {
-    name: 'Akshit Aggarwal',
-    role: 'Senior Marketing Associate',
-    company: 'American Express',
-    experience: '5+ Years',
-    sessions: '190+ Sessions',
-    expertise: 'Retention Loops & Lifecycle Automation',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop&crop=faces',
-    badge: 'Retention Mentor',
-  },
-  {
-    name: 'Rohan Deshmukh',
-    role: 'Lead Performance Marketer',
-    company: 'Razorpay',
-    experience: '6+ Years',
-    sessions: '380+ Sessions',
-    expertise: 'Paid Acquisition & Multi-Touch Attribution',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop&crop=faces',
-    badge: 'Paid Ads Specialist',
-  },
+  ...Array.from({ length: 4 }).map((_, i) => ({
+    id: i + 4,
+    name: 'Coming Soon',
+    role: 'Expert Mentor',
+    experience: 'Industry Leader',
+    details: 'New elite practitioner mentors from high-growth unicorns will be revealed soon.',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop',
+    company: 'TAC',
+    linkedin: '#',
+  })),
 ];
 
 /* ─────────────────────────────────────────────────────────────
@@ -239,12 +219,13 @@ const TOOLKIT = [
 ];
 
 export default function UnifiedMasterStack() {
-  const [activeTab, setActiveTab] = useState('system');
+  const [activeTab, setActiveTab] = useState('tutors');
   const [selectedModule, setSelectedModule] = useState(0);
+  const [activeTutorId, setActiveTutorId] = useState(1);
 
   const TABS = [
+    { id: 'tutors', label: 'Tutors & Mentors', icon: Users, count: 'The Masters' },
     { id: 'system', label: 'Master Marketing System', icon: Layers, count: '16 Sprints' },
-    { id: 'tutors', label: 'Tutors & Mentors', icon: Users, count: '6+ Leaders' },
     { id: 'certifications', label: 'Certifications & Proof', icon: Award, count: '6 Verified' },
     { id: 'toolkit', label: 'Execution Toolkit', icon: Wrench, count: '8 Core Tools' },
   ];
@@ -327,7 +308,7 @@ export default function UnifiedMasterStack() {
               fontWeight: 500,
             }}
           >
-            Explore our curriculum architecture, learn directly from top growth leaders, gain industry-recognized certifications, and master production-grade marketing tools.
+            Learn directly from active founders and mentors, explore the master curriculum, gain industry-recognized certifications, and master real production marketing software.
           </p>
         </div>
 
@@ -425,16 +406,310 @@ export default function UnifiedMasterStack() {
             border: '3px solid #0A0A0A',
             borderRadius: '28px',
             boxShadow: '10px 10px 0px #0A0A0A',
-            padding: '36px clamp(24px, 4vw, 48px)',
+            padding: '36px clamp(20px, 3.5vw, 44px)',
             position: 'relative',
             overflow: 'hidden',
-            minHeight: '560px',
+            minHeight: '600px',
           }}
         >
           <AnimatePresence mode="wait">
 
             {/* ══════════════════════════════════════════════════════════
-                SECTION 1: MASTER MARKETING SYSTEM VIEW
+                SECTION 1: TUTORS & MENTORS (Interactive Horizontal Accordion)
+            ══════════════════════════════════════════════════════════ */}
+            {activeTab === 'tutors' && (
+              <motion.div
+                key="tutors"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.25 }}
+              >
+                {/* Header inside tutors */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 900, color: '#6D28FF', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                        MEET THE MASTERS
+                      </span>
+                    </div>
+                    <h3 style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: 'clamp(22px, 2.5vw, 30px)', fontWeight: 900, color: '#0A0A0A', margin: 0, textTransform: 'uppercase' }}>
+                      The Treqo <span style={{ color: '#6D28FF' }}>Tutors</span>
+                    </h3>
+                  </div>
+
+                  <div style={{ background: '#F3F0E7', border: '1.5px solid #0A0A0A', borderRadius: '999px', padding: '6px 16px', fontSize: '11.5px', fontWeight: 900, fontFamily: "var(--ff-mono, monospace)", color: '#0A0A0A', boxShadow: '2px 2px 0px #0A0A0A' }}>
+                    ⚡ Click any mentor to expand profile
+                  </div>
+                </div>
+
+                {/* Horizontal Expandable Accordion */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: '12px',
+                    height: '490px',
+                    width: '100%',
+                  }}
+                  className="tutor-accordion-container"
+                >
+                  {TUTOR_DATA.map((tutor) => {
+                    const isActive = activeTutorId === tutor.id;
+
+                    return (
+                      <motion.div
+                        key={tutor.id}
+                        layout
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        onClick={() => setActiveTutorId(tutor.id)}
+                        style={{
+                          flex: isActive ? 6.5 : 1,
+                          minWidth: isActive ? '320px' : '64px',
+                          background: isActive ? '#FAF9F8' : '#0A0A0A',
+                          border: '2.5px solid #0A0A0A',
+                          borderRadius: '18px',
+                          boxShadow: isActive ? '6px 6px 0px #6D28FF' : '3px 3px 0px #0A0A0A',
+                          position: 'relative',
+                          cursor: 'pointer',
+                          overflow: 'hidden',
+                          display: 'flex',
+                          transition: 'background 0.25s ease',
+                        }}
+                      >
+                        {/* COLLAPSED STATE (Slim Vertical Strip) */}
+                        {!isActive && (
+                          <div
+                            style={{
+                              position: 'absolute',
+                              inset: 0,
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              padding: '24px 0',
+                            }}
+                          >
+                            <span
+                              style={{
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                fontFamily: "var(--ff-mono, monospace)",
+                                fontWeight: 900,
+                                fontSize: '12px',
+                              }}
+                            >
+                              0{tutor.id}
+                            </span>
+
+                            <p
+                              style={{
+                                color: '#ffffff',
+                                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                                fontWeight: 900,
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.22em',
+                                transform: 'rotate(180deg)',
+                                writingMode: 'vertical-lr',
+                                fontSize: '11px',
+                                opacity: 0.85,
+                                margin: 0,
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {tutor.name}
+                            </p>
+
+                            <Plus size={16} color="rgba(255, 255, 255, 0.5)" />
+                          </div>
+                        )}
+
+                        {/* EXPANDED STATE (Full Rich Details) */}
+                        <AnimatePresence>
+                          {isActive && (
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.28 }}
+                              style={{
+                                display: 'flex',
+                                width: '100%',
+                                height: '100%',
+                                padding: '20px',
+                                gap: '24px',
+                                alignItems: 'center',
+                              }}
+                              className="tutor-expanded-inner"
+                            >
+                              {/* Left: Image Box */}
+                              <div
+                                style={{
+                                  position: 'relative',
+                                  width: '42%',
+                                  height: '100%',
+                                  borderRadius: '14px',
+                                  overflow: 'hidden',
+                                  border: '2px solid #0A0A0A',
+                                  flexShrink: 0,
+                                  background: '#0A0A0A',
+                                }}
+                              >
+                                <img
+                                  src={tutor.image}
+                                  alt={tutor.name}
+                                  style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                  }}
+                                />
+
+                                <div
+                                  style={{
+                                    position: 'absolute',
+                                    bottom: '12px',
+                                    left: '12px',
+                                    background: 'rgba(10, 10, 10, 0.85)',
+                                    backdropFilter: 'blur(8px)',
+                                    color: '#ffffff',
+                                    border: '1.5px solid #6D28FF',
+                                    padding: '4px 12px',
+                                    borderRadius: '8px',
+                                    fontSize: '11px',
+                                    fontWeight: 900,
+                                    fontFamily: "var(--ff-mono, monospace)",
+                                  }}
+                                >
+                                  {tutor.company}
+                                </div>
+                              </div>
+
+                              {/* Right: Content Details */}
+                              <div
+                                style={{
+                                  flex: 1,
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  justifyContent: 'center',
+                                  paddingRight: '12px',
+                                }}
+                              >
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                                  <Star size={14} color="#6D28FF" />
+                                  <span
+                                    style={{
+                                      fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                                      fontSize: '11px',
+                                      fontWeight: 900,
+                                      color: '#6D28FF',
+                                      letterSpacing: '0.1em',
+                                      textTransform: 'uppercase',
+                                    }}
+                                  >
+                                    {tutor.role}
+                                  </span>
+                                </div>
+
+                                <h3
+                                  style={{
+                                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                                    fontSize: 'clamp(24px, 2.6vw, 34px)',
+                                    fontWeight: 900,
+                                    color: '#0A0A0A',
+                                    margin: '0 0 10px',
+                                    letterSpacing: '-0.02em',
+                                  }}
+                                >
+                                  {tutor.name}
+                                </h3>
+
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '14px', flexWrap: 'wrap' }}>
+                                  {tutor.experience && (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                      <Briefcase size={14} color="#6D28FF" />
+                                      <span style={{ fontSize: '13px', fontWeight: 800, color: '#333333', fontFamily: "var(--ff-mono, monospace)" }}>
+                                        {tutor.experience}
+                                      </span>
+                                    </div>
+                                  )}
+
+                                  {tutor.linkedin !== '#' && (
+                                    <a
+                                      href={tutor.linkedin}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '6px',
+                                        color: '#6D28FF',
+                                        fontSize: '13px',
+                                        fontWeight: 800,
+                                        textDecoration: 'none',
+                                        background: '#ffffff',
+                                        border: '1.5px solid #6D28FF',
+                                        padding: '3px 10px',
+                                        borderRadius: '6px',
+                                      }}
+                                    >
+                                      <Linkedin size={13} />
+                                      <span>LinkedIn Profile</span>
+                                    </a>
+                                  )}
+                                </div>
+
+                                <p
+                                  style={{
+                                    fontSize: '14px',
+                                    color: '#444444',
+                                    lineHeight: 1.55,
+                                    margin: '0 0 20px',
+                                    fontWeight: 500,
+                                    maxWidth: '460px',
+                                  }}
+                                >
+                                  {tutor.details}
+                                </p>
+
+                                <div>
+                                  <a
+                                    href="#transformation"
+                                    style={{
+                                      background: '#6D28FF',
+                                      color: '#ffffff',
+                                      border: '2px solid #0A0A0A',
+                                      borderRadius: '10px',
+                                      padding: '12px 22px',
+                                      fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                                      fontSize: '13px',
+                                      fontWeight: 900,
+                                      letterSpacing: '0.04em',
+                                      textTransform: 'uppercase',
+                                      textDecoration: 'none',
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      gap: '8px',
+                                      boxShadow: '3px 3px 0px #0A0A0A',
+                                      transition: 'all 0.15s ease',
+                                    }}
+                                  >
+                                    <span>View Case Studies</span>
+                                    <ArrowRight size={14} />
+                                  </a>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+
+            {/* ══════════════════════════════════════════════════════════
+                SECTION 2: MASTER MARKETING SYSTEM VIEW
             ══════════════════════════════════════════════════════════ */}
             {activeTab === 'system' && (
               <motion.div
@@ -605,101 +880,6 @@ export default function UnifiedMasterStack() {
                     </div>
                   );
                 })()}
-              </motion.div>
-            )}
-
-            {/* ══════════════════════════════════════════════════════════
-                SECTION 2: TUTORS & MENTORS VIEW
-            ══════════════════════════════════════════════════════════ */}
-            {activeTab === 'tutors' && (
-              <motion.div
-                key="tutors"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.25 }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
-                  <div>
-                    <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 900, color: '#6D28FF', letterSpacing: '0.12em', display: 'block', marginBottom: '4px' }}>
-                      PRACTITIONER-LED SESSIONS
-                    </span>
-                    <h3 style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '24px', fontWeight: 900, color: '#0A0A0A', margin: 0, textTransform: 'uppercase' }}>
-                      Learn Directly From Leaders In The Game
-                    </h3>
-                  </div>
-
-                  <div style={{ background: '#F3F0E7', border: '1.5px solid #0A0A0A', borderRadius: '999px', padding: '6px 16px', fontSize: '12px', fontWeight: 900, fontFamily: "var(--ff-mono, monospace)", color: '#0A0A0A' }}>
-                    ⚡ 1-on-1 Weekly Teardowns & Live Strategy Audits
-                  </div>
-                </div>
-
-                {/* 6 Mentor Cards Grid */}
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '20px',
-                  }}
-                  className="tutors-card-grid"
-                >
-                  {TUTORS.map((tutor, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        background: '#FAF9F8',
-                        border: '2px solid #0A0A0A',
-                        borderRadius: '16px',
-                        padding: '18px',
-                        boxShadow: '4px 4px 0px #0A0A0A',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      <div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                          <img
-                            src={tutor.image}
-                            alt={tutor.name}
-                            style={{
-                              width: '54px',
-                              height: '54px',
-                              borderRadius: '50%',
-                              objectFit: 'cover',
-                              border: '2px solid #0A0A0A',
-                            }}
-                          />
-                          <div>
-                            <div style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '16px', fontWeight: 900, color: '#0A0A0A' }}>
-                              {tutor.name}
-                            </div>
-                            <div style={{ fontSize: '12px', fontWeight: 700, color: '#6D28FF' }}>
-                              {tutor.role}
-                            </div>
-                            <div style={{ fontSize: '11px', fontWeight: 800, color: '#555555', fontFamily: "var(--ff-mono, monospace)" }}>
-                              {tutor.company}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div style={{ background: '#ffffff', border: '1px solid #0A0A0A', borderRadius: '8px', padding: '8px 10px', marginBottom: '12px' }}>
-                          <span style={{ fontSize: '10px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 900, color: '#6D28FF', display: 'block' }}>
-                            CORE EXPERTISE:
-                          </span>
-                          <span style={{ fontSize: '12px', fontWeight: 700, color: '#111111' }}>
-                            {tutor.expertise}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(10, 10, 10, 0.1)', paddingTop: '10px', fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 800 }}>
-                        <span style={{ color: '#666666' }}>{tutor.experience}</span>
-                        <span style={{ color: '#6D28FF' }}>{tutor.sessions}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </motion.div>
             )}
 
@@ -926,10 +1106,14 @@ export default function UnifiedMasterStack() {
           .master-split-grid {
             grid-template-columns: 1fr !important;
           }
-          .tutors-card-grid,
-          .cert-card-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+          .tutor-accordion-container {
+            flex-direction: column !important;
+            height: auto !important;
           }
+          .tutor-expanded-inner {
+            flex-direction: column !important;
+          }
+          .cert-card-grid,
           .toolkit-card-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
@@ -938,7 +1122,6 @@ export default function UnifiedMasterStack() {
           .master-tabs-row {
             grid-template-columns: 1fr !important;
           }
-          .tutors-card-grid,
           .cert-card-grid,
           .toolkit-card-grid {
             grid-template-columns: 1fr !important;
