@@ -1076,7 +1076,7 @@ export default function UnifiedMasterStack() {
                           display: 'flex',
                           flexDirection: 'column',
                           justifyContent: 'space-between',
-                          minHeight: '260px',
+                          minHeight: '200px',
                           transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                           transform: isHov ? 'translateY(-4px)' : 'none',
                           boxShadow: isHov ? '5px 5px 0px #6D28FF' : '3px 3px 0px #0A0A0A',
@@ -1131,8 +1131,8 @@ export default function UnifiedMasterStack() {
 
                           <h4
                             style={{
-                              margin: '0 0 8px',
-                              fontSize: '17px',
+                              margin: '0 0 12px',
+                              fontSize: '18px',
                               fontWeight: 900,
                               color: '#0A0A0A',
                               letterSpacing: '-0.02em',
@@ -1142,18 +1142,6 @@ export default function UnifiedMasterStack() {
                           >
                             {tool.name}
                           </h4>
-
-                          <p
-                            style={{
-                              margin: '0 0 14px',
-                              fontSize: '12.5px',
-                              color: '#444444',
-                              lineHeight: 1.5,
-                              fontWeight: 500,
-                            }}
-                          >
-                            {tool.desc}
-                          </p>
                         </div>
 
                         {/* Keyword Tags (Unboxed Clean Modern Highlight) */}
