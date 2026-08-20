@@ -1,201 +1,96 @@
 'use client';
-import React, { useState, useRef } from 'react';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, RefreshCw } from 'lucide-react';
-import { TreqoDoodle, DoodleBadge, DoodleArrow } from './Doodles';
-import ApplyModal from './ApplyModal';
 
-const FLOATING_TAGS = [
-  {
-    id: 'revenue',
-    label: 'REVENUE ₹18.5k',
-    icon: '💰',
-    color: '#ffffff',
-    bg: '#6D28FF',
-    x: 0,
-    y: -215,
-    delay: 0,
-    characterState: 'revenue',
-    speech: 'Real Attributed Revenue! 💰',
-  },
-  {
-    id: 'meta',
-    label: 'META ADS',
-    icon: '⚡',
-    color: '#6D28FF',
-    bg: '#ffffff',
-    x: -185,
-    y: -120,
-    delay: 0.2,
-    characterState: 'meta_ads',
-    speech: 'Meta Ad Ninja! ⚡ 14 Hooks Tested',
-  },
-  {
-    id: 'seo',
-    label: 'SEO 186%+',
-    icon: '📈',
-    color: '#6D28FF',
-    bg: '#ffffff',
-    x: 185,
-    y: -110,
-    delay: 0.4,
-    characterState: 'seo',
-    speech: 'Organic Growth Leader! 📈 +186% Lift',
-  },
-  {
-    id: 'roas',
-    label: 'ROAS 3.8×',
-    icon: '🎯',
-    color: '#6D28FF',
-    bg: '#ffffff',
-    x: -200,
-    y: 35,
-    delay: 0.6,
-    characterState: 'roas',
-    speech: 'Precision Target! 🎯 3.8X ROAS',
-  },
-  {
-    id: 'leads',
-    label: '247 LEADS',
-    icon: '🔥',
-    color: '#6D28FF',
-    bg: '#ffffff',
-    x: 200,
-    y: 50,
-    delay: 0.8,
-    characterState: 'leads',
-    speech: 'Growth Engine on Fire! 🔥 247 Leads',
-  },
-  {
-    id: 'google',
-    label: 'GOOGLE ADS',
-    icon: '🔍',
-    color: '#6D28FF',
-    bg: '#ffffff',
-    x: -125,
-    y: 175,
-    delay: 1.0,
-    characterState: 'google_ads',
-    speech: 'Search Intent Captured! 🔍 ₹42 CAC',
-  },
-  {
-    id: 'campaign',
-    label: 'CAMPAIGN LIVE',
-    icon: '🟣',
-    color: '#6D28FF',
-    bg: '#ffffff',
-    x: 125,
-    y: 185,
-    delay: 1.2,
-    characterState: 'campaign_live',
-    speech: 'All Systems Live! 🟣 Revenue Flowing',
-  },
-];
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles, Zap, TrendingUp, CheckCircle2, Play, MousePointer, Target } from 'lucide-react';
+import { DoodleBadge, DoodleArrow } from './Doodles';
 
 export default function HeroSection() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [equippedSkills, setEquippedSkills] = useState([]);
-  const [characterState, setCharacterState] = useState('confused');
-  const [activeSpeech, setActiveSpeech] = useState(null);
-  const [isOverDropZone, setIsOverDropZone] = useState(false);
-  const [resetKey, setResetKey] = useState(0);
+  const [hoveredStep, setHoveredStep] = useState(0);
 
-  const containerRef = useRef(null);
-
-  // Equip a skill onto the character
-  const equipSkill = (tag) => {
-    if (!equippedSkills.includes(tag.id)) {
-      const nextSkills = [...equippedSkills, tag.id];
-      setEquippedSkills(nextSkills);
-      setCharacterState(tag.characterState);
-      setActiveSpeech(`${tag.speech} (Level ${nextSkills.length}/7)`);
-    } else {
-      setCharacterState(tag.characterState);
-      setActiveSpeech(tag.speech);
-    }
-  };
-
-  // Click on character -> Reset back to base beginner state & options go back to their places
-  const resetCharacter = () => {
-    setEquippedSkills([]);
-    setCharacterState('confused');
-    setActiveSpeech(null);
-    setResetKey((prev) => prev + 1);
-  };
-
-  // Progressive growth scale based on how many skills have been equipped
-  const growthScale = 1 + equippedSkills.length * 0.08;
+  const steps = [
+    { num: '01', title: 'Pick Specialized Track', desc: 'Performance, SEO, or AI Creative Growth', icon: Target },
+    { num: '02', title: 'Deploy Real Ad Spend', desc: 'Live Meta & Google budgets provided', icon: Zap },
+    { num: '03', title: 'TAC Founder Teardowns', desc: 'Weekly live audits to scale ROAS past 4.0x', icon: TrendingUp },
+    { num: '04', title: 'Capstone Revenue Proof', desc: 'Graduate with 30+ certs & job intros', icon: CheckCircle2 },
+  ];
 
   return (
     <>
-      <ApplyModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
-
       <section
-        id="hero"
-        data-stage="HERO"
         style={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
           background: '#F3F0E7',
           color: '#0A0A0A',
-          padding: '110px 80px 50px',
+          padding: '110px 80px 80px',
           position: 'relative',
           overflow: 'hidden',
-          boxSizing: 'border-box',
         }}
       >
-        {/* Subtle grid background */}
+        {/* Subtle Background Grid */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: `radial-gradient(rgba(10, 10, 10, 0.08) 1.2px, transparent 1.2px)`,
-            backgroundSize: '32px 32px',
+            backgroundImage: `
+              linear-gradient(to right, rgba(10, 10, 10, 0.04) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(10, 10, 10, 0.04) 1px, transparent 1px)
+            `,
+            backgroundSize: '48px 48px',
             pointerEvents: 'none',
+            zIndex: 0,
           }}
         />
 
         <div
           style={{
             maxWidth: '1540px',
-            width: '100%',
             margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: '1.2fr 0.9fr',
-            gap: 'clamp(32px, 4vw, 64px)',
-            alignItems: 'center',
             position: 'relative',
-            zIndex: 2,
+            zIndex: 1,
+            display: 'grid',
+            gridTemplateColumns: '1.15fr 0.95fr',
+            gap: '56px',
+            alignItems: 'center',
           }}
           className="hero-grid-layout"
         >
-          {/* LEFT: Enhanced Typography in #F3F0E7 & Purple */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            {/* Top Badge */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+          {/* ══════════════════════════════════════════════════
+              LEFT: Hero Copy & Value Proposition
+          ══════════════════════════════════════════════════ */}
+          <div>
+            {/* Live Admissions Chip */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
               <div
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  background: '#0A0A0A',
-                  color: '#ffffff',
-                  padding: '8px 18px',
+                  background: '#ffffff',
+                  border: '1.5px solid #0A0A0A',
+                  color: '#0A0A0A',
+                  padding: '6px 14px',
                   borderRadius: '999px',
                   fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                  fontSize: '12px',
+                  fontSize: '11px',
                   fontWeight: 800,
-                  letterSpacing: '0.14em',
+                  letterSpacing: '0.12em',
                   textTransform: 'uppercase',
+                  boxShadow: '2px 2px 0px #0A0A0A',
                 }}
               >
-                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#6D28FF', animation: 'pulse 1.5s infinite' }} />
-                <span>TREQO · THE MARKETING SCHOOL</span>
+                <div
+                  style={{
+                    width: 7,
+                    height: 7,
+                    borderRadius: '50%',
+                    background: '#22C55E',
+                    boxShadow: '0 0 8px #22C55E',
+                  }}
+                />
+                <span>COHORT ADMISSIONS OPEN · 2026</span>
               </div>
-              <DoodleBadge text="COHORT 2026 OPEN" rotate={-2} highlight={true} />
+              <DoodleBadge text="ZERO SLIDES · 100% PROOF" rotate={-2} highlight={false} />
             </div>
 
             {/* Main Headline */}
@@ -244,7 +139,7 @@ export default function HeroSection() {
               <strong style={{ color: '#6D28FF', fontWeight: 900 }}>30+ live projects</strong>, <strong style={{ color: '#0A0A0A', fontWeight: 900 }}>100% placement support</strong>, and a training model built around real revenue — not theory.
             </p>
 
-            {/* CTA Action Button */}
+            {/* Primary CTA Button */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
               <Link
                 href="/how-it-works"
@@ -298,193 +193,244 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* RIGHT: Fixed Floating & Interactive Marketing Universe */}
-          <div
-            ref={containerRef}
+          {/* ══════════════════════════════════════════════════
+              RIGHT: High-Impact Animated "See How It Works" Pop Card
+          ══════════════════════════════════════════════════ */}
+          <motion.div
+            initial={{ opacity: 0, x: 80, rotate: 2 }}
+            animate={{ opacity: 1, x: 0, rotate: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'relative',
               width: '100%',
-              height: '540px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
             }}
           >
-            {/* Ambient Concentric Orbit Rings */}
+            {/* Floating Top-Left Revenue Pill */}
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 26, ease: 'linear' }}
+              animate={{ y: [0, -8, 0], rotate: [-2, 1, -2] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
               style={{
                 position: 'absolute',
-                width: '430px',
-                height: '430px',
-                borderRadius: '50%',
-                border: isOverDropZone ? '2.5px dashed #6D28FF' : '1.5px dashed rgba(10, 10, 10, 0.15)',
-                transition: 'border 0.2s ease',
-                pointerEvents: 'none',
-              }}
-            />
-
-            {/* Central Target Character (Grows as skills are added) */}
-            <div
-              onClick={resetCharacter}
-              style={{
-                position: 'relative',
-                zIndex: 10,
-                cursor: 'pointer',
+                top: '-20px',
+                left: '-15px',
+                zIndex: 30,
+                background: '#ffffff',
+                border: '2px solid #0A0A0A',
+                borderRadius: '12px',
+                padding: '8px 14px',
+                boxShadow: '4px 4px 0px #6D28FF',
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                userSelect: 'none',
+                gap: '8px',
               }}
-              title={equippedSkills.length > 0 ? "Click character to reset all options back to their places!" : "Drag skills here to grow character!"}
             >
-              {/* Dynamic Speech Notification */}
-              <AnimatePresence mode="wait">
-                {activeSpeech && (
-                  <motion.div
-                    key={activeSpeech}
-                    initial={{ opacity: 0, y: 10, scale: 0.88 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.88 }}
-                    transition={{ duration: 0.22 }}
-                    style={{
-                      position: 'absolute',
-                      top: '-68px',
-                      background: '#ffffff',
-                      color: '#0A0A0A',
-                      border: '2.5px solid #0A0A0A',
-                      borderRadius: '16px',
-                      padding: '8px 16px',
-                      boxShadow: '4px 4px 0px #6D28FF',
-                      fontSize: '12.5px',
-                      fontWeight: 900,
-                      fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                      whiteSpace: 'nowrap',
-                      zIndex: 80,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                    }}
-                  >
-                    <span>{activeSpeech}</span>
-                    <div
-                      style={{
-                        position: 'absolute',
-                        bottom: '-7px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        width: 0,
-                        height: 0,
-                        borderLeft: '7px solid transparent',
-                        borderRight: '7px solid transparent',
-                        borderTop: '7px solid #0A0A0A',
-                      }}
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
+              <span style={{ fontSize: '11px', fontWeight: 900, fontFamily: "var(--ff-mono, monospace)", color: '#0A0A0A' }}>
+                ₹18.5k Attributed Revenue
+              </span>
+            </motion.div>
 
-              {/* Character Visual: Scales Up with Every Equipped Skill */}
+            {/* Floating Bottom-Right ROAS Pill */}
+            <motion.div
+              animate={{ y: [0, 8, 0], rotate: [2, -1, 2] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                bottom: '-18px',
+                right: '10px',
+                zIndex: 30,
+                background: '#0A0A0A',
+                color: '#ffffff',
+                border: '2px solid #6D28FF',
+                borderRadius: '12px',
+                padding: '8px 14px',
+                boxShadow: '4px 4px 0px #0A0A0A',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              <TrendingUp size={14} color="#6D28FF" />
+              <span style={{ fontSize: '11px', fontWeight: 900, fontFamily: "var(--ff-mono, monospace)" }}>
+                4.2x ROAS Scaling
+              </span>
+            </motion.div>
+
+            {/* The Main Interactive Showcase Box */}
+            <Link
+              href="/how-it-works"
+              style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+            >
               <motion.div
-                animate={{
-                  scale: growthScale,
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  scale: { type: 'spring', stiffness: 280, damping: 18 },
-                  y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-                }}
+                whileHover={{ y: -6, boxShadow: '14px 14px 0px #6D28FF' }}
+                whileTap={{ y: 0 }}
                 style={{
-                  filter: equippedSkills.length === 7 ? 'drop-shadow(0 0 24px #6D28FF)' : 'none',
+                  background: '#ffffff',
+                  border: '3.5px solid #0A0A0A',
+                  borderRadius: '28px',
+                  padding: '36px 32px',
+                  boxShadow: '10px 10px 0px #0A0A0A',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'box-shadow 0.25s ease',
                 }}
               >
-                <TreqoDoodle state={characterState} size={230} />
-              </motion.div>
-            </div>
-
-            {/* Orbiting Fixed Floating Skill Pills */}
-            {FLOATING_TAGS.map((item, idx) => {
-              const isEquipped = equippedSkills.includes(item.id);
-
-              return (
-                <motion.div
-                  key={`orbit-${item.id}-${resetKey}`}
-                  animate={{
-                    x: [item.x, item.x + (idx % 2 === 0 ? 12 : -12), item.x],
-                    y: [item.y, item.y + (idx % 2 === 0 ? -14 : 14), item.y],
-                    rotate: [idx % 2 === 0 ? -3 : 3, idx % 2 === 0 ? 3 : -3, idx % 2 === 0 ? -3 : 3],
-                  }}
-                  transition={{
-                    duration: 4 + (idx % 3),
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: item.delay,
-                  }}
-                  style={{
-                    position: 'absolute',
-                    zIndex: isEquipped ? 25 : 12,
-                  }}
-                >
-                  <motion.div
-                    drag
-                    dragSnapToOrigin={true}
-                    dragElastic={0.2}
-                    whileDrag={{
-                      scale: 1.2,
-                      zIndex: 60,
-                      cursor: 'grabbing',
-                      boxShadow: '8px 8px 0px #6D28FF',
-                    }}
-                    onDragStart={() => setIsOverDropZone(true)}
-                    onDragEnd={(e, info) => {
-                      setIsOverDropZone(false);
-                      const finalDist = Math.hypot(info.offset.x + item.x, info.offset.y + item.y);
-                      if (finalDist < 140 || Math.hypot(info.offset.x, info.offset.y) > 40) {
-                        equipSkill(item);
-                      }
-                    }}
-                    onClick={() => equipSkill(item)}
-                    whileHover={{ scale: 1.14, cursor: 'grab' }}
-                    whileTap={{ scale: 0.93 }}
+                {/* Top Badge & Interactive Hint */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
+                  <div
                     style={{
-                      background: isEquipped ? '#6D28FF' : item.bg,
-                      color: isEquipped ? '#ffffff' : item.color,
-                      border: '2.5px solid #0A0A0A',
-                      borderRadius: '16px',
-                      padding: '11px 20px',
-                      fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                      fontSize: '13.5px',
-                      fontWeight: 900,
-                      boxShadow: isEquipped ? '5px 5px 0px #0A0A0A' : '4px 4px 0px #0A0A0A',
-                      display: 'flex',
+                      display: 'inline-flex',
                       alignItems: 'center',
-                      gap: 8,
-                      whiteSpace: 'nowrap',
-                      userSelect: 'none',
-                      touchAction: 'none',
+                      gap: '6px',
+                      background: '#F3F0E7',
+                      border: '1.5px solid #0A0A0A',
+                      borderRadius: '8px',
+                      padding: '4px 10px',
+                      fontFamily: "var(--ff-mono, monospace)",
+                      fontSize: '10.5px',
+                      fontWeight: 900,
+                      color: '#6D28FF',
                     }}
                   >
-                    <span>{item.icon}</span>
-                    <span>{item.label}</span>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </div>
+                    <Sparkles size={12} color="#6D28FF" />
+                    <span>INTERACTIVE SYSTEM PREVIEW</span>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#6D28FF', fontSize: '11px', fontWeight: 900, fontFamily: "var(--ff-mono, monospace)" }}>
+                    <MousePointer size={13} />
+                    <span>CLICK TO LAUNCH</span>
+                  </div>
+                </div>
+
+                {/* Pop Title */}
+                <h3
+                  style={{
+                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                    fontSize: 'clamp(24px, 2.6vw, 34px)',
+                    fontWeight: 900,
+                    color: '#0A0A0A',
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.1,
+                    margin: '0 0 8px',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  See How It <span style={{ color: '#6D28FF' }}>Works</span>
+                </h3>
+
+                <p style={{ fontSize: '13.5px', color: '#555555', margin: '0 0 20px', lineHeight: 1.45, fontWeight: 500 }}>
+                  Take a 4-step interactive walkthrough: from zero experience to managing real spend, getting TAC founder teardowns, and landing full-time roles.
+                </p>
+
+                {/* 4 Interactive Step Preview Tiles */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
+                  {steps.map((step, idx) => {
+                    const isHov = hoveredStep === idx;
+                    const StepIcon = step.icon;
+
+                    return (
+                      <div
+                        key={step.num}
+                        onMouseEnter={() => setHoveredStep(idx)}
+                        style={{
+                          background: isHov ? '#FAF9F8' : 'rgba(10,10,10,0.02)',
+                          border: isHov ? '1.5px solid #6D28FF' : '1.5px solid rgba(10,10,10,0.1)',
+                          borderRadius: '12px',
+                          padding: '10px 14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '12px',
+                          transition: 'all 0.18s ease',
+                          transform: isHov ? 'translateX(4px)' : 'none',
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: '28px',
+                            height: '28px',
+                            borderRadius: '8px',
+                            background: isHov ? '#6D28FF' : '#0A0A0A',
+                            color: '#ffffff',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                            fontSize: '11px',
+                            fontWeight: 900,
+                            fontFamily: "var(--ff-mono, monospace)",
+                            transition: 'background 0.18s ease',
+                          }}
+                        >
+                          {step.num}
+                        </div>
+
+                        <div style={{ flex: 1 }}>
+                          <div style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '13px', fontWeight: 900, color: '#0A0A0A', textTransform: 'uppercase' }}>
+                            {step.title}
+                          </div>
+                          <div style={{ fontSize: '11.5px', color: '#666666', fontWeight: 500 }}>
+                            {step.desc}
+                          </div>
+                        </div>
+
+                        <StepIcon size={16} color={isHov ? '#6D28FF' : '#888888'} />
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Big Launch Banner Ribbon Inside Card */}
+                <div
+                  style={{
+                    background: '#0A0A0A',
+                    color: '#ffffff',
+                    borderRadius: '16px',
+                    padding: '14px 20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    boxShadow: '4px 4px 0px #6D28FF',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div
+                      style={{
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        background: '#6D28FF',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Play size={14} fill="#ffffff" color="#ffffff" style={{ marginLeft: '2px' }} />
+                    </div>
+                    <div>
+                      <div style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '13px', fontWeight: 900, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                        Launch Walkthrough
+                      </div>
+                      <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.6)', fontFamily: "var(--ff-mono, monospace)" }}>
+                        Interactive 4-Phase Simulation
+                      </div>
+                    </div>
+                  </div>
+
+                  <ArrowRight size={18} color="#ffffff" />
+                </div>
+              </motion.div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       <style jsx>{`
-        @media (max-width: 960px) {
+        @media (max-width: 1024px) {
           .hero-grid-layout {
             grid-template-columns: 1fr !important;
-            gap: 36px !important;
+            gap: 40px !important;
           }
-        }
-        @keyframes pulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(0.85); }
         }
       `}</style>
     </>
