@@ -34,10 +34,11 @@ export default function HeroSection() {
         style={{
           background: '#E5DFD0',
           color: '#0A0A0A',
-          padding: '120px 80px 100px',
+          padding: '0 80px',
           position: 'relative',
           overflow: 'hidden',
-          minHeight: '660px',
+          height: '100vh',
+          maxHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
         }}
@@ -107,12 +108,12 @@ export default function HeroSection() {
             <h1
               style={{
                 fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                fontSize: 'clamp(2.4rem, 4.5vw, 4.2rem)',
+                fontSize: 'clamp(2.8rem, 5vw, 4.8rem)',
                 fontWeight: 900,
                 color: '#0A0A0A',
                 lineHeight: 1.0,
                 letterSpacing: '-0.04em',
-                margin: '0 0 20px',
+                margin: '0 0 18px',
                 textTransform: 'uppercase',
               }}
             >
@@ -137,11 +138,11 @@ export default function HeroSection() {
             {/* Subtitle */}
             <p
               style={{
-                fontSize: 'clamp(14px, 1.1vw, 17px)',
+                fontSize: 'clamp(15px, 1.25vw, 18px)',
                 color: '#2A2A2A',
-                lineHeight: 1.55,
-                maxWidth: '680px',
-                margin: '0 0 28px',
+                lineHeight: 1.5,
+                maxWidth: '700px',
+                margin: '0 0 24px',
                 fontWeight: 500,
               }}
             >
@@ -160,33 +161,33 @@ export default function HeroSection() {
                     color: '#0A0A0A',
                     border: '2px solid #0A0A0A',
                     borderRadius: '999px',
-                    padding: '14px 36px',
+                    padding: '15px 40px',
                     fontWeight: 900,
-                    fontSize: '13.5px',
+                    fontSize: '14px',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: 8,
+                    gap: 9,
                     boxShadow: '3px 3px 0px #0A0A0A',
                     cursor: 'pointer',
                   }}
                 >
                   <span>See How It Works</span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={17} />
                 </motion.div>
               </Link>
             </div>
 
             {/* Handwritten Note Annotation */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 20 }}>
-              <DoodleArrow direction="right" color="#6D28FF" size={28} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 18 }}>
+              <DoodleArrow direction="right" color="#6D28FF" size={30} />
               <span
                 style={{
                   fontFamily: "'Fraunces', Georgia, serif",
                   fontStyle: 'italic',
                   fontWeight: 600,
-                  fontSize: '13px',
+                  fontSize: '14px',
                   color: '#6D28FF',
                 }}
               >
