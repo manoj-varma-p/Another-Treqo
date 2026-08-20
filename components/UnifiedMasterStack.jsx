@@ -238,8 +238,17 @@ const CERTIFICATIONS = [
 
 export default function UnifiedMasterStack() {
   const [activeTab, setActiveTab] = useState('tutors');
-  const [activeTutorId, setActiveTutorId] = useState(1);
+  const [index, setIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
   const [hoveredTool, setHoveredTool] = useState(null);
+
+  useEffect(() => {
+    if (isHovering || activeTab !== 'tutors') return;
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % TUTOR_DATA.length);
+    }, 3800);
+    return () => clearInterval(interval);
+  }, [index, isHovering, activeTab]);
 
   const TABS = [
     { id: 'tutors', label: 'Tutors & Mentors', icon: Users, count: 'The Masters' },
@@ -432,7 +441,7 @@ export default function UnifiedMasterStack() {
           <AnimatePresence mode="wait">
 
             {/* ══════════════════════════════════════════════════════════
-                SECTION 1: TUTORS & MENTORS (Interactive Horizontal Accordion)
+                SECTION 1: TUTORS & MENTORS (3D Perspective Coverflow Carousel)
             ══════════════════════════════════════════════════════════ */}
             {activeTab === 'tutors' && (
               <motion.div
@@ -453,267 +462,266 @@ export default function UnifiedMasterStack() {
                   </div>
 
                   <div style={{ background: '#F3F0E7', border: '1.5px solid #0A0A0A', borderRadius: '999px', padding: '6px 16px', fontSize: '11.5px', fontWeight: 900, fontFamily: "var(--ff-mono, monospace)", color: '#0A0A0A', boxShadow: '2px 2px 0px #0A0A0A' }}>
-                    ⚡ Click any mentor to expand profile
+                    ⚡ 3D Interactive Mentorship Carousel
                   </div>
                 </div>
 
-                {/* Horizontal Expandable Accordion */}
+                {/* 3D Perspective Carousel Container */}
                 <div
                   style={{
+                    position: 'relative',
+                    height: '420px',
                     display: 'flex',
-                    flexDirection: 'row',
-                    gap: '12px',
-                    height: '490px',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    perspective: '1200px',
+                    margin: '10px auto 20px',
                     width: '100%',
                   }}
-                  className="tutor-accordion-container"
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
                 >
-                  {TUTOR_DATA.map((tutor) => {
-                    const isActive = activeTutorId === tutor.id;
+                  {/* Navigation Buttons */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '0 10px',
+                      zIndex: 50,
+                      pointerEvents: 'none',
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setIndex((prev) => (prev - 1 + TUTOR_DATA.length) % TUTOR_DATA.length)}
+                      style={{
+                        pointerEvents: 'auto',
+                        background: '#ffffff',
+                        color: '#0A0A0A',
+                        border: '2px solid #0A0A0A',
+                        padding: '12px',
+                        borderRadius: '50%',
+                        boxShadow: '4px 4px 0px #0A0A0A',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        transition: 'all 0.15s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#6D28FF';
+                        e.currentTarget.style.color = '#ffffff';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = '#ffffff';
+                        e.currentTarget.style.color = '#0A0A0A';
+                      }}
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
 
-                    return (
-                      <motion.div
-                        key={tutor.id}
-                        layout
-                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                        onClick={() => setActiveTutorId(tutor.id)}
-                        style={{
-                          flex: isActive ? 6.5 : 1,
-                          minWidth: isActive ? '320px' : '64px',
-                          background: isActive ? '#FAF9F8' : '#0A0A0A',
-                          border: '2.5px solid #0A0A0A',
-                          borderRadius: '18px',
-                          boxShadow: isActive ? '6px 6px 0px #6D28FF' : '3px 3px 0px #0A0A0A',
-                          position: 'relative',
-                          cursor: 'pointer',
-                          overflow: 'hidden',
-                          display: 'flex',
-                          transition: 'background 0.25s ease',
-                        }}
-                      >
-                        {!isActive && (
-                          <div
+                    <button
+                      type="button"
+                      onClick={() => setIndex((prev) => (prev + 1) % TUTOR_DATA.length)}
+                      style={{
+                        pointerEvents: 'auto',
+                        background: '#ffffff',
+                        color: '#0A0A0A',
+                        border: '2px solid #0A0A0A',
+                        padding: '12px',
+                        borderRadius: '50%',
+                        boxShadow: '4px 4px 0px #0A0A0A',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        transition: 'all 0.15s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#6D28FF';
+                        e.currentTarget.style.color = '#ffffff';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = '#ffffff';
+                        e.currentTarget.style.color = '#0A0A0A';
+                      }}
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                  </div>
+
+                  {/* 3D Cards */}
+                  <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {TUTOR_DATA.map((tutor, i) => {
+                      const total = TUTOR_DATA.length;
+                      const diff = (i - index + total) % total;
+                      const isActive = diff === 0;
+
+                      let animStyle = {
+                        x: 0,
+                        scale: 1,
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        zIndex: 10,
+                        rotateY: 0,
+                      };
+
+                      if (diff === 1) {
+                        animStyle = {
+                          x: 400,
+                          scale: 0.82,
+                          opacity: 0.55,
+                          filter: 'blur(3px)',
+                          zIndex: 5,
+                          rotateY: -12,
+                        };
+                      } else if (diff === total - 1) {
+                        animStyle = {
+                          x: -400,
+                          scale: 0.82,
+                          opacity: 0.55,
+                          filter: 'blur(3px)',
+                          zIndex: 5,
+                          rotateY: 12,
+                        };
+                      } else if (diff !== 0) {
+                        animStyle = {
+                          x: diff > 1 ? 540 : -540,
+                          scale: 0.6,
+                          opacity: 0,
+                          zIndex: 0,
+                          filter: 'blur(10px)',
+                          rotateY: 0,
+                        };
+                      }
+
+                      return (
+                        <motion.div
+                          key={tutor.id}
+                          animate={animStyle}
+                          transition={{ duration: 0.65, ease: [0.23, 1, 0.32, 1] }}
+                          style={{
+                            position: 'absolute',
+                            cursor: 'pointer',
+                            zIndex: animStyle.zIndex,
+                            transformStyle: 'preserve-3d',
+                          }}
+                          onClick={() => setIndex(i)}
+                        >
+                          <motion.div
+                            whileHover={isActive ? { y: -8 } : {}}
                             style={{
-                              position: 'absolute',
-                              inset: 0,
-                              display: 'flex',
-                              flexDirection: 'column',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              padding: '24px 0',
+                              width: '560px',
+                              maxWidth: '85vw',
+                              height: '350px',
+                              borderRadius: '24px',
+                              overflow: 'hidden',
+                              border: '3px solid #0A0A0A',
+                              boxShadow: isActive ? '10px 10px 0px #0A0A0A' : '4px 4px 0px #0A0A0A',
+                              position: 'relative',
+                              background: '#0A0A0A',
                             }}
                           >
-                            <span
+                            <img
+                              src={tutor.image}
+                              alt={tutor.name}
                               style={{
-                                color: 'rgba(255, 255, 255, 0.4)',
-                                fontFamily: "var(--ff-mono, monospace)",
-                                fontWeight: 900,
-                                fontSize: '12px',
-                              }}
-                            >
-                              0{tutor.id}
-                            </span>
-
-                            <p
-                              style={{
-                                color: '#ffffff',
-                                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                                fontWeight: 900,
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.22em',
-                                transform: 'rotate(180deg)',
-                                writingMode: 'vertical-lr',
-                                fontSize: '11px',
-                                opacity: 0.85,
-                                margin: 0,
-                                whiteSpace: 'nowrap',
-                              }}
-                            >
-                              {tutor.name}
-                            </p>
-
-                            <Plus size={16} color="rgba(255, 255, 255, 0.5)" />
-                          </div>
-                        )}
-
-                        <AnimatePresence>
-                          {isActive && (
-                            <motion.div
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              transition={{ duration: 0.28 }}
-                              style={{
-                                display: 'flex',
                                 width: '100%',
                                 height: '100%',
-                                padding: '20px',
-                                gap: '24px',
-                                alignItems: 'center',
+                                objectFit: 'cover',
+                                display: 'block',
                               }}
-                              className="tutor-expanded-inner"
-                            >
-                              <div
-                                style={{
-                                  position: 'relative',
-                                  width: '42%',
-                                  height: '100%',
-                                  borderRadius: '14px',
-                                  overflow: 'hidden',
-                                  border: '2px solid #0A0A0A',
-                                  flexShrink: 0,
-                                  background: '#0A0A0A',
-                                }}
-                              >
-                                <img
-                                  src={tutor.image}
-                                  alt={tutor.name}
-                                  style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover',
-                                  }}
-                                />
+                              draggable={false}
+                            />
 
-                                <div
+                            <div
+                              style={{
+                                position: 'absolute',
+                                inset: 0,
+                                background: 'linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.3) 50%, transparent 100%)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'flex-end',
+                                padding: '24px',
+                                textAlign: 'left',
+                              }}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                                <Star size={12} color="#6D28FF" fill="#6D28FF" />
+                                <span
                                   style={{
-                                    position: 'absolute',
-                                    bottom: '12px',
-                                    left: '12px',
-                                    background: 'rgba(10, 10, 10, 0.85)',
-                                    backdropFilter: 'blur(8px)',
-                                    color: '#ffffff',
-                                    border: '1.5px solid #6D28FF',
-                                    padding: '4px 12px',
-                                    borderRadius: '8px',
+                                    fontFamily: "var(--ff-mono, monospace)",
                                     fontSize: '11px',
                                     fontWeight: 900,
+                                    color: '#A78BFA',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.08em',
+                                  }}
+                                >
+                                  {tutor.role}
+                                </span>
+                              </div>
+
+                              <h3
+                                style={{
+                                  fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                                  fontSize: '26px',
+                                  fontWeight: 900,
+                                  color: '#ffffff',
+                                  margin: '0 0 4px',
+                                  letterSpacing: '-0.02em',
+                                }}
+                              >
+                                {tutor.name}
+                              </h3>
+
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <span
+                                  style={{
+                                    background: '#6D28FF',
+                                    color: '#ffffff',
                                     fontFamily: "var(--ff-mono, monospace)",
+                                    fontSize: '10.5px',
+                                    fontWeight: 800,
+                                    padding: '3px 8px',
+                                    borderRadius: '5px',
+                                    border: '1px solid #0A0A0A',
                                   }}
                                 >
                                   {tutor.company}
-                                </div>
+                                </span>
                               </div>
+                            </div>
+                          </motion.div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
 
-                              <div
-                                style={{
-                                  flex: 1,
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  justifyContent: 'center',
-                                  paddingRight: '12px',
-                                }}
-                              >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
-                                  <Star size={14} color="#6D28FF" />
-                                  <span
-                                    style={{
-                                      fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                                      fontSize: '11px',
-                                      fontWeight: 900,
-                                      color: '#6D28FF',
-                                      letterSpacing: '0.1em',
-                                      textTransform: 'uppercase',
-                                    }}
-                                  >
-                                    {tutor.role}
-                                  </span>
-                                </div>
-
-                                <h3
-                                  style={{
-                                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                                    fontSize: 'clamp(24px, 2.6vw, 34px)',
-                                    fontWeight: 900,
-                                    color: '#0A0A0A',
-                                    margin: '0 0 10px',
-                                    letterSpacing: '-0.02em',
-                                  }}
-                                >
-                                  {tutor.name}
-                                </h3>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '14px', flexWrap: 'wrap' }}>
-                                  {tutor.experience && (
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                      <Briefcase size={14} color="#6D28FF" />
-                                      <span style={{ fontSize: '13px', fontWeight: 800, color: '#333333', fontFamily: "var(--ff-mono, monospace)" }}>
-                                        {tutor.experience}
-                                      </span>
-                                    </div>
-                                  )}
-
-                                  {tutor.linkedin !== '#' && (
-                                    <a
-                                      href={tutor.linkedin}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      style={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: '6px',
-                                        color: '#6D28FF',
-                                        fontSize: '13px',
-                                        fontWeight: 800,
-                                        textDecoration: 'none',
-                                        background: '#ffffff',
-                                        border: '1.5px solid #6D28FF',
-                                        padding: '3px 10px',
-                                        borderRadius: '6px',
-                                      }}
-                                    >
-                                      <LinkedinIcon size={13} />
-                                      <span>LinkedIn Profile</span>
-                                    </a>
-                                  )}
-                                </div>
-
-                                <p
-                                  style={{
-                                    fontSize: '14px',
-                                    color: '#444444',
-                                    lineHeight: 1.55,
-                                    margin: '0 0 20px',
-                                    fontWeight: 500,
-                                    maxWidth: '460px',
-                                  }}
-                                >
-                                  {tutor.details}
-                                </p>
-
-                                <div>
-                                  <a
-                                    href="#transformation"
-                                    style={{
-                                      background: '#6D28FF',
-                                      color: '#ffffff',
-                                      border: '2px solid #0A0A0A',
-                                      borderRadius: '10px',
-                                      padding: '12px 22px',
-                                      fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                                      fontSize: '13px',
-                                      fontWeight: 900,
-                                      letterSpacing: '0.04em',
-                                      textTransform: 'uppercase',
-                                      textDecoration: 'none',
-                                      display: 'inline-flex',
-                                      alignItems: 'center',
-                                      gap: '8px',
-                                      boxShadow: '3px 3px 0px #0A0A0A',
-                                      transition: 'all 0.15s ease',
-                                    }}
-                                  >
-                                    <span>View Case Studies</span>
-                                    <ArrowRight size={14} />
-                                  </a>
-                                </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </motion.div>
-                    );
-                  })}
+                {/* Indicators */}
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '12px', gap: '8px' }}>
+                  {TUTOR_DATA.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setIndex(i)}
+                      style={{
+                        height: '6px',
+                        width: i === index ? '48px' : '12px',
+                        background: i === index ? '#6D28FF' : '#0A0A0A',
+                        opacity: i === index ? 1 : 0.25,
+                        border: 'none',
+                        borderRadius: '999px',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                        padding: 0,
+                      }}
+                    />
+                  ))}
                 </div>
               </motion.div>
             )}
