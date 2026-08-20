@@ -26,6 +26,8 @@ import {
   Bot,
   Link2,
   Image as ImageIcon,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { DoodleBadge } from './Doodles';
 
