@@ -72,7 +72,7 @@ export default function HeroSection() {
           ══════════════════════════════════════════════════ */}
           <div style={{ maxWidth: '880px' }}>
             {/* Live Admissions Chip */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 24, flexWrap: 'wrap' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 20, flexWrap: 'wrap' }}>
               <div
                 style={{
                   display: 'inline-flex',
@@ -81,10 +81,10 @@ export default function HeroSection() {
                   background: '#ffffff',
                   border: '1.5px solid #0A0A0A',
                   color: '#0A0A0A',
-                  padding: '6px 14px',
+                  padding: '7px 16px',
                   borderRadius: '999px',
                   fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                  fontSize: '11px',
+                  fontSize: '11.5px',
                   fontWeight: 800,
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
@@ -93,8 +93,8 @@ export default function HeroSection() {
               >
                 <div
                   style={{
-                    width: 7,
-                    height: 7,
+                    width: 7.5,
+                    height: 7.5,
                     borderRadius: '50%',
                     background: '#22C55E',
                     boxShadow: '0 0 8px #22C55E',
@@ -108,12 +108,12 @@ export default function HeroSection() {
             <h1
               style={{
                 fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                fontSize: 'clamp(2.8rem, 5vw, 4.8rem)',
+                fontSize: 'clamp(3.1rem, 5.6vw, 5.2rem)',
                 fontWeight: 900,
                 color: '#0A0A0A',
                 lineHeight: 1.0,
                 letterSpacing: '-0.04em',
-                margin: '0 0 18px',
+                margin: '0 0 20px',
                 textTransform: 'uppercase',
               }}
             >
@@ -123,7 +123,7 @@ export default function HeroSection() {
                 style={{
                   background: '#6D28FF',
                   color: '#ffffff',
-                  padding: '4px 22px',
+                  padding: '6px 26px',
                   display: 'inline-block',
                   border: '3px solid #0A0A0A',
                   boxShadow: '3px 3px 0px #0A0A0A',
@@ -138,11 +138,11 @@ export default function HeroSection() {
             {/* Subtitle */}
             <p
               style={{
-                fontSize: 'clamp(15px, 1.25vw, 18px)',
+                fontSize: 'clamp(17px, 1.4vw, 20.5px)',
                 color: '#2A2A2A',
-                lineHeight: 1.5,
-                maxWidth: '700px',
-                margin: '0 0 24px',
+                lineHeight: 1.55,
+                maxWidth: '760px',
+                margin: '0 0 28px',
                 fontWeight: 500,
               }}
             >
@@ -159,35 +159,35 @@ export default function HeroSection() {
                   style={{
                     background: 'transparent',
                     color: '#0A0A0A',
-                    border: '2px solid #0A0A0A',
+                    border: '2.5px solid #0A0A0A',
                     borderRadius: '999px',
-                    padding: '15px 40px',
+                    padding: '18px 46px',
                     fontWeight: 900,
-                    fontSize: '14px',
+                    fontSize: '15.5px',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: 9,
+                    gap: 10,
                     boxShadow: '3px 3px 0px #0A0A0A',
                     cursor: 'pointer',
                   }}
                 >
                   <span>See How It Works</span>
-                  <ArrowRight size={17} />
+                  <ArrowRight size={19} />
                 </motion.div>
               </Link>
             </div>
 
             {/* Handwritten Note Annotation */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 18 }}>
-              <DoodleArrow direction="right" color="#6D28FF" size={30} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 22 }}>
+              <DoodleArrow direction="right" color="#6D28FF" size={34} />
               <span
                 style={{
                   fontFamily: "'Fraunces', Georgia, serif",
                   fontStyle: 'italic',
                   fontWeight: 600,
-                  fontSize: '14px',
+                  fontSize: '15.5px',
                   color: '#6D28FF',
                 }}
               >
