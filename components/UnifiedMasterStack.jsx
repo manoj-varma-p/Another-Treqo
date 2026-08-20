@@ -897,18 +897,18 @@ export default function UnifiedMasterStack() {
                     {/* Vertical Flowing Marquee */}
                     <div
                       style={{
-                        height: '320px',
+                        height: '380px',
                         overflow: 'hidden',
                         position: 'relative',
-                        maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
-                        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
+                        maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 72%, transparent 100%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 72%, transparent 100%)',
                         display: 'grid',
                         gridTemplateColumns: '1fr 1fr',
                         gap: 12,
                         background: '#FAF9F8',
                         border: '2px solid #0A0A0A',
                         borderRadius: '16px',
-                        padding: '12px',
+                        padding: '16px 12px 28px',
                         boxShadow: '4px 4px 0px #0A0A0A',
                       }}
                     >
