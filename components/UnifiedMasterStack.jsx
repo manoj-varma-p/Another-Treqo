@@ -1082,25 +1082,12 @@ export default function UnifiedMasterStack() {
                           cursor: 'default',
                         }}
                       >
-                        {/* Top: Icon + Level Badge + Arrow */}
+                        {/* Top: Category + Level Badge + Arrow */}
                         <div>
-                          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
-                            <div
-                              style={{
-                                width: '38px',
-                                height: '38px',
-                                borderRadius: '10px',
-                                background: isHov ? tool.color : '#0A0A0A',
-                                color: '#ffffff',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                border: '1.5px solid #0A0A0A',
-                                transition: 'all 0.2s ease',
-                              }}
-                            >
-                              <ToolIcon size={18} />
-                            </div>
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+                            <span style={{ fontSize: '10.5px', fontWeight: 900, color: '#6D28FF', textTransform: 'uppercase', letterSpacing: '0.12em', fontFamily: "var(--ff-mono, monospace)" }}>
+                              {tool.category}
+                            </span>
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                               <span
@@ -1120,12 +1107,6 @@ export default function UnifiedMasterStack() {
                               </span>
                               <ArrowUpRight size={16} color={isHov ? '#6D28FF' : '#888888'} />
                             </div>
-                          </div>
-
-                          <div style={{ marginBottom: '4px' }}>
-                            <span style={{ fontSize: '10px', fontWeight: 900, color: '#6D28FF', textTransform: 'uppercase', letterSpacing: '0.12em', fontFamily: "var(--ff-mono, monospace)" }}>
-                              {tool.category}
-                            </span>
                           </div>
 
                           <h4
