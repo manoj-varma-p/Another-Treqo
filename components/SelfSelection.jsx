@@ -60,14 +60,14 @@ export default function SelfSelection() {
         </div>
 
         {/* ── OVERSIZED STACKED TITLE ── */}
-        <div style={{ marginBottom: '36px' }}>
+        <div style={{ marginBottom: '28px' }}>
           <h2
             style={{
               fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-              fontSize: 'clamp(2.6rem, 5.5vw, 4.6rem)',
+              fontSize: 'clamp(2rem, 4vw, 3.4rem)',
               fontWeight: 900,
-              letterSpacing: '-0.04em',
-              lineHeight: 0.95,
+              letterSpacing: '-0.03em',
+              lineHeight: 1.02,
               textTransform: 'uppercase',
               margin: 0,
             }}
