@@ -212,43 +212,43 @@ export default function HeroSection() {
       <AnimatePresence>
         {showPop && !dismissed && (
           <motion.div
-            initial={{ opacity: 0, y: 100, x: 60, scale: 0.92 }}
+            initial={{ opacity: 0, y: 80, x: 50, scale: 0.92 }}
             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 80, x: 40, scale: 0.9 }}
+            exit={{ opacity: 0, y: 60, x: 30, scale: 0.9 }}
             transition={{
               type: 'spring',
               stiffness: 220,
               damping: 20,
               mass: 0.9,
             }}
-            whileHover={{ y: -4, boxShadow: '8px 8px 0px #6D28FF' }}
+            whileHover={{ y: -3, boxShadow: '6px 6px 0px #6D28FF' }}
             style={{
               position: 'fixed',
-              bottom: '24px',
-              right: '24px',
+              bottom: '20px',
+              right: '20px',
               zIndex: 9999,
               background: '#ffffff',
-              border: '2.5px solid #0A0A0A',
-              borderRadius: '18px',
-              padding: '20px 22px',
-              boxShadow: '6px 6px 0px #0A0A0A',
-              width: 'calc(100vw - 48px)',
-              maxWidth: '390px',
+              border: '2px solid #0A0A0A',
+              borderRadius: '14px',
+              padding: '14px 16px',
+              boxShadow: '4px 4px 0px #0A0A0A',
+              width: 'calc(100vw - 40px)',
+              maxWidth: '300px',
               transition: 'box-shadow 0.2s ease',
             }}
           >
             {/* Top Bar: Category Pill & Dismiss Button */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span
                   style={{
                     background: '#6D28FF',
                     color: '#ffffff',
                     fontFamily: "var(--ff-mono, monospace)",
-                    fontSize: '10px',
+                    fontSize: '9px',
                     fontWeight: 900,
-                    padding: '3px 8px',
-                    borderRadius: '6px',
+                    padding: '2px 6px',
+                    borderRadius: '5px',
                     border: '1px solid #0A0A0A',
                     letterSpacing: '0.04em',
                     textTransform: 'uppercase',
@@ -256,7 +256,7 @@ export default function HeroSection() {
                 >
                   FOUNDER BLOG
                 </span>
-                <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#777777', fontWeight: 700 }}>
+                <span style={{ fontSize: '10px', fontFamily: "var(--ff-mono, monospace)", color: '#777777', fontWeight: 700 }}>
                   4 MIN READ
                 </span>
               </div>
@@ -279,7 +279,7 @@ export default function HeroSection() {
                 }}
                 title="Dismiss"
               >
-                <X size={16} />
+                <X size={14} />
               </button>
             </div>
 
@@ -288,11 +288,11 @@ export default function HeroSection() {
               <h4
                 style={{
                   fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                  fontSize: '17px',
+                  fontSize: '13.5px',
                   fontWeight: 900,
                   color: '#0A0A0A',
-                  margin: '0 0 6px',
-                  lineHeight: 1.25,
+                  margin: '0 0 4px',
+                  lineHeight: 1.22,
                   textTransform: 'uppercase',
                   letterSpacing: '-0.01em',
                 }}
@@ -300,7 +300,7 @@ export default function HeroSection() {
                 How Treqo Actually Works: The Death of Theory
               </h4>
 
-              <p style={{ fontSize: '12.5px', color: '#555555', lineHeight: 1.45, margin: '0 0 14px', fontWeight: 500 }}>
+              <p style={{ fontSize: '11.5px', color: '#555555', lineHeight: 1.35, margin: '0 0 10px', fontWeight: 500 }}>
                 An unfiltered breakdown on managing ₹50k live ad spend and landing jobs.
               </p>
 
@@ -310,13 +310,13 @@ export default function HeroSection() {
                   background: '#0A0A0A',
                   color: '#ffffff',
                   border: '1.5px solid #0A0A0A',
-                  borderRadius: '10px',
-                  padding: '10px 14px',
+                  borderRadius: '8px',
+                  padding: '7px 12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                  fontSize: '12px',
+                  fontSize: '11px',
                   fontWeight: 900,
                   letterSpacing: '0.04em',
                   textTransform: 'uppercase',
@@ -324,7 +324,7 @@ export default function HeroSection() {
                 }}
               >
                 <span>Read Essay Breakdown</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={13} />
               </div>
             </Link>
           </motion.div>
