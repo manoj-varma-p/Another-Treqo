@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { Sparkles, CheckCircle2 } from 'lucide-react';
 import { DoodleBadge } from './Doodles';
 
 export default function WhySection() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const sectionRef = useRef(null);
 
   const cards = [
     {
@@ -83,349 +84,381 @@ export default function WhySection() {
 
   const current = cards[activeIdx];
 
+  // Scroll Progress Tracker for Seamless Scroll Stacking
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end end'],
+  });
+
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    // Map scroll progress cleanly across the 5 pillars
+    const rawStep = Math.floor(latest * cards.length);
+    const clampedStep = Math.max(0, Math.min(rawStep, cards.length - 1));
+    setActiveIdx(clampedStep);
+  });
+
   return (
     <section
       id="transformation"
       data-stage="TRANSFORMATION"
+      ref={sectionRef}
       style={{
         background: '#F3F0E7',
         color: '#0A0A0A',
-        padding: '80px 80px 90px',
         position: 'relative',
+        height: '320vh', // Provides generous, smooth scroll distance
       }}
     >
-      <div style={{ maxWidth: '1540px', margin: '0 auto' }}>
+      {/* ── STICKY VIEWPORT CONTAINER ── */}
+      <div
+        style={{
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: '0 80px',
+          overflow: 'hidden',
+        }}
+        className="why-sticky-container"
+      >
+        <div style={{ maxWidth: '1440px', width: '100%', margin: '0 auto' }}>
 
-        {/* ── SECTION HEADER ── */}
-        <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '12px' }}>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                background: '#ffffff',
-                border: '1.5px solid #6D28FF',
-                color: '#6D28FF',
-                padding: '5px 14px',
-                borderRadius: '999px',
-                fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                fontSize: '11px',
-                fontWeight: 800,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                boxShadow: '2px 2px 0px rgba(109, 40, 255, 0.25)',
-              }}
-            >
-              <Sparkles size={13} color="#6D28FF" />
-              <span>THE 5 TREQO PILLARS</span>
-            </div>
-            <DoodleBadge text="PROOF OVER THEORY" rotate={2} highlight={false} />
-          </div>
-
-          <h2
-            style={{
-              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-              fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
-              fontWeight: 900,
-              letterSpacing: '-0.03em',
-              lineHeight: 1.05,
-              textTransform: 'uppercase',
-              margin: '0 0 12px',
-              color: '#0A0A0A',
-            }}
-          >
-            WHY LEARN WITH{' '}
-            <span
-              style={{
-                color: '#ffffff',
-                background: '#6D28FF',
-                padding: '2px 16px',
-                display: 'inline-block',
-                border: '2.5px solid #0A0A0A',
-                boxShadow: '4px 4px 0px #0A0A0A',
-                transform: 'rotate(-1deg)',
-              }}
-            >
-              TREQO?
-            </span>
-          </h2>
-
-          <p
-            style={{
-              fontSize: 'clamp(15px, 1.2vw, 17px)',
-              color: '#444444',
-              maxWidth: '680px',
-              margin: '0 auto',
-              lineHeight: 1.5,
-              fontWeight: 500,
-            }}
-          >
-            We threw away standard college slide decks and rebuilt marketing education around live budgets, real ROAS targets, and proven founder execution.
-          </p>
-        </div>
-
-        {/* ── UNBOXED 2-COLUMN LAYOUT (CONTENT LEFT, TITLES RIGHT) ── */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1.25fr 0.75fr',
-            gap: '64px',
-            alignItems: 'flex-start',
-          }}
-          className="why-unboxed-grid"
-        >
-
-          {/* ══════════════════════════════════════════════════
-              LEFT SIDE: ACTIVE PILLAR CONTENT (Highly Visible)
-          ══════════════════════════════════════════════════ */}
-          <div style={{ position: 'relative' }}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.num}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}
+          {/* ── SECTION HEADER ── */}
+          <div style={{ textAlign: 'center', marginBottom: '44px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '10px' }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  background: '#ffffff',
+                  border: '1.5px solid #6D28FF',
+                  color: '#6D28FF',
+                  padding: '4px 14px',
+                  borderRadius: '999px',
+                  fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                  fontSize: '11px',
+                  fontWeight: 800,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  boxShadow: '2px 2px 0px rgba(109, 40, 255, 0.25)',
+                }}
               >
-                {/* Pillar Eyebrow */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span
-                    style={{
-                      background: '#6D28FF',
-                      color: '#ffffff',
-                      fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                      fontSize: '12px',
-                      fontWeight: 900,
-                      padding: '4px 12px',
-                      borderRadius: '8px',
-                      letterSpacing: '0.08em',
-                      border: '1.5px solid #0A0A0A',
-                    }}
-                  >
-                    PILLAR {current.num}
-                  </span>
+                <Sparkles size={12} color="#6D28FF" />
+                <span>THE 5 TREQO PILLARS</span>
+              </div>
+              <DoodleBadge text="SCROLL TO EXPLORE" rotate={2} highlight={false} />
+            </div>
 
-                  <span
-                    style={{
-                      fontFamily: "var(--ff-mono, monospace)",
-                      fontSize: '12px',
-                      fontWeight: 900,
-                      color: '#6D28FF',
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {current.tag}
-                  </span>
-                </div>
+            <h2
+              style={{
+                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                fontSize: 'clamp(2.2rem, 3.8vw, 3.5rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.03em',
+                lineHeight: 1.05,
+                textTransform: 'uppercase',
+                margin: '0 0 8px',
+                color: '#0A0A0A',
+              }}
+            >
+              WHY LEARN WITH{' '}
+              <span
+                style={{
+                  color: '#ffffff',
+                  background: '#6D28FF',
+                  padding: '2px 14px',
+                  display: 'inline-block',
+                  border: '2.5px solid #0A0A0A',
+                  boxShadow: '4px 4px 0px #0A0A0A',
+                  transform: 'rotate(-1deg)',
+                }}
+              >
+                TREQO?
+              </span>
+            </h2>
 
-                {/* Main Headline */}
-                <h3
-                  style={{
-                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                    fontSize: 'clamp(28px, 3vw, 42px)',
-                    fontWeight: 900,
-                    color: '#0A0A0A',
-                    letterSpacing: '-0.02em',
-                    lineHeight: 1.12,
-                    margin: 0,
-                  }}
-                >
-                  {current.headline}
-                </h3>
-
-                {/* Descriptive Body */}
-                <p
-                  style={{
-                    fontSize: '16.5px',
-                    color: '#333333',
-                    lineHeight: 1.6,
-                    margin: 0,
-                    fontWeight: 500,
-                    maxWidth: '640px',
-                  }}
-                >
-                  {current.desc}
-                </p>
-
-                {/* Quote Block */}
-                <div
-                  style={{
-                    borderLeft: '3.5px solid #6D28FF',
-                    paddingLeft: '18px',
-                    margin: '6px 0 10px',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: "'Fraunces', Georgia, serif",
-                      fontStyle: 'italic',
-                      fontSize: '17px',
-                      color: '#1A0B35',
-                      lineHeight: 1.5,
-                      margin: 0,
-                      fontWeight: 600,
-                    }}
-                  >
-                    &ldquo;{current.quote}&rdquo;
-                  </p>
-                </div>
-
-                {/* 3 Key Deliverables Checklist (Unboxed & Clear) */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '6px' }}>
-                  {current.highlights.map((item, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '12px',
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: '24px',
-                          height: '24px',
-                          borderRadius: '50%',
-                          background: '#6D28FF',
-                          color: '#ffffff',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                          marginTop: '2px',
-                        }}
-                      >
-                        <CheckCircle2 size={15} />
-                      </div>
-
-                      <div>
-                        <div
-                          style={{
-                            fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                            fontSize: '14px',
-                            fontWeight: 900,
-                            color: '#0A0A0A',
-                            letterSpacing: '0.04em',
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {item.label}
-                        </div>
-                        <div
-                          style={{
-                            fontSize: '14px',
-                            color: '#555555',
-                            lineHeight: 1.45,
-                            fontWeight: 500,
-                            marginTop: '2px',
-                          }}
-                        >
-                          {item.val}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
+            <p
+              style={{
+                fontSize: 'clamp(14px, 1.1vw, 16px)',
+                color: '#444444',
+                maxWidth: '680px',
+                margin: '0 auto',
+                lineHeight: 1.45,
+                fontWeight: 500,
+              }}
+            >
+              We threw away standard college slide decks and rebuilt marketing education around live budgets, real ROAS targets, and proven founder execution.
+            </p>
           </div>
 
-          {/* ══════════════════════════════════════════════════
-              RIGHT SIDE: JUST TITLES WITH DECENT SPACE (No Boxes)
-          ══════════════════════════════════════════════════ */}
+          {/* ── UNBOXED 2-COLUMN LAYOUT (EQUAL HORIZONTAL ALIGNMENT) ── */}
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '24px',
-              paddingTop: '6px',
+              display: 'grid',
+              gridTemplateColumns: '1.2fr 0.8fr',
+              gap: '64px',
+              alignItems: 'center',
             }}
+            className="why-unboxed-grid"
           >
-            {cards.map((card, idx) => {
-              const isActive = idx === activeIdx;
 
-              return (
-                <div
-                  key={card.num}
-                  onClick={() => setActiveIdx(idx)}
-                  style={{
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '16px',
-                    paddingLeft: isActive ? '16px' : '0px',
-                    borderLeft: isActive ? '3.5px solid #6D28FF' : '3.5px solid transparent',
-                    transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
-                  }}
+            {/* ══════════════════════════════════════════════════
+                LEFT SIDE: ACTIVE PILLAR CONTENT (Smoothly Changes on Scroll)
+            ══════════════════════════════════════════════════ */}
+            <div style={{ position: 'relative', minHeight: '360px', display: 'flex', alignItems: 'center' }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.num}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ display: 'flex', flexDirection: 'column', gap: '18px', width: '100%' }}
                 >
-                  {/* Number */}
-                  <span
-                    style={{
-                      fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                      fontSize: '15px',
-                      fontWeight: 900,
-                      color: isActive ? '#6D28FF' : 'rgba(10, 10, 10, 0.3)',
-                      transition: 'color 0.2s ease',
-                      marginTop: '2px',
-                    }}
-                  >
-                    0{idx + 1}
-                  </span>
-
-                  {/* Title & Tag */}
-                  <div>
-                    <h4
+                  {/* Pillar Eyebrow */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span
                       style={{
-                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                        fontSize: 'clamp(20px, 1.8vw, 26px)',
+                        background: '#6D28FF',
+                        color: '#ffffff',
+                        fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                        fontSize: '11px',
                         fontWeight: 900,
-                        color: isActive ? '#0A0A0A' : 'rgba(10, 10, 10, 0.35)',
-                        margin: '0 0 4px',
-                        letterSpacing: '-0.02em',
-                        textTransform: 'uppercase',
-                        transition: 'color 0.2s ease',
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!isActive) e.currentTarget.style.color = '#0A0A0A';
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!isActive) e.currentTarget.style.color = 'rgba(10, 10, 10, 0.35)';
+                        padding: '3px 10px',
+                        borderRadius: '6px',
+                        letterSpacing: '0.08em',
+                        border: '1.5px solid #0A0A0A',
                       }}
                     >
-                      {card.shortTitle}
-                    </h4>
+                      PILLAR {current.num}
+                    </span>
 
                     <span
                       style={{
-                        fontSize: '11px',
                         fontFamily: "var(--ff-mono, monospace)",
-                        fontWeight: 800,
-                        color: isActive ? '#6D28FF' : 'rgba(10, 10, 10, 0.25)',
-                        letterSpacing: '0.1em',
+                        fontSize: '11px',
+                        fontWeight: 900,
+                        color: '#6D28FF',
+                        letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        transition: 'color 0.2s ease',
                       }}
                     >
-                      {card.tag}
+                      {current.tag}
                     </span>
                   </div>
-                </div>
-              );
-            })}
+
+                  {/* Main Headline */}
+                  <h3
+                    style={{
+                      fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                      fontSize: 'clamp(24px, 2.6vw, 36px)',
+                      fontWeight: 900,
+                      color: '#0A0A0A',
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.15,
+                      margin: 0,
+                    }}
+                  >
+                    {current.headline}
+                  </h3>
+
+                  {/* Descriptive Body */}
+                  <p
+                    style={{
+                      fontSize: '15.5px',
+                      color: '#333333',
+                      lineHeight: 1.55,
+                      margin: 0,
+                      fontWeight: 500,
+                      maxWidth: '620px',
+                    }}
+                  >
+                    {current.desc}
+                  </p>
+
+                  {/* Quote Block */}
+                  <div
+                    style={{
+                      borderLeft: '3.5px solid #6D28FF',
+                      paddingLeft: '16px',
+                      margin: '2px 0 6px',
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: "'Fraunces', Georgia, serif",
+                        fontStyle: 'italic',
+                        fontSize: '16px',
+                        color: '#1A0B35',
+                        lineHeight: 1.5,
+                        margin: 0,
+                        fontWeight: 600,
+                      }}
+                    >
+                      &ldquo;{current.quote}&rdquo;
+                    </p>
+                  </div>
+
+                  {/* 3 Key Deliverables Checklist (Unboxed & Clear) */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {current.highlights.map((item, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '10px',
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: '20px',
+                            height: '20px',
+                            borderRadius: '50%',
+                            background: '#6D28FF',
+                            color: '#ffffff',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                            marginTop: '2px',
+                          }}
+                        >
+                          <CheckCircle2 size={13} />
+                        </div>
+
+                        <div>
+                          <span
+                            style={{
+                              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                              fontSize: '13px',
+                              fontWeight: 900,
+                              color: '#0A0A0A',
+                              letterSpacing: '0.03em',
+                              textTransform: 'uppercase',
+                              marginRight: '6px',
+                            }}
+                          >
+                            {item.label}:
+                          </span>
+                          <span
+                            style={{
+                              fontSize: '13.5px',
+                              color: '#555555',
+                              lineHeight: 1.4,
+                              fontWeight: 500,
+                            }}
+                          >
+                            {item.val}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* ══════════════════════════════════════════════════
+                RIGHT SIDE: TITLES SWITCHING ON SCROLL (Generous Space)
+            ══════════════════════════════════════════════════ */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '26px',
+                paddingLeft: '16px',
+              }}
+            >
+              {cards.map((card, idx) => {
+                const isActive = idx === activeIdx;
+
+                return (
+                  <div
+                    key={card.num}
+                    onClick={() => setActiveIdx(idx)}
+                    style={{
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '16px',
+                      paddingLeft: isActive ? '18px' : '0px',
+                      borderLeft: isActive ? '3.5px solid #6D28FF' : '3.5px solid transparent',
+                      transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                    }}
+                  >
+                    {/* Number */}
+                    <span
+                      style={{
+                        fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                        fontSize: '15px',
+                        fontWeight: 900,
+                        color: isActive ? '#6D28FF' : 'rgba(10, 10, 10, 0.25)',
+                        transition: 'color 0.25s ease',
+                        marginTop: '2px',
+                      }}
+                    >
+                      0{idx + 1}
+                    </span>
+
+                    {/* Title & Tag */}
+                    <div>
+                      <h4
+                        style={{
+                          fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                          fontSize: 'clamp(20px, 1.8vw, 26px)',
+                          fontWeight: 900,
+                          color: isActive ? '#0A0A0A' : 'rgba(10, 10, 10, 0.3)',
+                          margin: '0 0 3px',
+                          letterSpacing: '-0.02em',
+                          textTransform: 'uppercase',
+                          transition: 'color 0.25s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!isActive) e.currentTarget.style.color = '#0A0A0A';
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!isActive) e.currentTarget.style.color = 'rgba(10, 10, 10, 0.3)';
+                        }}
+                      >
+                        {card.shortTitle}
+                      </h4>
+
+                      <span
+                        style={{
+                          fontSize: '11px',
+                          fontFamily: "var(--ff-mono, monospace)",
+                          fontWeight: 800,
+                          color: isActive ? '#6D28FF' : 'rgba(10, 10, 10, 0.2)',
+                          letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          transition: 'color 0.25s ease',
+                        }}
+                      >
+                        {card.tag}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
 
         </div>
-
       </div>
 
       <style jsx>{`
         @media (max-width: 1024px) {
+          .why-sticky-container {
+            padding: 0 24px !important;
+          }
           .why-unboxed-grid {
             grid-template-columns: 1fr !important;
-            gap: 40px !important;
+            gap: 32px !important;
           }
         }
       `}</style>
