@@ -35,17 +35,6 @@ export default function Navbar() {
       }
 
       lastScrollY.current = currentScrollY;
-
-      // Brand text morphing based on scroll depth
-      if (progress < 0.25) {
-        setStage('TREQO');
-      } else if (progress < 0.55) {
-        setStage('TREQO / LEARN');
-      } else if (progress < 0.82) {
-        setStage('TREQO / LAUNCH');
-      } else {
-        setStage('TREQO / PROVE');
-      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -56,7 +45,7 @@ export default function Navbar() {
     <>
       <ApplyModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
-      {/* Main sticky navigation in #F3F0E7 & Purple theme with Smart Auto-Hide */}
+      {/* Main sticky navigation in #E5DFD0 & Purple theme with Smart Auto-Hide */}
       <header
         style={{
           position: 'fixed',
@@ -68,7 +57,7 @@ export default function Navbar() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: scrolled ? 'rgba(243, 240, 231, 0.95)' : 'transparent',
+          background: scrolled ? 'rgba(229, 223, 208, 0.95)' : 'transparent',
           backdropFilter: scrolled ? 'blur(16px)' : 'none',
           borderBottom: scrolled ? '2px solid #0A0A0A' : '1px solid transparent',
           boxShadow: scrolled ? '0 8px 24px rgba(0, 0, 0, 0.05)' : 'none',
@@ -76,7 +65,7 @@ export default function Navbar() {
           transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s, box-shadow 0.3s, border-bottom 0.3s',
         }}
       >
-        {/* Transforming Brand Logo */}
+        {/* Brand Logo: Clean Constant TREQO */}
         <a
           href="#top"
           style={{
@@ -96,7 +85,7 @@ export default function Navbar() {
               color: '#6D28FF',
             }}
           >
-            {stage}
+            TREQO
           </span>
           <span
             style={{
