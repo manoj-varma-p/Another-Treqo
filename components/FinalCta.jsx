@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, CheckCircle2, Sparkles, TrendingUp, Users } from 'lucide-react';
+import { ArrowRight, Calendar, CheckCircle2 } from 'lucide-react';
 import ApplyModal from './ApplyModal';
 import { DoodleArrow } from './Doodles';
 
@@ -16,6 +16,8 @@ export default function FinalCta() {
       <section
         id="final-cta"
         style={{
+          height: '100vh',
+          minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -23,7 +25,7 @@ export default function FinalCta() {
           textAlign: 'center',
           background: '#E5DFD0',
           color: '#0A0A0A',
-          padding: '40px 32px 50px',
+          padding: '0 40px',
           position: 'relative',
           overflow: 'hidden',
           boxSizing: 'border-box',
@@ -46,7 +48,7 @@ export default function FinalCta() {
 
         <div
           style={{
-            maxWidth: '1240px',
+            maxWidth: '1320px',
             margin: '0 auto',
             width: '100%',
             display: 'flex',
@@ -58,7 +60,7 @@ export default function FinalCta() {
           }}
         >
           {/* Admissions Pill */}
-          <div style={{ marginBottom: '16px' }}>
+          <div style={{ marginBottom: '22px' }}>
             <div
               style={{
                 display: 'inline-flex',
@@ -67,10 +69,10 @@ export default function FinalCta() {
                 background: '#ffffff',
                 border: '1.5px solid #0A0A0A',
                 color: '#0A0A0A',
-                padding: '5px 16px',
+                padding: '7px 20px',
                 borderRadius: '999px',
                 fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                fontSize: '11px',
+                fontSize: '11.5px',
                 fontWeight: 800,
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
@@ -79,8 +81,8 @@ export default function FinalCta() {
             >
               <div
                 style={{
-                  width: 7,
-                  height: 7,
+                  width: 7.5,
+                  height: 7.5,
                   borderRadius: '50%',
                   background: '#22C55E',
                   boxShadow: '0 0 8px #22C55E',
@@ -94,13 +96,13 @@ export default function FinalCta() {
           <h2
             style={{
               fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-              fontSize: 'clamp(2.8rem, 5.8vw, 4.8rem)',
+              fontSize: 'clamp(3.2rem, 6.2vw, 5.4rem)',
               fontWeight: 900,
               letterSpacing: '-0.04em',
-              lineHeight: 1.05,
+              lineHeight: 1.04,
               textTransform: 'uppercase',
-              margin: '0 0 16px',
-              maxWidth: '1100px',
+              margin: '0 0 20px',
+              maxWidth: '1180px',
             }}
           >
             READY TO ACTUALLY{' '}
@@ -108,9 +110,9 @@ export default function FinalCta() {
               style={{
                 background: '#6D28FF',
                 color: '#ffffff',
-                padding: '4px 22px',
+                padding: '6px 26px',
                 display: 'inline-block',
-                border: '2.5px solid #0A0A0A',
+                border: '3px solid #0A0A0A',
                 boxShadow: '3px 3px 0px #0A0A0A',
                 transform: 'rotate(-1deg)',
                 marginLeft: '4px',
@@ -123,10 +125,10 @@ export default function FinalCta() {
           {/* Wide Subtitle */}
           <p
             style={{
-              fontSize: 'clamp(15px, 1.25vw, 18.5px)',
+              fontSize: 'clamp(17px, 1.4vw, 21px)',
               color: '#333333',
-              maxWidth: '860px',
-              margin: '0 auto 20px',
+              maxWidth: '880px',
+              margin: '0 auto 26px',
               fontWeight: 500,
               lineHeight: 1.55,
             }}
@@ -134,16 +136,16 @@ export default function FinalCta() {
             Deploy real budgets on Meta & Google, execute growth funnels, and build a verified hiring portfolio. Zero theory lectures.
           </p>
 
-          {/* Horizontal Highlight Badges to Fill Left & Right Space */}
+          {/* Horizontal Highlight Badges */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '12px',
+              gap: '14px',
               flexWrap: 'wrap',
-              marginBottom: '26px',
-              maxWidth: '1000px',
+              marginBottom: '32px',
+              maxWidth: '1100px',
             }}
           >
             {[
@@ -157,26 +159,26 @@ export default function FinalCta() {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '6px',
+                  gap: '8px',
                   background: '#ffffff',
                   border: '1.5px solid #0A0A0A',
-                  borderRadius: '10px',
-                  padding: '6px 14px',
-                  fontSize: '12px',
+                  borderRadius: '12px',
+                  padding: '8px 18px',
+                  fontSize: '12.5px',
                   fontWeight: 800,
                   color: '#0A0A0A',
                   boxShadow: '2px 2px 0px #0A0A0A',
                   fontFamily: "var(--ff-mono, monospace)",
                 }}
               >
-                <CheckCircle2 size={13} color="#6D28FF" />
+                <CheckCircle2 size={15} color="#6D28FF" />
                 <span>{badge}</span>
               </div>
             ))}
           </div>
 
           {/* Centered CTA Buttons Group */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', flexWrap: 'wrap', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '22px' }}>
             {/* Primary Apply Button */}
             <motion.button
               whileHover={{ y: -2, x: -2, boxShadow: '4px 4px 0px #0A0A0A' }}
@@ -187,22 +189,22 @@ export default function FinalCta() {
                 color: '#ffffff',
                 border: '2.5px solid #0A0A0A',
                 borderRadius: '999px',
-                padding: '15px 38px',
+                padding: '18px 46px',
                 fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
                 fontWeight: 900,
-                fontSize: '14.5px',
+                fontSize: '15.5px',
                 letterSpacing: '0.04em',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 8,
+                gap: 9,
                 boxShadow: '3px 3px 0px #0A0A0A',
                 transition: 'background 0.2s',
               }}
             >
               <span>APPLY TO TREQO</span>
-              <ArrowRight size={17} />
+              <ArrowRight size={18} />
             </motion.button>
 
             {/* Secondary Book a Demo Button */}
@@ -215,34 +217,34 @@ export default function FinalCta() {
                 color: '#0A0A0A',
                 border: '2.5px solid #0A0A0A',
                 borderRadius: '999px',
-                padding: '15px 32px',
+                padding: '18px 40px',
                 fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
                 fontWeight: 900,
-                fontSize: '14.5px',
+                fontSize: '15.5px',
                 letterSpacing: '0.04em',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 8,
+                gap: 9,
                 boxShadow: '3px 3px 0px #0A0A0A',
                 transition: 'all 0.2s',
               }}
             >
-              <Calendar size={16} color="#6D28FF" />
+              <Calendar size={17} color="#6D28FF" />
               <span>BOOK A DEMO</span>
             </motion.button>
           </div>
 
           {/* Handwritten Annotation */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <DoodleArrow direction="right" color="#6D28FF" size={26} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <DoodleArrow direction="right" color="#6D28FF" size={30} />
             <span
               style={{
                 fontFamily: "'Fraunces', Georgia, serif",
                 fontStyle: 'italic',
                 fontWeight: 600,
-                fontSize: '14px',
+                fontSize: '15.5px',
                 color: '#6D28FF',
               }}
             >
