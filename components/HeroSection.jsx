@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useRef } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Sparkles, RefreshCw } from 'lucide-react';
 import { TreqoDoodle, DoodleBadge, DoodleArrow } from './Doodles';
@@ -279,8 +280,8 @@ export default function HeroSection() {
                 <ArrowRight size={20} />
               </button>
 
-              <a
-                href="#choose-system"
+              <Link
+                href="/how-it-works"
                 style={{
                   background: '#ffffff',
                   color: '#0A0A0A',
@@ -308,7 +309,7 @@ export default function HeroSection() {
               >
                 <span>See How It Works</span>
                 <ArrowRight size={18} />
-              </a>
+              </Link>
             </div>
 
             {/* Handwritten Note Annotation */}
