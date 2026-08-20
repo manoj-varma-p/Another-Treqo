@@ -74,7 +74,7 @@ export default function SelfSelection() {
           >
             <span
               style={{
-                color: 'rgba(10, 10, 10, 0.18)',
+                color: '#0A0A0A',
                 display: 'block',
                 marginBottom: '4px',
               }}
