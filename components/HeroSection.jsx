@@ -431,41 +431,6 @@ export default function HeroSection() {
               >
                 <TreqoDoodle state={characterState} size={230} />
               </motion.div>
-
-              {/* Status Hint Badge */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                style={{
-                  marginTop: '12px',
-                  background: equippedSkills.length > 0 ? '#6D28FF' : '#ffffff',
-                  color: equippedSkills.length > 0 ? '#ffffff' : '#0A0A0A',
-                  border: '1.5px solid #0A0A0A',
-                  borderRadius: '999px',
-                  padding: '4px 14px',
-                  fontSize: '11px',
-                  fontFamily: "var(--ff-mono, monospace)",
-                  fontWeight: 900,
-                  boxShadow: '2px 2px 0px #0A0A0A',
-                  whiteSpace: 'nowrap',
-                  zIndex: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  cursor: 'pointer',
-                }}
-              >
-                {equippedSkills.length > 0 ? (
-                  <>
-                    <RefreshCw size={12} />
-                    <span>Level {equippedSkills.length}/7 · Click to Reset!</span>
-                  </>
-                ) : (
-                  <>
-                    <Sparkles size={12} color="#6D28FF" />
-                    <span>Drag skills onto character to grow!</span>
-                  </>
-                )}
-              </motion.div>
             </div>
 
             {/* Orbiting Fixed Floating Skill Pills */}
