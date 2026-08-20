@@ -180,14 +180,14 @@ export default function HeroSection() {
             </div>
 
             {/* Handwritten Note Annotation */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 22 }}>
-              <DoodleArrow direction="right" color="#6D28FF" size={34} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 24 }}>
+              <DoodleArrow direction="right" color="#6D28FF" size={40} />
               <span
                 style={{
                   fontFamily: "'Fraunces', Georgia, serif",
                   fontStyle: 'italic',
                   fontWeight: 600,
-                  fontSize: '15.5px',
+                  fontSize: '20px',
                   color: '#6D28FF',
                 }}
               >
