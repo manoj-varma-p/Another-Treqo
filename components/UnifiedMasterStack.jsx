@@ -1075,8 +1075,7 @@ export default function UnifiedMasterStack() {
                           padding: '20px',
                           display: 'flex',
                           flexDirection: 'column',
-                          justifyContent: 'space-between',
-                          minHeight: '200px',
+                          gap: '12px',
                           transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                           transform: isHov ? 'translateY(-4px)' : 'none',
                           boxShadow: isHov ? '5px 5px 0px #6D28FF' : '3px 3px 0px #0A0A0A',
@@ -1085,12 +1084,12 @@ export default function UnifiedMasterStack() {
                       >
                         {/* Top: Icon + Level Badge + Arrow */}
                         <div>
-                          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '14px' }}>
+                          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
                             <div
                               style={{
-                                width: '42px',
-                                height: '42px',
-                                borderRadius: '12px',
+                                width: '38px',
+                                height: '38px',
+                                borderRadius: '10px',
                                 background: isHov ? tool.color : '#0A0A0A',
                                 color: '#ffffff',
                                 display: 'flex',
@@ -1100,7 +1099,7 @@ export default function UnifiedMasterStack() {
                                 transition: 'all 0.2s ease',
                               }}
                             >
-                              <ToolIcon size={20} />
+                              <ToolIcon size={18} />
                             </div>
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -1123,7 +1122,7 @@ export default function UnifiedMasterStack() {
                             </div>
                           </div>
 
-                          <div style={{ marginBottom: '6px' }}>
+                          <div style={{ marginBottom: '4px' }}>
                             <span style={{ fontSize: '10px', fontWeight: 900, color: '#6D28FF', textTransform: 'uppercase', letterSpacing: '0.12em', fontFamily: "var(--ff-mono, monospace)" }}>
                               {tool.category}
                             </span>
@@ -1131,8 +1130,8 @@ export default function UnifiedMasterStack() {
 
                           <h4
                             style={{
-                              margin: '0 0 12px',
-                              fontSize: '18px',
+                              margin: 0,
+                              fontSize: '17px',
                               fontWeight: 900,
                               color: '#0A0A0A',
                               letterSpacing: '-0.02em',
@@ -1144,8 +1143,8 @@ export default function UnifiedMasterStack() {
                           </h4>
                         </div>
 
-                        {/* Keyword Tags (Unboxed Clean Modern Highlight) */}
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 8px', marginTop: 'auto', paddingTop: '8px' }}>
+                        {/* Keyword Tags (Moved Up to Fill Space) */}
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 7px' }}>
                           {tool.tags.map((tag, t) => (
                             <span
                               key={t}
