@@ -28,6 +28,7 @@ import {
   Image as ImageIcon,
   ChevronLeft,
   ChevronRight,
+  TrendingUp,
 } from 'lucide-react';
 import { DoodleBadge } from './Doodles';
 
@@ -95,88 +96,19 @@ const TUTOR_DATA = [
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   DATA 2: MASTER MARKETING SYSTEM (8 Ecosystems — Automation Excluded)
+   DATA 2: DASHBOARD FEED & CHARTS
 ───────────────────────────────────────────────────────────── */
-const MARKETING_ECOSYSTEMS = [
-  {
-    name: 'Google Ecosystem',
-    category: 'Core Platform',
-    icon: Globe,
-    color: '#4285F4',
-    desc: "Master the world's most powerful advertising and analytics ecosystem — from search intent to conversion tracking, all under one roof.",
-    level: 'Core',
-    tags: ['Google Ads', 'Google Analytics 4', 'Google Tag Manager', 'Google Search Console', 'Google Merchant Center', 'Performance Max'],
-  },
-  {
-    name: 'Meta Ecosystem',
-    category: 'Paid Social',
-    icon: Target,
-    color: '#0082FB',
-    desc: 'Run full-funnel campaigns across Facebook & Instagram. Earn Meta Blueprint certifications that recruiters and agencies actively seek.',
-    level: 'Core',
-    tags: ['Meta Certified Media Buyer', 'Meta Certified Creative Strategy', 'Meta Ads Manager', 'Blueprint: Lead Gen', 'Blueprint: E-Commerce', 'Blueprint: Awareness'],
-  },
-  {
-    name: 'SEO Ecosystem',
-    category: 'SEO Strategy',
-    icon: Search,
-    color: '#7C3AED',
-    desc: 'Rank on Page 1 with a complete SEO command center — from technical audits and keyword research to the emerging frontiers of AEO and GEO.',
-    level: 'Advanced',
-    tags: ['SEMrush', 'SE Optimize', 'AEO', 'GEO', 'Google Keyword Planner', 'Screaming Frog', 'Ahrefs'],
-  },
-  {
-    name: 'HubSpot Hub',
-    category: 'CRM & Inbound',
-    icon: ShoppingBag,
-    color: '#FF7A59',
-    desc: "Build, nurture, and close leads with HubSpot's all-in-one CRM. From pipeline management to automated nurture sequences and reporting dashboards.",
-    level: 'Intermediate',
-    tags: ['HubSpot CRM', 'Marketing Hub', 'Sales Hub', 'Email Sequences', 'Landing Pages', 'Lead Scoring', 'HubSpot Academy'],
-  },
-  {
-    name: 'Omnichannel Ecosystem',
-    category: 'Engagement',
-    icon: MessageSquare,
-    color: '#10B981',
-    desc: 'Reach your audience wherever they are — across WhatsApp, email, SMS, push notifications, and in-app messaging with unified data.',
-    level: 'Advanced',
-    tags: ['WhatsApp Marketing', 'Email Marketing', 'SMS Campaigns', 'Push Notifications', 'In-App Messaging', 'Klaviyo', 'MoEngage'],
-  },
-  {
-    name: 'AI in Marketing',
-    category: 'AI Strategy',
-    icon: Bot,
-    color: '#8B5CF6',
-    desc: 'Harness the power of AI to write faster, research smarter, and build campaigns that outperform — using the tools shaping the future of marketing.',
-    level: 'Advanced',
-    tags: ['Claude AI', 'ChatGPT', 'Perplexity AI', 'Gemini', 'Copy.ai', 'Jasper', 'AI Prompting'],
-  },
-  {
-    name: 'LinkedIn Hub',
-    category: 'B2B Growth',
-    icon: Link2,
-    color: '#0A66C2',
-    desc: 'Turn LinkedIn into your highest-ROI B2B channel — with organic thought leadership, Sales Navigator prospecting, and precision-targeted LinkedIn Ads.',
-    level: 'Intermediate',
-    tags: ['LinkedIn Ads', 'Sales Navigator', 'Thought Leadership', 'Lead Gen Forms', 'LinkedIn Analytics', 'Personal Branding', 'Company Pages'],
-  },
-  {
-    name: 'AI Image & Editing',
-    category: 'Creative AI',
-    icon: ImageIcon,
-    color: '#EC4899',
-    desc: 'Create scroll-stopping visuals, ad creatives, and video content at scale using the latest AI image and editing platforms.',
-    level: 'Intermediate',
-    tags: ['Kling AI', 'Grok (Aurora)', 'Nano Banana', 'Midjourney', 'Adobe Firefly', 'Canva AI', 'RunwayML'],
-  },
+const DASHBOARD_FEED = [
+  { dot: '#22C55E', msg: 'Meta Ads · 1,240 leads synced · CTR 8.4% · ROAS 4.2x' },
+  { dot: '#3B82F6', msg: 'GA4 · 12,841 sessions · Bounce 28% · CVR 4.2%' },
+  { dot: '#EC4899', msg: 'SEMrush · 87 SEO issues fixed · Domain Rating 42' },
+  { dot: '#EAB308', msg: 'Zapier · 340 zaps triggered · 0 errors · 99.9% uptime' },
+  { dot: '#8B5CF6', msg: 'Google Ads PMAX · Impression share 68% · CPC ₹12.4' },
+  { dot: '#22C55E', msg: 'Klaviyo · 42% open rate · 8.1% CTR · ₹3.2L revenue' },
+  { dot: '#3B82F6', msg: 'LinkedIn Ads · 220 B2B leads · CPL ₹184 · CTR 1.8%' },
 ];
 
-const levelColors = {
-  Core: { bg: 'rgba(22, 163, 74, 0.12)', text: '#16a34a', border: '#16a34a' },
-  Intermediate: { bg: 'rgba(217, 119, 6, 0.12)', text: '#d97706', border: '#d97706' },
-  Advanced: { bg: 'rgba(109, 40, 255, 0.12)', text: '#6D28FF', border: '#6D28FF' },
-};
+const DASHBOARD_BARS = [32, 48, 42, 62, 55, 70, 58, 78, 64, 85, 72, 91];
 
 /* ─────────────────────────────────────────────────────────────
    DATA 3: INDUSTRY CERTIFICATIONS
@@ -242,7 +174,8 @@ export default function UnifiedMasterStack() {
   const [activeTab, setActiveTab] = useState('tutors');
   const [index, setIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
-  const [hoveredTool, setHoveredTool] = useState(null);
+  const [feedIdx, setFeedIdx] = useState(0);
+  const [metricTick, setMetricTick] = useState(0);
 
   useEffect(() => {
     if (isHovering || activeTab !== 'tutors') return;
@@ -252,10 +185,26 @@ export default function UnifiedMasterStack() {
     return () => clearInterval(interval);
   }, [index, isHovering, activeTab]);
 
+  useEffect(() => {
+    const f = setInterval(() => setFeedIdx((i) => (i + 1) % DASHBOARD_FEED.length), 2200);
+    const m = setInterval(() => setMetricTick((t) => t + 1), 3000);
+    return () => {
+      clearInterval(f);
+      clearInterval(m);
+    };
+  }, []);
+
+  const liveMetrics = [
+    { label: 'CTR', value: metricTick % 2 === 0 ? '8.4%' : '9.1%', up: true },
+    { label: 'ROAS', value: metricTick % 2 === 0 ? '4.2x' : '4.7x', up: true },
+    { label: 'CPL', value: metricTick % 2 === 0 ? '₹184' : '₹171', up: false },
+    { label: 'CVR', value: metricTick % 2 === 0 ? '4.2%' : '4.9%', up: true },
+  ];
+
   const TABS = [
     { id: 'tutors', label: 'Tutors & Mentors', icon: Users, count: 'The Masters' },
     { id: 'certifications', label: 'Certifications & Proof', icon: Award, count: '6 Verified' },
-    { id: 'system', label: 'Master Marketing System', icon: Layers, count: '8 Ecosystems' },
+    { id: 'system', label: 'Master Marketing System', icon: Layers, count: 'Live OS' },
   ];
 
   return (
@@ -1020,7 +969,7 @@ export default function UnifiedMasterStack() {
             )}
 
             {/* ══════════════════════════════════════════════════════════
-                SECTION 3: MASTER MARKETING SYSTEM (8 Ecosystems — No Automation)
+                SECTION 3: MASTER MARKETING SYSTEM (Live Laptop Showcase OS in Treqo Theme)
             ══════════════════════════════════════════════════════════ */}
             {activeTab === 'system' && (
               <motion.div
@@ -1030,166 +979,436 @@ export default function UnifiedMasterStack() {
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.25 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
-                  <div>
-                    <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 900, color: '#6D28FF', letterSpacing: '0.14em', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>
-                      CURRICULUM STACK
+                {/* ── Top Header & Stats ── */}
+                <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#F3F0E7', border: '1.5px solid #0A0A0A', borderRadius: '999px', padding: '5px 16px', marginBottom: '16px', boxShadow: '2px 2px 0px #0A0A0A' }}>
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
+                    <span style={{ fontSize: '11px', fontWeight: 900, color: '#0A0A0A', letterSpacing: '0.14em', textTransform: 'uppercase', fontFamily: "var(--ff-mono, monospace)" }}>
+                      Learn Live · Build Real · Get Hired
                     </span>
-                    <h3 style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: 'clamp(22px, 2.5vw, 30px)', fontWeight: 900, color: '#0A0A0A', margin: 0, textTransform: 'uppercase' }}>
-                      Master The <span style={{ color: '#6D28FF' }}>Marketing System</span>
-                    </h3>
                   </div>
 
-                  <p style={{ fontSize: '13.5px', color: '#555555', margin: 0, maxWidth: '460px', fontWeight: 500, lineHeight: 1.45 }}>
-                    Master the exact professional toolkit used by global growth operators to architect high-performance digital campaigns.
+                  <h3
+                    style={{
+                      fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                      fontSize: 'clamp(26px, 3.2vw, 42px)',
+                      fontWeight: 900,
+                      color: '#0A0A0A',
+                      margin: '0 0 10px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    Your Dashboard,{' '}
+                    <span
+                      style={{
+                        background: '#6D28FF',
+                        color: '#ffffff',
+                        padding: '2px 14px',
+                        display: 'inline-block',
+                        border: '2px solid #0A0A0A',
+                        boxShadow: '3px 3px 0px #0A0A0A',
+                        transform: 'rotate(-1deg)',
+                      }}
+                    >
+                      From Day One.
+                    </span>
+                  </h3>
+
+                  <p
+                    style={{
+                      fontSize: '14px',
+                      color: '#555555',
+                      lineHeight: 1.55,
+                      maxWidth: '620px',
+                      margin: '0 auto 24px',
+                      fontWeight: 500,
+                    }}
+                  >
+                    Every metric you see below is what you'll move — live campaigns, real spend, real results. Not theory. Execution.
                   </p>
-                </div>
 
-                {/* 8 Ecosystems Grid */}
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                    gap: '16px',
-                  }}
-                  className="ecosystem-cards-grid"
-                >
-                  {MARKETING_ECOSYSTEMS.map((tool, i) => {
-                    const isHov = hoveredTool === i;
-                    const lvl = levelColors[tool.level];
-                    const ToolIcon = tool.icon;
-
-                    return (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: i * 0.04 }}
-                        onMouseEnter={() => setHoveredTool(i)}
-                        onMouseLeave={() => setHoveredTool(null)}
+                  {/* 3 Stats in Treqo Theme */}
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(20px, 4vw, 48px)', flexWrap: 'wrap' }}>
+                    {[
+                      ['30+', 'Live Projects'],
+                      ['16', 'Sprints & Terms'],
+                      ['100%', 'Placement Track'],
+                    ].map(([num, lbl]) => (
+                      <div
+                        key={lbl}
                         style={{
-                          position: 'relative',
-                          borderRadius: '18px',
-                          background: isHov ? '#ffffff' : '#FAF9F8',
+                          background: '#FAF9F8',
                           border: '2px solid #0A0A0A',
-                          padding: '20px',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '12px',
-                          transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
-                          transform: isHov ? 'translateY(-4px)' : 'none',
-                          boxShadow: isHov ? '5px 5px 0px #6D28FF' : '3px 3px 0px #0A0A0A',
-                          cursor: 'default',
+                          borderRadius: '14px',
+                          padding: '12px 24px',
+                          boxShadow: '3px 3px 0px #0A0A0A',
+                          minWidth: '140px',
+                          textAlign: 'center',
                         }}
                       >
-                        {/* Top: Category + Level Badge + Arrow */}
-                        <div>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                            <span style={{ fontSize: '10.5px', fontWeight: 900, color: '#6D28FF', textTransform: 'uppercase', letterSpacing: '0.12em', fontFamily: "var(--ff-mono, monospace)" }}>
-                              {tool.category}
-                            </span>
-
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                              <span
-                                style={{
-                                  fontSize: '10px',
-                                  fontWeight: 900,
-                                  color: lvl.text,
-                                  background: lvl.bg,
-                                  border: `1px solid ${lvl.border}`,
-                                  borderRadius: '6px',
-                                  padding: '2px 7px',
-                                  fontFamily: "var(--ff-mono, monospace)",
-                                  textTransform: 'uppercase',
-                                }}
-                              >
-                                {tool.level}
-                              </span>
-                              <ArrowUpRight size={16} color={isHov ? '#6D28FF' : '#888888'} />
-                            </div>
-                          </div>
-
-                          <h4
-                            style={{
-                              margin: 0,
-                              fontSize: '17px',
-                              fontWeight: 900,
-                              color: '#0A0A0A',
-                              letterSpacing: '-0.02em',
-                              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                              textTransform: 'uppercase',
-                            }}
-                          >
-                            {tool.name}
-                          </h4>
+                        <div style={{ fontSize: '26px', fontWeight: 900, color: '#6D28FF', fontFamily: "var(--ff-display, 'Outfit', sans-serif)", letterSpacing: '-0.02em' }}>
+                          {num}
                         </div>
-
-                        {/* Keyword Tags (Moved Up to Fill Space) */}
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 7px' }}>
-                          {tool.tags.map((tag, t) => (
-                            <span
-                              key={t}
-                              style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '5px',
-                                fontSize: '11px',
-                                fontWeight: 800,
-                                fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                                color: isHov ? '#0A0A0A' : '#444444',
-                                background: isHov ? `${tool.color}18` : 'rgba(10, 10, 10, 0.04)',
-                                padding: '3px 8px',
-                                borderRadius: '6px',
-                                transition: 'all 0.2s ease',
-                              }}
-                            >
-                              <span
-                                style={{
-                                  width: '5px',
-                                  height: '5px',
-                                  borderRadius: '50%',
-                                  background: tool.color,
-                                  flexShrink: 0,
-                                  boxShadow: isHov ? `0 0 6px ${tool.color}` : 'none',
-                                }}
-                              />
-                              <span>{tag}</span>
-                            </span>
-                          ))}
+                        <div style={{ fontSize: '10.5px', fontWeight: 900, color: '#444444', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: "var(--ff-mono, monospace)", marginTop: '2px' }}>
+                          {lbl}
                         </div>
-                      </motion.div>
-                    );
-                  })}
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Bottom Strip */}
+                {/* ── Laptop Chassis & Interactive SVG Screen ── */}
                 <div
                   style={{
-                    marginTop: '28px',
-                    padding: '16px 24px',
-                    borderRadius: '16px',
-                    background: '#FAF9F8',
-                    border: '2px solid #0A0A0A',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    gap: '16px',
-                    boxShadow: '4px 4px 0px #0A0A0A',
+                    position: 'relative',
+                    maxWidth: '920px',
+                    margin: '0 auto 28px',
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16a34a', boxShadow: '0 0 8px #16a34a' }} />
-                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#0A0A0A', fontFamily: "var(--ff-display, 'Outfit', sans-serif)" }}>
-                      Enterprise standard tools included in your fee. Full live account access provided.
-                    </span>
+                  {/* Floating badge top-right */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '-12px',
+                      right: '4%',
+                      zIndex: 30,
+                      background: '#ffffff',
+                      border: '2px solid #0A0A0A',
+                      borderRadius: '12px',
+                      padding: '8px 14px',
+                      boxShadow: '4px 4px 0px #6D28FF',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                    }}
+                  >
+                    <TrendingUp size={16} color="#6D28FF" />
+                    <div>
+                      <div style={{ fontSize: '11px', fontWeight: 900, color: '#0A0A0A', fontFamily: "var(--ff-mono, monospace)" }}>
+                        ROAS 4.2x ↑
+                      </div>
+                      <div style={{ fontSize: '9px', color: '#6D28FF', fontWeight: 900, letterSpacing: '0.08em', fontFamily: "var(--ff-mono, monospace)" }}>
+                        LIVE CAMPAIGN
+                      </div>
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ fontSize: '11px', fontWeight: 900, color: '#6D28FF', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: "var(--ff-mono, monospace)" }}>
-                      Industry Certified Stack
-                    </span>
-                    <Zap size={14} color="#6D28FF" fill="#6D28FF" />
+
+                  {/* Floating badge bottom-left */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '50px',
+                      left: '3%',
+                      zIndex: 30,
+                      background: '#0A0A0A',
+                      border: '2px solid #22C55E',
+                      borderRadius: '12px',
+                      padding: '8px 14px',
+                      boxShadow: '4px 4px 0px #0A0A0A',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                    }}
+                  >
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
+                    <div style={{ fontSize: '11px', fontWeight: 900, color: '#ffffff', fontFamily: "var(--ff-mono, monospace)" }}>
+                      Meta Campaign Live
+                    </div>
                   </div>
+
+                  {/* ── REALISTIC LAPTOP SVG ── */}
+                  <svg
+                    viewBox="0 0 900 580"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{ width: '100%', display: 'block', filter: 'drop-shadow(0 20px 30px rgba(10,10,10,0.15))' }}
+                  >
+                    <defs>
+                      <linearGradient id="lidTop" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#2A2A2E" />
+                        <stop offset="100%" stopColor="#1A1A1E" />
+                      </linearGradient>
+                      <linearGradient id="lidSide" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#111113" />
+                        <stop offset="100%" stopColor="#222226" />
+                      </linearGradient>
+                      <linearGradient id="baseTop" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#2E2E32" />
+                        <stop offset="100%" stopColor="#222226" />
+                      </linearGradient>
+                      <linearGradient id="baseFront" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#1A1A1E" />
+                        <stop offset="100%" stopColor="#111113" />
+                      </linearGradient>
+                      <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#0D0622" />
+                        <stop offset="100%" stopColor="#0A0418" />
+                      </linearGradient>
+                      <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#6D28FF" />
+                        <stop offset="100%" stopColor="#4C1D95" />
+                      </linearGradient>
+                      <clipPath id="screenClip">
+                        <rect x="72" y="26" width="756" height="454" rx="6" />
+                      </clipPath>
+                    </defs>
+
+                    {/* LID BACK */}
+                    <path d="M60 18 Q450 8 840 18 L830 26 Q450 16 70 26 Z" fill="#111113" />
+                    {/* LID FACE */}
+                    <rect x="60" y="18" width="780" height="466" rx="10" fill="url(#lidTop)" />
+                    <rect x="60" y="18" width="780" height="80" rx="10" fill="rgba(255,255,255,0.03)" />
+                    {/* LID EDGES */}
+                    <path d="M60 18 L50 26 L50 492 L60 484 Z" fill="url(#lidSide)" />
+                    <path d="M840 18 L850 26 L850 492 L840 484 Z" fill="url(#lidSide)" />
+                    {/* SCREEN BEZEL */}
+                    <rect x="68" y="22" width="764" height="462" rx="8" fill="#111113" />
+                    {/* SCREEN SURFACE */}
+                    <rect x="72" y="26" width="756" height="454" rx="6" fill="url(#screenGrad)" />
+
+                    {/* ══ SCREEN CONTENT ══════════════════════════════ */}
+                    <g clipPath="url(#screenClip)">
+                      {/* Top bar */}
+                      <rect x="72" y="26" width="756" height="32" fill="#160935" />
+                      {/* Traffic lights */}
+                      <circle cx="96" cy="42" r="5.5" fill="#FF5F57" />
+                      <circle cx="114" cy="42" r="5.5" fill="#FFBD2E" />
+                      <circle cx="132" cy="42" r="5.5" fill="#28CA42" />
+                      {/* URL bar */}
+                      <rect x="240" y="33" width="360" height="18" rx="9" fill="rgba(255,255,255,0.06)" />
+                      <text x="420" y="45.5" fill="rgba(255,255,255,0.5)" fontSize="9" textAnchor="middle" fontFamily="monospace">
+                        dashboard.treqo.com/live-campaigns
+                      </text>
+
+                      {/* SIDEBAR */}
+                      <rect x="72" y="58" width="80" height="422" fill="#0A0320" />
+                      <rect x="88" y="72" width="48" height="14" rx="4" fill="#6D28FF" />
+                      {[0, 1, 2, 3, 4, 5].map((i) => (
+                        <g key={i}>
+                          <rect
+                            x="84"
+                            y={102 + i * 52}
+                            width="48"
+                            height="36"
+                            rx="8"
+                            fill={i === 0 ? 'rgba(109,40,255,0.35)' : 'rgba(255,255,255,0.03)'}
+                          />
+                          <rect
+                            x="92"
+                            y={115 + i * 52}
+                            width="16"
+                            height="10"
+                            rx="3"
+                            fill={i === 0 ? '#6D28FF' : 'rgba(255,255,255,0.1)'}
+                          />
+                        </g>
+                      ))}
+
+                      {/* MAIN CONTENT AREA */}
+                      <text x="168" y="80" fill="white" fontSize="13" fontWeight="bold" fontFamily="sans-serif">
+                        Campaign Performance Overview
+                      </text>
+                      <text x="168" y="93" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="monospace">
+                        Last updated: just now · Auto-refreshing 30s
+                      </text>
+
+                      {/* METRIC CARDS ROW */}
+                      {liveMetrics.map((m, i) => (
+                        <g key={m.label}>
+                          <rect
+                            x={168 + i * 147}
+                            y="104"
+                            width="133"
+                            height="68"
+                            rx="10"
+                            fill="rgba(109,40,255,0.15)"
+                            stroke="rgba(109,40,255,0.35)"
+                            strokeWidth="0.8"
+                          />
+                          <rect x={168 + i * 147} y="104" width="133" height="3" rx="2" fill="#6D28FF" opacity="0.8" />
+                          <text x={178 + i * 147} y="122" fill="rgba(255,255,255,0.5)" fontSize="8" fontFamily="monospace">
+                            {m.label}
+                          </text>
+                          <text x={178 + i * 147} y="147" fill="white" fontSize="18" fontWeight="bold" fontFamily="monospace">
+                            {m.value}
+                          </text>
+                          <text x={278 + i * 147} y="147" fill={m.up ? '#22C55E' : '#F87171'} fontSize="9" fontFamily="monospace">
+                            {m.up ? '↑' : '↓'}
+                          </text>
+                        </g>
+                      ))}
+
+                      {/* BAR CHART */}
+                      <rect x="168" y="184" width="330" height="160" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" strokeWidth="0.8" />
+                      <text x="180" y="201" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="monospace">
+                        Conversions · Last 30 days
+                      </text>
+                      {[0, 1, 2, 3].map((i) => (
+                        <line key={i} x1="180" y1={316 - i * 34} x2="488" y2={316 - i * 34} stroke="rgba(255,255,255,0.04)" strokeWidth="0.8" />
+                      ))}
+                      {DASHBOARD_BARS.map((h, i) => {
+                        const barH = h * 1.05;
+                        return (
+                          <g key={i}>
+                            <rect
+                              x={182 + i * 25}
+                              y={316 - barH}
+                              width="18"
+                              height={barH}
+                              rx="4"
+                              fill={i === DASHBOARD_BARS.length - 1 ? 'url(#barGrad)' : `rgba(109,40,255,${0.28 + i * 0.055})`}
+                            />
+                            {i === DASHBOARD_BARS.length - 1 && (
+                              <rect x={182 + i * 25} y={316 - barH} width="18" height="4" rx="2" fill="#A78BFA" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite" />
+                              </rect>
+                            )}
+                          </g>
+                        );
+                      })}
+
+                      {/* DONUT CHART */}
+                      <rect x="508" y="184" width="164" height="160" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" strokeWidth="0.8" />
+                      <text x="520" y="201" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="monospace">
+                        Channel Mix
+                      </text>
+                      <circle cx="590" cy="280" r="42" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="18" />
+                      <circle cx="590" cy="280" r="42" fill="none" stroke="#6D28FF" strokeWidth="18" strokeDasharray="88 176" strokeDashoffset="44" />
+                      <circle cx="590" cy="280" r="42" fill="none" stroke="#3B82F6" strokeWidth="18" strokeDasharray="52 176" strokeDashoffset="-44" />
+                      <circle cx="590" cy="280" r="42" fill="none" stroke="#22C55E" strokeWidth="18" strokeDasharray="36 176" strokeDashoffset="-96" />
+                      <text x="590" y="276" fill="white" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="monospace">
+                        50%
+                      </text>
+                      <text x="590" y="287" fill="rgba(255,255,255,0.4)" fontSize="7" textAnchor="middle" fontFamily="monospace">
+                        Meta
+                      </text>
+                      {[
+                        ['#6D28FF', 'Meta', '50%'],
+                        ['#3B82F6', 'Google', '30%'],
+                        ['#22C55E', 'Email', '20%'],
+                      ].map(([c, l, v], i) => (
+                        <g key={l}>
+                          <rect x="520" y={300 + i * 13} width="8" height="8" rx="2" fill={c} />
+                          <text x="532" y={308 + i * 13} fill="rgba(255,255,255,0.6)" fontSize="7" fontFamily="monospace">
+                            {l} {v}
+                          </text>
+                        </g>
+                      ))}
+
+                      {/* LIVE ACTIVITY FEED */}
+                      <rect x="168" y="354" width="504" height="96" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" strokeWidth="0.8" />
+                      <text x="180" y="371" fill="rgba(255,255,255,0.4)" fontSize="8" fontFamily="monospace">
+                        Live Activity Feed
+                      </text>
+                      <circle cx="516" cy="368" r="3" fill="#22C55E">
+                        <animate attributeName="opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite" />
+                      </circle>
+                      <text x="522" y="372" fill="#22C55E" fontSize="7" fontFamily="monospace">
+                        LIVE
+                      </text>
+
+                      {DASHBOARD_FEED.slice(0, 4).map((item, i) => (
+                        <g key={i}>
+                          <circle cx="184" cy={388 + i * 16} r="3" fill={item.dot} />
+                          <text
+                            x="194"
+                            y={392 + i * 16}
+                            fill={i === 0 ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.4)'}
+                            fontSize="8"
+                            fontFamily="monospace"
+                          >
+                            {item.msg}
+                          </text>
+                        </g>
+                      ))}
+
+                      {/* Blinking cursor */}
+                      <rect x="656" y="434" width="2" height="10" rx="1" fill="#6D28FF">
+                        <animate attributeName="opacity" values="1;0;1" dur="0.9s" repeatCount="indefinite" />
+                      </rect>
+                    </g>
+
+                    {/* CAMERA & BASE */}
+                    <circle cx="450" cy="22" r="3.5" fill="#0A0320" />
+                    <circle cx="450" cy="22" r="1.5" fill="#1a1a2e" />
+                    <rect x="50" y="484" width="800" height="10" rx="3" fill="#111113" />
+                    <rect x="50" y="484" width="800" height="4" rx="2" fill="rgba(255,255,255,0.05)" />
+                    <path d="M18 494 Q450 490 882 494 L900 520 Q450 516 0 520 Z" fill="url(#baseTop)" />
+                    <rect x="340" y="496" width="220" height="130" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
+                    {[0, 1, 2, 3].map((row) =>
+                      Array.from({ length: row === 0 ? 13 : row === 3 ? 6 : 12 }).map((_, col) => (
+                        <rect
+                          key={`${row}-${col}`}
+                          x={row === 3 ? 270 + col * 60 : 90 + col * 57 + row * 4}
+                          y={502 + row * 22}
+                          width={row === 3 ? 52 : 48}
+                          height="16"
+                          rx="4"
+                          fill="rgba(255,255,255,0.05)"
+                          stroke="rgba(255,255,255,0.07)"
+                          strokeWidth="0.5"
+                        />
+                      ))
+                    )}
+                    <path d="M0 520 Q450 516 900 520 L900 540 Q450 538 0 540 Z" fill="url(#baseFront)" />
+                    <path d="M0 540 Q450 538 900 540 L890 548 Q450 546 10 548 Z" fill="#0D0D10" />
+                    <ellipse cx="450" cy="555" rx="380" ry="12" fill="rgba(109,40,255,0.15)" />
+                  </svg>
+                </div>
+
+                {/* ── Bottom Channel Badges in Treqo Theme ── */}
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '14px',
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  {[
+                    { icon: Target, label: 'Meta Ads', val: 'ROAS 4.2x', color: '#0082FB' },
+                    { icon: Search, label: 'Technical SEO', val: 'DR 42 ↑', color: '#6D28FF' },
+                    { icon: Mail, label: 'Retention Email', val: '42% Open', color: '#10B981' },
+                    { icon: BarChart2, label: 'GA4 Attribution', val: '12k Sessions', color: '#F59E0B' },
+                  ].map(({ icon: Icon, label, val, color }) => (
+                    <div
+                      key={label}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        background: '#FAF9F8',
+                        borderRadius: '14px',
+                        padding: '12px 18px',
+                        boxShadow: '3px 3px 0px #0A0A0A',
+                        border: '2px solid #0A0A0A',
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '32px',
+                          height: '32px',
+                          borderRadius: '8px',
+                          background: color + '18',
+                          border: `1.5px solid ${color}`,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <Icon size={16} color={color} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '10px', fontWeight: 900, color: '#666666', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: "var(--ff-mono, monospace)" }}>
+                          {label}
+                        </div>
+                        <div style={{ fontSize: '13.5px', fontWeight: 900, color: '#0A0A0A', fontFamily: "var(--ff-display, 'Outfit', sans-serif)" }}>
+                          {val}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             )}
