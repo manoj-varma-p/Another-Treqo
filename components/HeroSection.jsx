@@ -1,21 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
   BookOpen,
   Sparkles,
   Clock,
-  ArrowUpRight,
-  TrendingUp,
+  X,
   Flame,
-  Bookmark,
 } from 'lucide-react';
 import { DoodleBadge, DoodleArrow } from './Doodles';
 
 export default function HeroSection() {
+  const [showPop, setShowPop] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+
+  useEffect(() => {
+    // Pops in from right bottom after 1.2 seconds
+    const timer = setTimeout(() => {
+      setShowPop(true);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <section
@@ -50,7 +60,7 @@ export default function HeroSection() {
             position: 'relative',
             zIndex: 1,
             display: 'grid',
-            gridTemplateColumns: '1.15fr 0.85fr',
+            gridTemplateColumns: '1.2fr 0.8fr',
             gap: '56px',
             alignItems: 'center',
           }}
@@ -195,175 +205,131 @@ export default function HeroSection() {
           </div>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT: Featured High-Engagement Blog Essay Card
+              RIGHT BOTTOM: Clean Rectangle Pop Coming from Right Bottom
           ══════════════════════════════════════════════════ */}
-          <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
-
-            {/* Floating Trending Sticker */}
-            <motion.div
-              animate={{ y: [0, -6, 0], rotate: [-2, 2, -2] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-              style={{
-                position: 'absolute',
-                top: '-18px',
-                right: '10px',
-                zIndex: 30,
-                background: '#FFE600',
-                color: '#0A0A0A',
-                border: '2px solid #0A0A0A',
-                borderRadius: '10px',
-                padding: '6px 14px',
-                fontFamily: "var(--ff-mono, monospace)",
-                fontSize: '11px',
-                fontWeight: 900,
-                boxShadow: '3px 3px 0px #0A0A0A',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                pointerEvents: 'none',
-              }}
-            >
-              <Flame size={14} color="#EA580C" />
-              <span>MUST-READ ESSAY</span>
-            </motion.div>
-
-            {/* The Main Clickable Blog Teaser Card */}
-            <Link
-              href="/how-it-works"
-              style={{ textDecoration: 'none', color: 'inherit', width: '100%', maxWidth: '490px', display: 'block' }}
-            >
-              <motion.div
-                whileHover={{ y: -8, boxShadow: '14px 14px 0px #6D28FF' }}
-                whileTap={{ scale: 0.98 }}
-                style={{
-                  background: '#ffffff',
-                  border: '3.5px solid #0A0A0A',
-                  borderRadius: '26px',
-                  padding: '30px 28px',
-                  boxShadow: '9px 9px 0px #0A0A0A',
-                  cursor: 'pointer',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  transition: 'box-shadow 0.25s ease, transform 0.25s ease',
-                }}
-              >
-                {/* Blog Category & Reading Time Header */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                  <div
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      background: '#6D28FF',
-                      color: '#ffffff',
-                      borderRadius: '8px',
-                      padding: '4px 12px',
-                      fontFamily: "var(--ff-mono, monospace)",
-                      fontSize: '11px',
-                      fontWeight: 900,
-                      letterSpacing: '0.06em',
-                      border: '1.5px solid #0A0A0A',
-                    }}
-                  >
-                    <BookOpen size={13} />
-                    <span>FOUNDER ESSAY</span>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#666666', fontSize: '11.5px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 700 }}>
-                    <Clock size={13} />
-                    <span>4 MIN READ</span>
-                  </div>
-                </div>
-
-                {/* Blog Headline */}
-                <h3
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              minHeight: '300px',
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <AnimatePresence>
+              {showPop && !dismissed && (
+                <motion.div
+                  initial={{ opacity: 0, x: 120, y: 60, scale: 0.95 }}
+                  animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: 80, y: 40, scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                  whileHover={{ y: -4, boxShadow: '8px 8px 0px #6D28FF' }}
                   style={{
-                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                    fontSize: 'clamp(22px, 2.3vw, 28px)',
-                    fontWeight: 900,
-                    color: '#0A0A0A',
-                    letterSpacing: '-0.02em',
-                    lineHeight: 1.18,
-                    margin: '0 0 12px',
-                    textTransform: 'uppercase',
+                    background: '#ffffff',
+                    border: '2.5px solid #0A0A0A',
+                    borderRadius: '18px',
+                    padding: '22px 24px',
+                    boxShadow: '6px 6px 0px #0A0A0A',
+                    width: '100%',
+                    maxWidth: '420px',
+                    position: 'relative',
+                    transition: 'box-shadow 0.2s ease',
                   }}
                 >
-                  How Treqo Actually Works: <span style={{ color: '#6D28FF' }}>The Death of Marketing Theory</span>
-                </h3>
-
-                {/* Excerpt */}
-                <p
-                  style={{
-                    fontSize: '14px',
-                    color: '#444444',
-                    lineHeight: 1.55,
-                    margin: '0 0 20px',
-                    fontWeight: 500,
-                  }}
-                >
-                  We spent 7 years running performance agencies. Here is the unfiltered blueprint of how our students manage ₹50k live ad spend, fix unit economics, and build proof that gets them hired.
-                </p>
-
-                {/* Author Info & Read CTA Row */}
-                <div
-                  style={{
-                    borderTop: '2px solid rgba(10,10,10,0.08)',
-                    paddingTop: '16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    gap: '12px',
-                  }}
-                >
-                  {/* Author Avatar */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
-                      alt="Lokesh Dama"
-                      style={{
-                        width: '38px',
-                        height: '38px',
-                        borderRadius: '10px',
-                        border: '1.5px solid #0A0A0A',
-                        objectFit: 'cover',
-                      }}
-                    />
-                    <div>
-                      <div style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '13px', fontWeight: 900, color: '#0A0A0A' }}>
-                        Lokesh Dama
-                      </div>
-                      <div style={{ fontSize: '10.5px', fontFamily: "var(--ff-mono, monospace)", color: '#777777', fontWeight: 600 }}>
-                        Founder @ TAC
-                      </div>
+                  {/* Top Bar: Category & Dismiss */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span
+                        style={{
+                          background: '#6D28FF',
+                          color: '#ffffff',
+                          fontFamily: "var(--ff-mono, monospace)",
+                          fontSize: '10.5px',
+                          fontWeight: 900,
+                          padding: '3px 8px',
+                          borderRadius: '6px',
+                          border: '1px solid #0A0A0A',
+                          letterSpacing: '0.04em',
+                          textTransform: 'uppercase',
+                        }}
+                      >
+                        FOUNDER BLOG
+                      </span>
+                      <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#666666', fontWeight: 700 }}>
+                        4 MIN READ
+                      </span>
                     </div>
+
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setDismissed(true);
+                      }}
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        color: '#888888',
+                        cursor: 'pointer',
+                        padding: '2px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                      title="Dismiss"
+                    >
+                      <X size={16} />
+                    </button>
                   </div>
 
-                  {/* Read Article Pill */}
-                  <div
-                    style={{
-                      background: '#0A0A0A',
-                      color: '#ffffff',
-                      borderRadius: '10px',
-                      padding: '8px 16px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                      fontSize: '12.5px',
-                      fontWeight: 900,
-                      letterSpacing: '0.04em',
-                      textTransform: 'uppercase',
-                      boxShadow: '3px 3px 0px #6D28FF',
-                    }}
-                  >
-                    <span>Read Article</span>
-                    <ArrowRight size={14} />
-                  </div>
-                </div>
-              </motion.div>
-            </Link>
+                  {/* Title */}
+                  <Link href="/how-it-works" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <h4
+                      style={{
+                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                        fontSize: '18px',
+                        fontWeight: 900,
+                        color: '#0A0A0A',
+                        margin: '0 0 6px',
+                        lineHeight: 1.25,
+                        textTransform: 'uppercase',
+                        letterSpacing: '-0.01em',
+                      }}
+                    >
+                      How Treqo Actually Works: The Death of Theory
+                    </h4>
 
+                    <p style={{ fontSize: '13px', color: '#555555', lineHeight: 1.45, margin: '0 0 16px', fontWeight: 500 }}>
+                      An unfiltered essay on how students manage ₹50k live ad spend and land marketing roles.
+                    </p>
+
+                    {/* Bottom CTA Pill inside Rectangle */}
+                    <div
+                      style={{
+                        background: '#0A0A0A',
+                        color: '#ffffff',
+                        border: '1.5px solid #0A0A0A',
+                        borderRadius: '10px',
+                        padding: '10px 16px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                        fontSize: '12.5px',
+                        fontWeight: 900,
+                        letterSpacing: '0.04em',
+                        textTransform: 'uppercase',
+                        boxShadow: '2px 2px 0px #6D28FF',
+                      }}
+                    >
+                      <span>Read Essay Breakdown</span>
+                      <ArrowRight size={14} />
+                    </div>
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
         </div>
