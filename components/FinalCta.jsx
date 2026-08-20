@@ -128,54 +128,13 @@ export default function FinalCta() {
               fontSize: 'clamp(17px, 1.4vw, 21px)',
               color: '#333333',
               maxWidth: '880px',
-              margin: '0 auto 26px',
+              margin: '0 auto 34px',
               fontWeight: 500,
               lineHeight: 1.55,
             }}
           >
             Deploy real budgets on Meta & Google, execute growth funnels, and build a verified hiring portfolio. Zero theory lectures.
           </p>
-
-          {/* Horizontal Highlight Badges */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '14px',
-              flexWrap: 'wrap',
-              marginBottom: '32px',
-              maxWidth: '1100px',
-            }}
-          >
-            {[
-              '30+ Live Campaigns',
-              'Real Ad Spend Deployed',
-              '100% Placement Track',
-              'Rolling Admissions',
-            ].map((badge, idx) => (
-              <div
-                key={idx}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: '#ffffff',
-                  border: '1.5px solid #0A0A0A',
-                  borderRadius: '12px',
-                  padding: '8px 18px',
-                  fontSize: '12.5px',
-                  fontWeight: 800,
-                  color: '#0A0A0A',
-                  boxShadow: '2px 2px 0px #0A0A0A',
-                  fontFamily: "var(--ff-mono, monospace)",
-                }}
-              >
-                <CheckCircle2 size={15} color="#6D28FF" />
-                <span>{badge}</span>
-              </div>
-            ))}
-          </div>
 
           {/* Centered CTA Buttons Group */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '22px' }}>
