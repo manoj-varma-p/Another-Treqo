@@ -230,10 +230,10 @@ export default function HeroSection() {
               background: '#ffffff',
               border: '2px solid #0A0A0A',
               borderRadius: '14px',
-              padding: '14px 16px',
+              padding: '14px 18px',
               boxShadow: '4px 4px 0px #0A0A0A',
               width: 'calc(100vw - 40px)',
-              maxWidth: '300px',
+              maxWidth: '580px',
               transition: 'box-shadow 0.2s ease',
             }}
           >
@@ -283,26 +283,39 @@ export default function HeroSection() {
               </button>
             </div>
 
-            {/* Clickable Card Body */}
-            <Link href="/how-it-works" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-              <h4
-                style={{
-                  fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                  fontSize: '13.5px',
-                  fontWeight: 900,
-                  color: '#0A0A0A',
-                  margin: '0 0 4px',
-                  lineHeight: 1.22,
-                  textTransform: 'uppercase',
-                  letterSpacing: '-0.01em',
-                }}
-              >
-                How Treqo Actually Works: The Death of Theory
-              </h4>
+            {/* Clickable Card Body (Horizontal Split) */}
+            <Link
+              href="/how-it-works"
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '16px',
+                flexWrap: 'wrap',
+              }}
+            >
+              <div style={{ flex: '1 1 300px' }}>
+                <h4
+                  style={{
+                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                    fontSize: '13.5px',
+                    fontWeight: 900,
+                    color: '#0A0A0A',
+                    margin: '0 0 3px',
+                    lineHeight: 1.22,
+                    textTransform: 'uppercase',
+                    letterSpacing: '-0.01em',
+                  }}
+                >
+                  How Treqo Actually Works: The Death of Theory
+                </h4>
 
-              <p style={{ fontSize: '11.5px', color: '#555555', lineHeight: 1.35, margin: '0 0 10px', fontWeight: 500 }}>
-                An unfiltered breakdown on managing ₹50k live ad spend and landing jobs.
-              </p>
+                <p style={{ fontSize: '11.5px', color: '#555555', lineHeight: 1.35, margin: 0, fontWeight: 500 }}>
+                  An unfiltered breakdown on managing ₹50k live ad spend and landing jobs.
+                </p>
+              </div>
 
               {/* Action Button */}
               <div
@@ -311,19 +324,20 @@ export default function HeroSection() {
                   color: '#ffffff',
                   border: '1.5px solid #0A0A0A',
                   borderRadius: '8px',
-                  padding: '7px 12px',
-                  display: 'flex',
+                  padding: '8px 14px',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
+                  gap: '8px',
                   fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
                   fontSize: '11px',
                   fontWeight: 900,
                   letterSpacing: '0.04em',
                   textTransform: 'uppercase',
                   boxShadow: '2px 2px 0px #6D28FF',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                <span>Read Essay Breakdown</span>
+                <span>Read Breakdown</span>
                 <ArrowRight size={13} />
               </div>
             </Link>
