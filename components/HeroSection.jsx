@@ -1,22 +1,28 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, Bell, MousePointer, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  Sparkles,
+  Play,
+  Zap,
+  TrendingUp,
+  Target,
+  CheckCircle2,
+  MousePointer,
+  Flame,
+} from 'lucide-react';
 import { DoodleBadge, DoodleArrow } from './Doodles';
 
 export default function HeroSection() {
-  const [showNotification, setShowNotification] = useState(false);
-
-  useEffect(() => {
-    // Notification pops in from right precisely after 2 seconds
-    const timer = setTimeout(() => {
-      setShowNotification(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const previewStages = [
+    { num: '01', label: 'Pick Track', icon: Target, active: true },
+    { num: '02', label: '₹50k Spend', icon: Zap, active: true },
+    { num: '03', label: 'TAC Roasts', icon: Flame, active: true },
+    { num: '04', label: 'Placement', icon: CheckCircle2, active: true },
+  ];
 
   return (
     <>
@@ -27,7 +33,7 @@ export default function HeroSection() {
           padding: '110px 80px 80px',
           position: 'relative',
           overflow: 'hidden',
-          minHeight: '620px',
+          minHeight: '640px',
         }}
       >
         {/* Subtle Background Grid */}
@@ -52,8 +58,8 @@ export default function HeroSection() {
             position: 'relative',
             zIndex: 1,
             display: 'grid',
-            gridTemplateColumns: '1.15fr 0.85fr',
-            gap: '56px',
+            gridTemplateColumns: '1.1fr 0.9fr',
+            gap: '52px',
             alignItems: 'center',
           }}
           className="hero-grid-layout"
@@ -197,174 +203,262 @@ export default function HeroSection() {
           </div>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT: Pops in from Right after 2 Seconds
+              RIGHT: High-CTR Interactive Simulation Test-Drive Console
           ══════════════════════════════════════════════════ */}
-          <div
-            style={{
-              position: 'relative',
-              width: '100%',
-              minHeight: '320px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <AnimatePresence>
-              {showNotification && (
-                <Link
-                  href="/how-it-works"
-                  style={{ textDecoration: 'none', color: 'inherit', width: '100%', maxWidth: '480px', display: 'block' }}
+          <div style={{ position: 'relative', width: '100%' }}>
+
+            {/* Floating Top Sticker: 100% Interactive Tour */}
+            <motion.div
+              animate={{ y: [0, -6, 0], rotate: [-3, 1, -3] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                top: '-20px',
+                right: '15px',
+                zIndex: 30,
+                background: '#FFE600',
+                color: '#0A0A0A',
+                border: '2px solid #0A0A0A',
+                borderRadius: '10px',
+                padding: '6px 14px',
+                fontFamily: "var(--ff-mono, monospace)",
+                fontSize: '11px',
+                fontWeight: 900,
+                boxShadow: '4px 4px 0px #0A0A0A',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                pointerEvents: 'none',
+              }}
+            >
+              <Sparkles size={13} color="#0A0A0A" />
+              <span>TEST-DRIVE IN 60 SECONDS</span>
+            </motion.div>
+
+            {/* Floating Bottom-Left Pill: Zero Sign-Up Needed */}
+            <motion.div
+              animate={{ y: [0, 6, 0], rotate: [2, -2, 2] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                bottom: '-16px',
+                left: '-15px',
+                zIndex: 30,
+                background: '#ffffff',
+                border: '2px solid #0A0A0A',
+                borderRadius: '10px',
+                padding: '6px 14px',
+                fontFamily: "var(--ff-mono, monospace)",
+                fontSize: '11px',
+                fontWeight: 900,
+                boxShadow: '4px 4px 0px #6D28FF',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                pointerEvents: 'none',
+              }}
+            >
+              <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 6px #22C55E' }} />
+              <span style={{ color: '#0A0A0A' }}>Interactive Simulation Ready</span>
+            </motion.div>
+
+            {/* The Main Clickable Simulator Console Card */}
+            <Link
+              href="/how-it-works"
+              style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+            >
+              <motion.div
+                whileHover={{ y: -8, boxShadow: '14px 14px 0px #6D28FF' }}
+                whileTap={{ scale: 0.98 }}
+                style={{
+                  background: '#ffffff',
+                  border: '3.5px solid #0A0A0A',
+                  borderRadius: '28px',
+                  padding: '30px 28px',
+                  boxShadow: '10px 10px 0px #0A0A0A',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'box-shadow 0.25s ease, transform 0.25s ease',
+                }}
+              >
+                {/* Window Top Bar with macOS dots */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    borderBottom: '2px solid rgba(10,10,10,0.08)',
+                    paddingBottom: '14px',
+                    marginBottom: '20px',
+                  }}
                 >
-                  <motion.div
-                    initial={{ opacity: 0, x: 240, scale: 0.9, rotate: 3 }}
-                    animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
-                    exit={{ opacity: 0, x: 180, scale: 0.9 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 180,
-                      damping: 18,
-                      mass: 0.9,
-                    }}
-                    whileHover={{ x: -6, y: -4, boxShadow: '12px 12px 0px #6D28FF' }}
-                    whileTap={{ scale: 0.98 }}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#FF5F56', border: '1px solid #E0443E' }} />
+                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#FFBD2E', border: '1px solid #DEA123' }} />
+                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#27C93F', border: '1px solid #1AAB29' }} />
+                    <span
+                      style={{
+                        fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                        fontSize: '11.5px',
+                        fontWeight: 900,
+                        color: '#555555',
+                        marginLeft: '8px',
+                      }}
+                    >
+                      treqo_operator_system.exe
+                    </span>
+                  </div>
+
+                  <div
                     style={{
-                      background: '#ffffff',
-                      border: '3px solid #0A0A0A',
-                      borderRadius: '26px',
-                      padding: '28px 28px',
-                      boxShadow: '8px 8px 0px #0A0A0A',
-                      cursor: 'pointer',
-                      transition: 'box-shadow 0.2s ease',
-                      position: 'relative',
+                      background: '#22C55E18',
+                      color: '#16a34a',
+                      border: '1px solid #16a34a',
+                      borderRadius: '6px',
+                      padding: '2px 8px',
+                      fontFamily: "var(--ff-mono, monospace)",
+                      fontSize: '10px',
+                      fontWeight: 900,
                     }}
                   >
-                    {/* Top Push Notification Header Bar */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        {/* Avatar with Live Green Status */}
-                        <div style={{ position: 'relative', flexShrink: 0 }}>
-                          <img
-                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
-                            alt="Lokesh Dama"
-                            style={{
-                              width: '48px',
-                              height: '48px',
-                              borderRadius: '14px',
-                              border: '2px solid #0A0A0A',
-                              objectFit: 'cover',
-                            }}
-                          />
-                          <div
-                            style={{
-                              position: 'absolute',
-                              bottom: '-2px',
-                              right: '-2px',
-                              width: '12px',
-                              height: '12px',
-                              borderRadius: '50%',
-                              background: '#22C55E',
-                              border: '2px solid #ffffff',
-                              boxShadow: '0 0 6px #22C55E',
-                            }}
-                          />
-                        </div>
+                    ● LIVE OS
+                  </div>
+                </div>
 
-                        <div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <span style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '16px', fontWeight: 900, color: '#0A0A0A' }}>
-                              Lokesh Dama
-                            </span>
-                            <span
-                              style={{
-                                background: '#6D28FF18',
-                                color: '#6D28FF',
-                                border: '1px solid #6D28FF',
-                                borderRadius: '4px',
-                                padding: '1px 6px',
-                                fontSize: '10px',
-                                fontWeight: 900,
-                                fontFamily: "var(--ff-mono, monospace)",
-                              }}
-                            >
-                              FOUNDER @ TAC
-                            </span>
-                          </div>
-                          <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#777777', fontWeight: 700 }}>
-                            Just now · Live Ping 🟢
-                          </span>
-                        </div>
-                      </div>
+                {/* Main Teaser Headline */}
+                <h3
+                  style={{
+                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                    fontSize: 'clamp(22px, 2.3vw, 30px)',
+                    fontWeight: 900,
+                    color: '#0A0A0A',
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.15,
+                    margin: '0 0 8px',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  See How It <span style={{ color: '#6D28FF' }}>Actually Works</span>
+                </h3>
 
+                <p style={{ fontSize: '13.5px', color: '#555555', lineHeight: 1.5, margin: '0 0 20px', fontWeight: 500 }}>
+                  Take a 60-second interactive test drive. Watch how you get real ad budgets, fix campaign unit economics, and build an undeniable portfolio.
+                </p>
+
+                {/* 4 Interactive Journey Stage Indicators */}
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(4, 1fr)',
+                    gap: '8px',
+                    marginBottom: '24px',
+                  }}
+                >
+                  {previewStages.map((st) => {
+                    const StIcon = st.icon;
+                    return (
                       <div
+                        key={st.num}
                         style={{
-                          background: '#22C55E',
-                          color: '#ffffff',
-                          fontFamily: "var(--ff-mono, monospace)",
-                          fontSize: '10px',
-                          fontWeight: 900,
-                          padding: '3px 8px',
-                          borderRadius: '6px',
-                          letterSpacing: '0.06em',
+                          background: '#FAF9F8',
                           border: '1.5px solid #0A0A0A',
+                          borderRadius: '12px',
+                          padding: '10px 8px',
+                          textAlign: 'center',
                           display: 'flex',
+                          flexDirection: 'column',
                           alignItems: 'center',
                           gap: '4px',
                         }}
                       >
-                        <Bell size={10} />
-                        <span>NEW MESSAGE</span>
+                        <span
+                          style={{
+                            fontFamily: "var(--ff-mono, monospace)",
+                            fontSize: '9.5px',
+                            fontWeight: 900,
+                            color: '#6D28FF',
+                          }}
+                        >
+                          PHASE {st.num}
+                        </span>
+                        <StIcon size={16} color="#0A0A0A" />
+                        <span
+                          style={{
+                            fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                            fontSize: '11px',
+                            fontWeight: 900,
+                            color: '#0A0A0A',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          {st.label}
+                        </span>
                       </div>
-                    </div>
+                    );
+                  })}
+                </div>
 
-                    {/* Notification Body Box */}
+                {/* ── THE GIANT MAGNETIC CTA BUTTON ── */}
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  style={{
+                    background: '#0A0A0A',
+                    color: '#ffffff',
+                    border: '2px solid #0A0A0A',
+                    borderRadius: '18px',
+                    padding: '16px 22px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    boxShadow: '5px 5px 0px #6D28FF',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <div
                       style={{
-                        background: '#E5DFD0',
-                        border: '1.5px solid #0A0A0A',
-                        borderRadius: '16px',
-                        padding: '16px 18px',
-                        marginBottom: '18px',
-                      }}
-                    >
-                      <p
-                        style={{
-                          fontSize: '14.5px',
-                          color: '#0A0A0A',
-                          lineHeight: 1.5,
-                          margin: 0,
-                          fontWeight: 600,
-                        }}
-                      >
-                        “Curious how our students manage <span style={{ color: '#6D28FF', fontWeight: 900 }}>₹50k live ad spend</span>, get weekly founder teardowns, and land high-paying roles?”
-                      </p>
-                    </div>
-
-                    {/* Interactive Action Button */}
-                    <div
-                      style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '50%',
                         background: '#6D28FF',
-                        color: '#ffffff',
-                        border: '2px solid #0A0A0A',
-                        borderRadius: '14px',
-                        padding: '12px 20px',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'space-between',
-                        boxShadow: '3px 3px 0px #0A0A0A',
-                        fontWeight: 900,
-                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                        fontSize: '14px',
-                        letterSpacing: '0.04em',
-                        textTransform: 'uppercase',
+                        justifyContent: 'center',
+                        boxShadow: '0 0 12px rgba(109, 40, 255, 0.6)',
                       }}
                     >
-                      <span>See How It Works [Interactive]</span>
-                      <ArrowRight size={18} />
+                      <Play size={16} fill="#ffffff" color="#ffffff" style={{ marginLeft: '2px' }} />
                     </div>
-                  </motion.div>
-                </Link>
-              )}
-            </AnimatePresence>
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                          fontSize: '14px',
+                          fontWeight: 900,
+                          letterSpacing: '0.04em',
+                          textTransform: 'uppercase',
+                          color: '#ffffff',
+                        }}
+                      >
+                        Launch Interactive Simulator
+                      </div>
+                      <div
+                        style={{
+                          fontSize: '10.5px',
+                          color: '#A78BFA',
+                          fontFamily: "var(--ff-mono, monospace)",
+                          fontWeight: 700,
+                        }}
+                      >
+                        Tap to test drive · 60s walkthrough →
+                      </div>
+                    </div>
+                  </div>
+
+                  <ArrowRight size={20} color="#ffffff" />
+                </motion.div>
+              </motion.div>
+            </Link>
           </div>
 
         </div>
