@@ -169,13 +169,13 @@ export default function HeroSection() {
                   alignItems: 'center',
                   gap: 10,
                   boxShadow: '6px 6px 0px #0A0A0A',
-                  transition: 'all 0.2s',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translate(-2px, -2px)';
                   e.currentTarget.style.boxShadow = '8px 8px 0px #0A0A0A';
-                  e.currentTarget.style.background = '#6D28FF';
-                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.color = '#0A0A0A';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'none';
