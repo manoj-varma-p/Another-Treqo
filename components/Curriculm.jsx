@@ -253,28 +253,10 @@ export default function JourneyAndInterview() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [candidateMode, setCandidateMode] = useState('treqo');
 
-  const scrollTrackRef = useRef(null);
   const rightListRef = useRef(null);
   const titleRefs = useRef([]);
-  const isClickScrolling = useRef(false);
-  const clickTimeout = useRef(null);
 
-  // Framer Motion scroll tracking
-  const { scrollYProgress } = useScroll({
-    target: scrollTrackRef,
-    offset: ["start start", "end end"]
-  });
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (isClickScrolling.current) return;
-    const rawIdx = Math.floor(latest * TERM_DATA.length);
-    const newIdx = Math.min(TERM_DATA.length - 1, Math.max(0, rawIdx));
-    if (newIdx !== activeIdx) {
-      setActiveIdx(newIdx);
-    }
-  });
-
-  // Smooth scroll sync for the right titles list
+  // Smooth scroll sync for the right titles list when clicking
   useEffect(() => {
     const activeEl = titleRefs.current[activeIdx];
     if (activeEl && rightListRef.current) {
@@ -287,29 +269,9 @@ export default function JourneyAndInterview() {
     }
   }, [activeIdx]);
 
-  const handleTitleClick = useCallback((idx) => {
+  const handleTitleClick = (idx) => {
     setActiveIdx(idx);
-    isClickScrolling.current = true;
-    if (clickTimeout.current) clearTimeout(clickTimeout.current);
-
-    if (scrollTrackRef.current) {
-      const track = scrollTrackRef.current;
-      const rect = track.getBoundingClientRect();
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const trackTop = rect.top + scrollTop;
-      const trackHeight = track.offsetHeight - window.innerHeight;
-      const targetScroll = trackTop + (idx / TERM_DATA.length) * trackHeight + 20;
-
-      window.scrollTo({
-        top: targetScroll,
-        behavior: 'smooth'
-      });
-    }
-
-    clickTimeout.current = setTimeout(() => {
-      isClickScrolling.current = false;
-    }, 700);
-  }, []);
+  };
 
   const currentTerm = TERM_DATA[activeIdx] || TERM_DATA[0];
 
@@ -324,32 +286,18 @@ export default function JourneyAndInterview() {
       }}
     >
       {/* ══════════════════════════════════════════════════════════════
-          PART 1: UNBOXED SCROLL-DRIVEN 16-TERM CURRICULUM
+          PART 1: UNBOXED 16-TERM CURRICULUM EXPLORER
           Left: Pure, High-Readability Editorial Layout (No Enclosing Box)
           Right: Sleek Interactive Timeline Rail (No Boxes)
       ══════════════════════════════════════════════════════════════ */}
       <div
-        ref={scrollTrackRef}
         style={{
-          height: '420vh',
-          position: 'relative',
+          padding: '70px 80px 40px',
+          maxWidth: '1540px',
+          margin: '0 auto',
+          boxSizing: 'border-box',
         }}
       >
-        <div
-          style={{
-            position: 'sticky',
-            top: 0,
-            height: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            padding: '65px 80px 24px',
-            maxWidth: '1540px',
-            margin: '0 auto',
-            boxSizing: 'border-box',
-            overflow: 'hidden',
-          }}
-        >
           {/* Section Header Bar with Big Title */}
           <div style={{ marginBottom: '22px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '10px' }}>
@@ -448,8 +396,8 @@ export default function JourneyAndInterview() {
               display: 'grid',
               gridTemplateColumns: 'minmax(0, 1.35fr) minmax(0, 0.85fr)',
               gap: 'clamp(32px, 5vw, 70px)',
-              height: 'calc(100vh - 200px)',
-              maxHeight: '640px',
+              minHeight: '520px',
+              maxHeight: '560px',
               alignItems: 'center',
             }}
             className="curriculum-main-grid"
@@ -858,7 +806,6 @@ export default function JourneyAndInterview() {
             </div>
           </div>
         </div>
-      </div>
 
       {/* ══════════════════════════════════════════════════════════════
           PART 2: THE INTERVIEW SHOWDOWN (GENERIC VS TREQO GRADUATE)
