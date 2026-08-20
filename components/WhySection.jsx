@@ -259,6 +259,10 @@ export default function WhySection() {
             padding: '36px clamp(24px, 4vw, 48px)',
             position: 'relative',
             overflow: 'hidden',
+            minHeight: '480px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
           }}
         >
           {/* Progress Indicator */}
@@ -280,75 +284,79 @@ export default function WhySection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1.2fr 0.85fr',
                 gap: '36px',
-                alignItems: 'center',
+                alignItems: 'stretch',
+                width: '100%',
+                minHeight: '390px',
               }}
               className="pillar-card-grid"
             >
               {/* Left Details */}
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-                  <span
+              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
+                    <span
+                      style={{
+                        background: '#6D28FF',
+                        color: '#ffffff',
+                        fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                        fontSize: '11px',
+                        fontWeight: 900,
+                        padding: '4px 12px',
+                        borderRadius: '6px',
+                        letterSpacing: '0.08em',
+                        border: '1.5px solid #0A0A0A',
+                      }}
+                    >
+                      PILLAR {current.num}
+                    </span>
+
+                    <span
+                      style={{
+                        background: '#F3F0E7',
+                        color: '#6D28FF',
+                        border: '1.5px solid #0A0A0A',
+                        fontFamily: "var(--ff-mono, monospace)",
+                        fontSize: '11px',
+                        fontWeight: 800,
+                        padding: '4px 10px',
+                        borderRadius: '6px',
+                      }}
+                    >
+                      {current.tag}
+                    </span>
+                  </div>
+
+                  <h3
                     style={{
-                      background: '#6D28FF',
-                      color: '#ffffff',
-                      fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                      fontSize: '11px',
+                      fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                      fontSize: 'clamp(22px, 2.6vw, 32px)',
                       fontWeight: 900,
-                      padding: '4px 12px',
-                      borderRadius: '6px',
-                      letterSpacing: '0.08em',
-                      border: '1.5px solid #0A0A0A',
+                      color: '#0A0A0A',
+                      lineHeight: 1.15,
+                      margin: '0 0 14px',
+                      letterSpacing: '-0.03em',
                     }}
                   >
-                    PILLAR {current.num}
-                  </span>
+                    {current.title}
+                  </h3>
 
-                  <span
+                  <p
                     style={{
-                      background: '#F3F0E7',
-                      color: '#6D28FF',
-                      border: '1.5px solid #0A0A0A',
-                      fontFamily: "var(--ff-mono, monospace)",
-                      fontSize: '11px',
-                      fontWeight: 800,
-                      padding: '4px 10px',
-                      borderRadius: '6px',
+                      fontSize: '15px',
+                      color: '#444444',
+                      lineHeight: 1.6,
+                      margin: '0 0 20px',
+                      fontWeight: 500,
                     }}
                   >
-                    {current.tag}
-                  </span>
+                    {current.desc}
+                  </p>
                 </div>
-
-                <h3
-                  style={{
-                    fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                    fontSize: 'clamp(22px, 2.6vw, 32px)',
-                    fontWeight: 900,
-                    color: '#0A0A0A',
-                    lineHeight: 1.15,
-                    margin: '0 0 14px',
-                    letterSpacing: '-0.03em',
-                  }}
-                >
-                  {current.title}
-                </h3>
-
-                <p
-                  style={{
-                    fontSize: '15px',
-                    color: '#444444',
-                    lineHeight: 1.6,
-                    margin: '0 0 20px',
-                    fontWeight: 500,
-                  }}
-                >
-                  {current.desc}
-                </p>
 
                 {/* Quote Box */}
                 <div
@@ -360,6 +368,7 @@ export default function WhySection() {
                     borderBottom: '1px solid rgba(10, 10, 10, 0.1)',
                     borderRadius: '0 12px 12px 0',
                     padding: '12px 16px',
+                    marginTop: 'auto',
                   }}
                 >
                   <p
@@ -387,6 +396,10 @@ export default function WhySection() {
                   borderRadius: '20px',
                   padding: '24px',
                   boxShadow: '6px 6px 0px #6D28FF',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  minHeight: '390px',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
