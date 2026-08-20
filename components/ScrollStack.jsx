@@ -162,7 +162,7 @@ export default function TrainingSection() {
       id="training"
       data-stage="TRAINING"
       style={{
-        background: '#F3F0E7',
+        background: '#E5DFD0',
         color: '#0A0A0A',
         padding: '70px 80px 90px',
         position: 'relative',
@@ -387,7 +387,7 @@ export default function TrainingSection() {
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                         <span
                           style={{
-                            background: '#F3F0E7',
+                            background: '#E5DFD0',
                             border: '1.5px solid #0A0A0A',
                             color: '#0A0A0A',
                             fontFamily: "var(--ff-mono, monospace)",
@@ -427,7 +427,7 @@ export default function TrainingSection() {
                               display: 'flex',
                               alignItems: 'flex-start',
                               gap: '12px',
-                              background: '#F3F0E7',
+                              background: '#E5DFD0',
                               border: '1.5px solid #0A0A0A',
                               borderRadius: '12px',
                               padding: '11px 14px',

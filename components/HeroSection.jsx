@@ -20,7 +20,7 @@ export default function HeroSection() {
     <>
       <section
         style={{
-          background: '#F3F0E7',
+          background: '#E5DFD0',
           color: '#0A0A0A',
           padding: '110px 80px 80px',
           position: 'relative',
@@ -283,7 +283,7 @@ export default function HeroSection() {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '6px',
-                      background: '#F3F0E7',
+                      background: '#E5DFD0',
                       border: '1.5px solid #0A0A0A',
                       borderRadius: '8px',
                       padding: '4px 10px',

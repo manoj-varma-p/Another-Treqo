@@ -103,7 +103,7 @@ export default function WhyTreqo() {
       data-stage="TRANSFORMATION"
       ref={sectionRef}
       style={{
-        background: '#F3F0E7',
+        background: '#E5DFD0',
         color: '#0A0A0A',
         position: 'relative',
         height: '320vh', // Provides generous, smooth scroll distance

@@ -212,7 +212,7 @@ export default function UnifiedMasterStack() {
       id="master-system"
       data-stage="MASTER_SYSTEM"
       style={{
-        background: '#F3F0E7',
+        background: '#E5DFD0',
         color: '#0A0A0A',
         padding: '80px 80px 90px',
         position: 'relative',
@@ -782,7 +782,7 @@ export default function UnifiedMasterStack() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                       <span
                         style={{
-                          background: '#F3F0E7',
+                          background: '#E5DFD0',
                           color: '#6D28FF',
                           fontFamily: "var(--ff-mono, monospace)",
                           fontSize: '11px',

@@ -78,7 +78,7 @@ export default function HowItWorksPage() {
 
       <main
         style={{
-          background: '#F3F0E7',
+          background: '#E5DFD0',
           color: '#0A0A0A',
           minHeight: '100vh',
           padding: '120px 80px 100px',
@@ -339,7 +339,7 @@ export default function HowItWorksPage() {
               {/* Bottom Character Info Tag */}
               <div
                 style={{
-                  background: '#F3F0E7',
+                  background: '#E5DFD0',
                   border: '2px solid #0A0A0A',
                   borderRadius: '12px',
                   padding: '8px 18px',

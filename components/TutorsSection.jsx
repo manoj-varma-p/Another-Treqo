@@ -134,7 +134,7 @@ export default function TutorsSection() {
       style={{
         width: '100%',
         padding: '70px 80px 80px',
-        background: '#F3F0E7',
+        background: '#E5DFD0',
         color: '#0A0A0A',
         overflow: 'hidden',
         position: 'relative',

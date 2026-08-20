@@ -259,7 +259,7 @@ export function DoodleBadge({ text, rotate = -2, highlight = true }) {
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        background: highlight ? '#6D28FF' : '#F3F0E7',
+        background: highlight ? '#6D28FF' : '#E5DFD0',
         color: highlight ? '#ffffff' : '#0A0A0A',
         fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
         fontSize: '11px',

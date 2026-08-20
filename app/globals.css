@@ -3,7 +3,7 @@
 :root {
   --black: #0a0a0a;
   --ink: #131113;
-  --white: #F3F0E7;
+  --white: #E5DFD0;
   --purple: #6d28ff;
   --purple-light: #9c7bff;
   --purple-deep: #1c0a3e;
@@ -11,7 +11,7 @@
   --grey-lt: #c9c6cf;
   --grey-on-black: #948da3;
   --line: rgba(10, 10, 10, 0.12);
-  --line-on-black: rgba(243, 240, 231, 0.14);
+  --line-on-black: rgba(229, 223, 208, 0.14);
   --ff-display: 'Outfit', 'Space Grotesk', sans-serif;
   --ff-body: 'Outfit', 'Inter', sans-serif;
   --ff-mono: 'JetBrains Mono', monospace;
@@ -41,7 +41,7 @@ html {
 }
 
 body {
-  background: #F3F0E7;
+  background: #E5DFD0;
   color: var(--black);
   font-family: var(--ff-body);
   font-size: 16px;

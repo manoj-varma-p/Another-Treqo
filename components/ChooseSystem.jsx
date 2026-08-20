@@ -126,7 +126,7 @@ export default function ChooseSystem() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          background: '#F3F0E7',
+          background: '#E5DFD0',
           color: '#0A0A0A',
           padding: '70px 0 60px',
           position: 'relative',
@@ -423,7 +423,7 @@ export default function ChooseSystem() {
                         {/* Format */}
                         <div
                           style={{
-                            background: '#F3F0E7',
+                            background: '#E5DFD0',
                             border: '1.5px solid #0A0A0A',
                             borderRadius: '12px',
                             padding: '10px 12px',
@@ -460,7 +460,7 @@ export default function ChooseSystem() {
                         {/* Eligibility */}
                         <div
                           style={{
-                            background: '#F3F0E7',
+                            background: '#E5DFD0',
                             border: '1.5px solid #0A0A0A',
                             borderRadius: '12px',
                             padding: '10px 12px',
@@ -497,7 +497,7 @@ export default function ChooseSystem() {
                         {/* Duration */}
                         <div
                           style={{
-                            background: '#F3F0E7',
+                            background: '#E5DFD0',
                             border: '1.5px solid #0A0A0A',
                             borderRadius: '12px',
                             padding: '10px 12px',
@@ -534,7 +534,7 @@ export default function ChooseSystem() {
                         {/* Deadline */}
                         <div
                           style={{
-                            background: '#F3F0E7',
+                            background: '#E5DFD0',
                             border: '1.5px solid #0A0A0A',
                             borderRadius: '12px',
                             padding: '10px 12px',

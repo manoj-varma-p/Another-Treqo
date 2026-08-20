@@ -33,7 +33,7 @@ export default function SelfSelection() {
       id="self-selection"
       data-stage="SELF_SELECTION"
       style={{
-        background: '#F3F0E7',
+        background: '#E5DFD0',
         color: '#0A0A0A',
         padding: '70px 80px',
         position: 'relative',

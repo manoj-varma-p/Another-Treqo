@@ -51,7 +51,7 @@ export default function ApplyModal({ isOpen, onClose }) {
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            background: '#F3F0E7',
+            background: '#E5DFD0',
             border: '2px solid #0A0A0A',
             borderRadius: '24px',
             boxShadow: '12px 12px 0px #0A0A0A',

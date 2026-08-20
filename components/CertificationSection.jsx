@@ -220,7 +220,7 @@ export default function CertificationSection() {
       data-stage="CERTS"
       style={{
         padding: '80px 80px',
-        background: '#F3F0E7',
+        background: '#E5DFD0',
         color: '#0A0A0A',
         position: 'relative',
       }}
@@ -399,7 +399,7 @@ export default function CertificationSection() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
                 <span
                   style={{
-                    background: '#F3F0E7',
+                    background: '#E5DFD0',
                     color: '#6D28FF',
                     fontFamily: "var(--ff-mono, monospace)",
                     fontSize: '11px',
@@ -492,7 +492,7 @@ export default function CertificationSection() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  background: '#F3F0E7',
+                  background: '#E5DFD0',
                   border: '1.5px solid #0A0A0A',
                   borderRadius: '10px',
                   padding: '6px 14px',
