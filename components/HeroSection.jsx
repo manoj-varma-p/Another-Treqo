@@ -5,25 +5,17 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
+  BookOpen,
   Sparkles,
-  Play,
-  Zap,
+  Clock,
+  ArrowUpRight,
   TrendingUp,
-  Target,
-  CheckCircle2,
-  MousePointer,
   Flame,
+  Bookmark,
 } from 'lucide-react';
 import { DoodleBadge, DoodleArrow } from './Doodles';
 
 export default function HeroSection() {
-  const previewStages = [
-    { num: '01', label: 'Pick Track', icon: Target, active: true },
-    { num: '02', label: '₹50k Spend', icon: Zap, active: true },
-    { num: '03', label: 'TAC Roasts', icon: Flame, active: true },
-    { num: '04', label: 'Placement', icon: CheckCircle2, active: true },
-  ];
-
   return (
     <>
       <section
@@ -33,7 +25,7 @@ export default function HeroSection() {
           padding: '110px 80px 80px',
           position: 'relative',
           overflow: 'hidden',
-          minHeight: '640px',
+          minHeight: '620px',
         }}
       >
         {/* Subtle Background Grid */}
@@ -58,8 +50,8 @@ export default function HeroSection() {
             position: 'relative',
             zIndex: 1,
             display: 'grid',
-            gridTemplateColumns: '1.1fr 0.9fr',
-            gap: '52px',
+            gridTemplateColumns: '1.15fr 0.85fr',
+            gap: '56px',
             alignItems: 'center',
           }}
           className="hero-grid-layout"
@@ -203,18 +195,18 @@ export default function HeroSection() {
           </div>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT: High-CTR Interactive Simulation Test-Drive Console
+              RIGHT: Featured High-Engagement Blog Essay Card
           ══════════════════════════════════════════════════ */}
-          <div style={{ position: 'relative', width: '100%' }}>
+          <div style={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}>
 
-            {/* Floating Top Sticker: 100% Interactive Tour */}
+            {/* Floating Trending Sticker */}
             <motion.div
-              animate={{ y: [0, -6, 0], rotate: [-3, 1, -3] }}
+              animate={{ y: [0, -6, 0], rotate: [-2, 2, -2] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
               style={{
                 position: 'absolute',
-                top: '-20px',
-                right: '15px',
+                top: '-18px',
+                right: '10px',
                 zIndex: 30,
                 background: '#FFE600',
                 color: '#0A0A0A',
@@ -224,48 +216,21 @@ export default function HeroSection() {
                 fontFamily: "var(--ff-mono, monospace)",
                 fontSize: '11px',
                 fontWeight: 900,
-                boxShadow: '4px 4px 0px #0A0A0A',
+                boxShadow: '3px 3px 0px #0A0A0A',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
                 pointerEvents: 'none',
               }}
             >
-              <Sparkles size={13} color="#0A0A0A" />
-              <span>TEST-DRIVE IN 60 SECONDS</span>
+              <Flame size={14} color="#EA580C" />
+              <span>MUST-READ ESSAY</span>
             </motion.div>
 
-            {/* Floating Bottom-Left Pill: Zero Sign-Up Needed */}
-            <motion.div
-              animate={{ y: [0, 6, 0], rotate: [2, -2, 2] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              style={{
-                position: 'absolute',
-                bottom: '-16px',
-                left: '-15px',
-                zIndex: 30,
-                background: '#ffffff',
-                border: '2px solid #0A0A0A',
-                borderRadius: '10px',
-                padding: '6px 14px',
-                fontFamily: "var(--ff-mono, monospace)",
-                fontSize: '11px',
-                fontWeight: 900,
-                boxShadow: '4px 4px 0px #6D28FF',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                pointerEvents: 'none',
-              }}
-            >
-              <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 6px #22C55E' }} />
-              <span style={{ color: '#0A0A0A' }}>Interactive Simulation Ready</span>
-            </motion.div>
-
-            {/* The Main Clickable Simulator Console Card */}
+            {/* The Main Clickable Blog Teaser Card */}
             <Link
               href="/how-it-works"
-              style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+              style={{ textDecoration: 'none', color: 'inherit', width: '100%', maxWidth: '490px', display: 'block' }}
             >
               <motion.div
                 whileHover={{ y: -8, boxShadow: '14px 14px 0px #6D28FF' }}
@@ -273,192 +238,132 @@ export default function HeroSection() {
                 style={{
                   background: '#ffffff',
                   border: '3.5px solid #0A0A0A',
-                  borderRadius: '28px',
+                  borderRadius: '26px',
                   padding: '30px 28px',
-                  boxShadow: '10px 10px 0px #0A0A0A',
+                  boxShadow: '9px 9px 0px #0A0A0A',
                   cursor: 'pointer',
                   position: 'relative',
                   overflow: 'hidden',
                   transition: 'box-shadow 0.25s ease, transform 0.25s ease',
                 }}
               >
-                {/* Window Top Bar with macOS dots */}
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    borderBottom: '2px solid rgba(10,10,10,0.08)',
-                    paddingBottom: '14px',
-                    marginBottom: '20px',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#FF5F56', border: '1px solid #E0443E' }} />
-                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#FFBD2E', border: '1px solid #DEA123' }} />
-                    <div style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#27C93F', border: '1px solid #1AAB29' }} />
-                    <span
-                      style={{
-                        fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                        fontSize: '11.5px',
-                        fontWeight: 900,
-                        color: '#555555',
-                        marginLeft: '8px',
-                      }}
-                    >
-                      treqo_operator_system.exe
-                    </span>
-                  </div>
-
+                {/* Blog Category & Reading Time Header */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
                   <div
                     style={{
-                      background: '#22C55E18',
-                      color: '#16a34a',
-                      border: '1px solid #16a34a',
-                      borderRadius: '6px',
-                      padding: '2px 8px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      background: '#6D28FF',
+                      color: '#ffffff',
+                      borderRadius: '8px',
+                      padding: '4px 12px',
                       fontFamily: "var(--ff-mono, monospace)",
-                      fontSize: '10px',
+                      fontSize: '11px',
                       fontWeight: 900,
+                      letterSpacing: '0.06em',
+                      border: '1.5px solid #0A0A0A',
                     }}
                   >
-                    ● LIVE OS
+                    <BookOpen size={13} />
+                    <span>FOUNDER ESSAY</span>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#666666', fontSize: '11.5px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 700 }}>
+                    <Clock size={13} />
+                    <span>4 MIN READ</span>
                   </div>
                 </div>
 
-                {/* Main Teaser Headline */}
+                {/* Blog Headline */}
                 <h3
                   style={{
                     fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                    fontSize: 'clamp(22px, 2.3vw, 30px)',
+                    fontSize: 'clamp(22px, 2.3vw, 28px)',
                     fontWeight: 900,
                     color: '#0A0A0A',
                     letterSpacing: '-0.02em',
-                    lineHeight: 1.15,
-                    margin: '0 0 8px',
+                    lineHeight: 1.18,
+                    margin: '0 0 12px',
                     textTransform: 'uppercase',
                   }}
                 >
-                  See How It <span style={{ color: '#6D28FF' }}>Actually Works</span>
+                  How Treqo Actually Works: <span style={{ color: '#6D28FF' }}>The Death of Marketing Theory</span>
                 </h3>
 
-                <p style={{ fontSize: '13.5px', color: '#555555', lineHeight: 1.5, margin: '0 0 20px', fontWeight: 500 }}>
-                  Take a 60-second interactive test drive. Watch how you get real ad budgets, fix campaign unit economics, and build an undeniable portfolio.
-                </p>
-
-                {/* 4 Interactive Journey Stage Indicators */}
-                <div
+                {/* Excerpt */}
+                <p
                   style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(4, 1fr)',
-                    gap: '8px',
-                    marginBottom: '24px',
+                    fontSize: '14px',
+                    color: '#444444',
+                    lineHeight: 1.55,
+                    margin: '0 0 20px',
+                    fontWeight: 500,
                   }}
                 >
-                  {previewStages.map((st) => {
-                    const StIcon = st.icon;
-                    return (
-                      <div
-                        key={st.num}
-                        style={{
-                          background: '#FAF9F8',
-                          border: '1.5px solid #0A0A0A',
-                          borderRadius: '12px',
-                          padding: '10px 8px',
-                          textAlign: 'center',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          gap: '4px',
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: "var(--ff-mono, monospace)",
-                            fontSize: '9.5px',
-                            fontWeight: 900,
-                            color: '#6D28FF',
-                          }}
-                        >
-                          PHASE {st.num}
-                        </span>
-                        <StIcon size={16} color="#0A0A0A" />
-                        <span
-                          style={{
-                            fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                            fontSize: '11px',
-                            fontWeight: 900,
-                            color: '#0A0A0A',
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {st.label}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
+                  We spent 7 years running performance agencies. Here is the unfiltered blueprint of how our students manage ₹50k live ad spend, fix unit economics, and build proof that gets them hired.
+                </p>
 
-                {/* ── THE GIANT MAGNETIC CTA BUTTON ── */}
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
+                {/* Author Info & Read CTA Row */}
+                <div
                   style={{
-                    background: '#0A0A0A',
-                    color: '#ffffff',
-                    border: '2px solid #0A0A0A',
-                    borderRadius: '18px',
-                    padding: '16px 22px',
+                    borderTop: '2px solid rgba(10,10,10,0.08)',
+                    paddingTop: '16px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    boxShadow: '5px 5px 0px #6D28FF',
+                    flexWrap: 'wrap',
+                    gap: '12px',
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div
+                  {/* Author Avatar */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <img
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+                      alt="Lokesh Dama"
                       style={{
-                        width: '36px',
-                        height: '36px',
-                        borderRadius: '50%',
-                        background: '#6D28FF',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        boxShadow: '0 0 12px rgba(109, 40, 255, 0.6)',
+                        width: '38px',
+                        height: '38px',
+                        borderRadius: '10px',
+                        border: '1.5px solid #0A0A0A',
+                        objectFit: 'cover',
                       }}
-                    >
-                      <Play size={16} fill="#ffffff" color="#ffffff" style={{ marginLeft: '2px' }} />
-                    </div>
+                    />
                     <div>
-                      <div
-                        style={{
-                          fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                          fontSize: '14px',
-                          fontWeight: 900,
-                          letterSpacing: '0.04em',
-                          textTransform: 'uppercase',
-                          color: '#ffffff',
-                        }}
-                      >
-                        Launch Interactive Simulator
+                      <div style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '13px', fontWeight: 900, color: '#0A0A0A' }}>
+                        Lokesh Dama
                       </div>
-                      <div
-                        style={{
-                          fontSize: '10.5px',
-                          color: '#A78BFA',
-                          fontFamily: "var(--ff-mono, monospace)",
-                          fontWeight: 700,
-                        }}
-                      >
-                        Tap to test drive · 60s walkthrough →
+                      <div style={{ fontSize: '10.5px', fontFamily: "var(--ff-mono, monospace)", color: '#777777', fontWeight: 600 }}>
+                        Founder @ TAC
                       </div>
                     </div>
                   </div>
 
-                  <ArrowRight size={20} color="#ffffff" />
-                </motion.div>
+                  {/* Read Article Pill */}
+                  <div
+                    style={{
+                      background: '#0A0A0A',
+                      color: '#ffffff',
+                      borderRadius: '10px',
+                      padding: '8px 16px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                      fontSize: '12.5px',
+                      fontWeight: 900,
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                      boxShadow: '3px 3px 0px #6D28FF',
+                    }}
+                  >
+                    <span>Read Article</span>
+                    <ArrowRight size={14} />
+                  </div>
+                </div>
               </motion.div>
             </Link>
+
           </div>
 
         </div>

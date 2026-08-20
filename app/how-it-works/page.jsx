@@ -2,22 +2,20 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
   Sparkles,
+  BookOpen,
+  Clock,
+  CheckCircle2,
+  TrendingUp,
   Zap,
   Target,
-  BarChart2,
-  CheckCircle2,
   DollarSign,
-  TrendingUp,
-  Award,
-  Bot,
-  Globe,
-  Star,
-  RefreshCw,
+  Share2,
+  Bookmark,
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -26,50 +24,40 @@ import { TreqoDoodle, DoodleBadge, DoodleArrow } from '@/components/Doodles';
 const STAGES = [
   {
     step: '01',
-    title: 'Character Genesis & Track Selection',
-    tag: 'SPAWN POINT',
-    desc: 'You begin with raw curiosity. Choose your specialized operator track — Performance Marketing, SEO Architecture, or AI-Driven Creative Growth.',
+    title: 'Track Genesis & Specialization',
+    tag: 'PHASE 01',
+    desc: 'You select a focused track: Paid Performance, SEO Systems, or AI-Driven Growth.',
     characterState: 'idle',
-    speech: "I'm ready to build! Pick my track. 🚀",
-    color: '#6D28FF',
-    badge: 'STAGE 1: GENESIS',
+    speech: "I'm ready to build! 🚀",
   },
   {
     step: '02',
     title: 'Real Budget & Live Ad Engine Allocation',
-    tag: 'LIVE SPEND',
-    desc: 'No simulations. You are handed actual ad budgets and live accounts to configure conversion tracking, pixels, and creative hooks.',
+    tag: 'PHASE 02',
+    desc: 'No simulations. You manage live accounts and real campaign budgets.',
     characterState: 'meta',
     speech: 'Running live Meta & Google campaigns! ⚡',
-    color: '#0082FB',
-    badge: 'STAGE 2: EXECUTION',
   },
   {
     step: '03',
-    title: 'Direct Apprenticeship with TAC Founders',
-    tag: '1-ON-1 ROASTS',
-    desc: 'Lokesh, Valli, and Durga tear down your live campaigns every week. Fix CAC, optimize creative fatigue, and scale ROAS past 4.0x.',
+    title: 'Weekly Founder Teardowns',
+    tag: 'PHASE 03',
+    desc: 'Active CMOs audit your hooks, CAC, and ROAS numbers.',
     characterState: 'roas',
-    speech: 'ROAS is up to 4.2x! Scaling spend. 📈',
-    color: '#16a34a',
-    badge: 'STAGE 3: APPRENTICESHIP',
+    speech: 'ROAS is up to 4.2x! 📈',
   },
   {
     step: '04',
-    title: 'Capstone Revenue Proof & Placement',
-    tag: 'GLOBAL GRADUATION',
-    desc: 'Graduate with 30+ verified industry certifications, real attributed revenue on your dashboard, and direct intros to top unicorn hiring partners.',
+    title: 'Verified Revenue Proof & Placement',
+    tag: 'PHASE 04',
+    desc: 'Graduate with 30+ certs and attributed revenue proof.',
     characterState: 'revenue',
-    speech: '₹18.5k verified revenue generated! 💰🎓',
-    color: '#FF7A59',
-    badge: 'STAGE 4: VICTORY',
+    speech: '₹18.5k revenue generated! 💰🎓',
   },
 ];
 
-export default function HowItWorksPage() {
+export default function HowItWorksBlogPage() {
   const [activeStage, setActiveStage] = useState(0);
-  const [clicks, setClicks] = useState(0);
-
   const current = STAGES[activeStage];
 
   return (
@@ -83,14 +71,13 @@ export default function HowItWorksPage() {
           minHeight: '100vh',
           padding: '120px 80px 100px',
           position: 'relative',
-          overflow: 'hidden',
         }}
-        className="how-it-works-main"
+        className="blog-main"
       >
-        <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
 
-          {/* ── TOP BACK BUTTON & BADGE ── */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px', flexWrap: 'wrap', gap: '16px' }}>
+          {/* ── TOP NAV BAR ── */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '36px', flexWrap: 'wrap', gap: '16px' }}>
             <Link
               href="/"
               style={{
@@ -107,49 +94,47 @@ export default function HowItWorksPage() {
                 fontWeight: 900,
                 textDecoration: 'none',
                 boxShadow: '3px 3px 0px #0A0A0A',
-                transition: 'all 0.15s ease',
               }}
             >
               <ArrowLeft size={16} />
-              <span>Back to Home</span>
+              <span>Back to Homepage</span>
             </Link>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div
                 style={{
-                  background: '#ffffff',
-                  border: '1.5px solid #6D28FF',
-                  color: '#6D28FF',
+                  background: '#6D28FF',
+                  color: '#ffffff',
+                  border: '1.5px solid #0A0A0A',
                   padding: '6px 14px',
                   borderRadius: '999px',
                   fontFamily: "var(--ff-mono, monospace)",
                   fontSize: '11px',
                   fontWeight: 900,
-                  letterSpacing: '0.12em',
+                  letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                 }}
               >
-                🎮 INTERACTIVE HOW IT WORKS WALKTHROUGH
+                FOUNDER ESSAY · 4 MIN READ
               </div>
-              <DoodleBadge text="CLICK TO EVOLVE" rotate={-2} />
             </div>
           </div>
 
-          {/* ── HEADER ── */}
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+          {/* ── ARTICLE HEADER ── */}
+          <header style={{ marginBottom: '44px' }}>
             <h1
               style={{
                 fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                fontSize: 'clamp(2.4rem, 4.2vw, 3.8rem)',
                 fontWeight: 900,
                 letterSpacing: '-0.03em',
-                lineHeight: 1.05,
+                lineHeight: 1.08,
                 textTransform: 'uppercase',
-                margin: '0 0 16px',
+                margin: '0 0 20px',
                 color: '#0A0A0A',
               }}
             >
-              HOW THE SYSTEM{' '}
+              How Treqo Actually Works: <br />
               <span
                 style={{
                   color: '#ffffff',
@@ -159,236 +144,223 @@ export default function HowItWorksPage() {
                   border: '2.5px solid #0A0A0A',
                   boxShadow: '5px 5px 0px #0A0A0A',
                   transform: 'rotate(-1deg)',
+                  marginTop: '8px',
                 }}
               >
-                ACTUALLY WORKS
+                The Death of Marketing Theory
               </span>
             </h1>
 
-            <p
-              style={{
-                fontSize: 'clamp(15px, 1.3vw, 18px)',
-                color: '#444444',
-                maxWidth: '680px',
-                margin: '0 auto',
-                lineHeight: 1.5,
-                fontWeight: 500,
-              }}
-            >
-              Watch your character evolve from a beginner to a high-earning performance growth operator through 4 live phases.
-            </p>
-          </div>
-
-          {/* ── INTERACTIVE 2-COLUMN EXPERIENCE ── */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1.1fr 0.9fr',
-              gap: '40px',
-              alignItems: 'center',
-              marginBottom: '60px',
-            }}
-            className="how-it-works-grid"
-          >
-            {/* Left: Step Selection Cards */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {STAGES.map((stage, idx) => {
-                const isActive = activeStage === idx;
-
-                return (
-                  <motion.div
-                    key={stage.step}
-                    whileHover={{ x: 6 }}
-                    onClick={() => setActiveStage(idx)}
-                    style={{
-                      background: isActive ? '#ffffff' : '#FAF9F8',
-                      border: isActive ? '3px solid #0A0A0A' : '2px solid #0A0A0A',
-                      borderRadius: '20px',
-                      padding: '22px 26px',
-                      boxShadow: isActive ? '6px 6px 0px #6D28FF' : '3px 3px 0px #0A0A0A',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      position: 'relative',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span
-                          style={{
-                            background: isActive ? '#6D28FF' : '#0A0A0A',
-                            color: '#ffffff',
-                            fontFamily: "var(--ff-mono, monospace)",
-                            fontSize: '12px',
-                            fontWeight: 900,
-                            padding: '4px 10px',
-                            borderRadius: '8px',
-                          }}
-                        >
-                          STAGE {stage.step}
-                        </span>
-                        <span
-                          style={{
-                            fontSize: '11px',
-                            fontFamily: "var(--ff-mono, monospace)",
-                            fontWeight: 900,
-                            color: stage.color,
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {stage.tag}
-                        </span>
-                      </div>
-
-                      {isActive && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#6D28FF', fontWeight: 900, fontSize: '12px', fontFamily: "var(--ff-mono, monospace)" }}>
-                          <span>ACTIVE PHASE</span>
-                          <CheckCircle2 size={16} />
-                        </div>
-                      )}
-                    </div>
-
-                    <h3
-                      style={{
-                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                        fontSize: '20px',
-                        fontWeight: 900,
-                        color: '#0A0A0A',
-                        margin: '0 0 6px',
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      {stage.title}
-                    </h3>
-
-                    <p style={{ fontSize: '13.5px', color: '#555555', margin: 0, lineHeight: 1.5, fontWeight: 500 }}>
-                      {stage.desc}
-                    </p>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Right: Character Visual Station */}
+            {/* Author Byline Bar */}
             <div
               style={{
-                background: '#ffffff',
-                border: '3px solid #0A0A0A',
-                borderRadius: '28px',
-                padding: '44px 32px',
-                boxShadow: '10px 10px 0px #0A0A0A',
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-                minHeight: '520px',
-                textAlign: 'center',
+                justifyContent: 'space-between',
+                borderTop: '2px solid rgba(10,10,10,0.12)',
+                borderBottom: '2px solid rgba(10,10,10,0.12)',
+                padding: '16px 0',
+                flexWrap: 'wrap',
+                gap: '16px',
               }}
             >
-              {/* Dynamic Speech Bubble */}
-              <motion.div
-                key={current.speech + clicks}
-                initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                style={{
-                  background: '#FAF9F8',
-                  border: '2px solid #0A0A0A',
-                  borderRadius: '16px',
-                  padding: '10px 20px',
-                  boxShadow: '4px 4px 0px #6D28FF',
-                  fontSize: '14px',
-                  fontWeight: 900,
-                  color: '#0A0A0A',
-                  fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                  marginBottom: '28px',
-                  position: 'relative',
-                }}
-              >
-                <span>{current.speech}</span>
-                <div
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+                  alt="Lokesh Dama"
                   style={{
-                    position: 'absolute',
-                    bottom: '-7px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 0,
-                    borderLeft: '7px solid transparent',
-                    borderRight: '7px solid transparent',
-                    borderTop: '7px solid #0A0A0A',
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '12px',
+                    border: '2px solid #0A0A0A',
+                    objectFit: 'cover',
                   }}
                 />
-              </motion.div>
+                <div>
+                  <div style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '15px', fontWeight: 900, color: '#0A0A0A' }}>
+                    Lokesh Dama
+                  </div>
+                  <div style={{ fontSize: '12px', fontFamily: "var(--ff-mono, monospace)", color: '#666666', fontWeight: 600 }}>
+                    Founder @ TAC · Published 2026
+                  </div>
+                </div>
+              </div>
 
-              {/* Character Animated Avatar */}
-              <motion.div
-                key={current.characterState}
-                animate={{ y: [0, -12, 0], scale: [1, 1.03, 1] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                onClick={() => {
-                  setClicks((c) => c + 1);
-                  setActiveStage((s) => (s + 1) % STAGES.length);
-                }}
-                style={{ cursor: 'pointer', marginBottom: '24px' }}
-                title="Click character to cycle evolution stage!"
-              >
-                <TreqoDoodle state={current.characterState} size={240} />
-              </motion.div>
-
-              {/* Bottom Character Info Tag */}
-              <div
-                style={{
-                  background: '#E5DFD0',
-                  border: '2px solid #0A0A0A',
-                  borderRadius: '12px',
-                  padding: '8px 18px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '2px 2px 0px #0A0A0A',
-                }}
-              >
-                <Sparkles size={14} color="#6D28FF" />
-                <span style={{ fontSize: '12px', fontWeight: 900, fontFamily: "var(--ff-mono, monospace)", color: '#0A0A0A' }}>
-                  Click character to fast-forward phase ({activeStage + 1} / {STAGES.length})
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ fontSize: '12px', fontFamily: "var(--ff-mono, monospace)", color: '#666666', fontWeight: 700 }}>
+                  <Clock size={13} style={{ display: 'inline', marginRight: '4px', verticalAlign: '-2px' }} />
+                  4 min read
                 </span>
               </div>
             </div>
-          </div>
+          </header>
 
-          {/* ── BOTTOM RANDOM PLAYGROUND CALLOUT ── */}
-          <div
+          {/* ── ARTICLE EDITORIAL CONTENT ── */}
+          <article
             style={{
-              background: '#0A0A0A',
-              color: '#ffffff',
+              background: '#ffffff',
               border: '3px solid #0A0A0A',
-              borderRadius: '24px',
-              padding: '36px 44px',
-              boxShadow: '8px 8px 0px #6D28FF',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: '24px',
+              borderRadius: '28px',
+              padding: 'clamp(28px, 4vw, 52px)',
+              boxShadow: '10px 10px 0px #0A0A0A',
+              fontSize: '17px',
+              lineHeight: 1.7,
+              color: '#222222',
             }}
           >
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                <Zap size={18} color="#22C55E" />
-                <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 900, color: '#22C55E', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                  WORK IN PROGRESS LAB
-                </span>
-              </div>
-              <h4 style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '24px', fontWeight: 900, margin: '0 0 6px', textTransform: 'uppercase' }}>
-                Ready to architect your own campaigns?
-              </h4>
-              <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', margin: 0, maxWidth: '520px' }}>
-                Explore the full curriculum and apply before the next cohort seats fill up.
+            {/* Section 1 */}
+            <p style={{ fontSize: '20px', fontWeight: 700, color: '#0A0A0A', lineHeight: 1.5, margin: '0 0 24px' }}>
+              The modern marketing education industry is broken. Millions of students watch 80-hour slide decks, memorize 4Ps of marketing, pass multiple-choice quizzes, and end up with zero job offers.
+            </p>
+
+            <p style={{ margin: '0 0 24px' }}>
+              Why? Because <strong>companies do not hire people who know definitions</strong>. They hire operators who can deploy ad spend, analyze customer acquisition cost (CAC), fix broken attribution pixels, and scale ROAS past 4.0x.
+            </p>
+
+            {/* Pull Quote Box */}
+            <div
+              style={{
+                background: '#E5DFD0',
+                borderLeft: '4px solid #6D28FF',
+                border: '2px solid #0A0A0A',
+                borderLeftWidth: '6px',
+                borderRadius: '16px',
+                padding: '20px 24px',
+                margin: '32px 0',
+                boxShadow: '4px 4px 0px #0A0A0A',
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "'Fraunces', Georgia, serif",
+                  fontStyle: 'italic',
+                  fontSize: '18px',
+                  fontWeight: 600,
+                  color: '#0A0A0A',
+                  margin: 0,
+                  lineHeight: 1.5,
+                }}
+              >
+                &ldquo;Your resume says you learned marketing. Your portfolio should prove that you generated revenue.&rdquo;
               </p>
             </div>
 
-            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+            <h2
+              style={{
+                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                fontSize: '28px',
+                fontWeight: 900,
+                color: '#0A0A0A',
+                textTransform: 'uppercase',
+                margin: '40px 0 16px',
+              }}
+            >
+              The 4-Phase Treqo Operating System
+            </h2>
+
+            <p style={{ margin: '0 0 20px' }}>
+              We rebuilt our entire curriculum from the ground up around four distinct phases of execution:
+            </p>
+
+            {/* Interactive Step Preview Inside Blog */}
+            <div
+              style={{
+                background: '#FAF9F8',
+                border: '2px solid #0A0A0A',
+                borderRadius: '20px',
+                padding: '24px',
+                margin: '28px 0 36px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                <Sparkles size={16} color="#6D28FF" />
+                <span style={{ fontFamily: "var(--ff-mono, monospace)", fontSize: '11px', fontWeight: 900, color: '#6D28FF', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                  INTERACTIVE PHASE VIEWER (TAP TO PREVIEW)
+                </span>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginBottom: '20px' }} className="stage-selector-grid">
+                {STAGES.map((s, idx) => (
+                  <button
+                    key={s.step}
+                    onClick={() => setActiveStage(idx)}
+                    style={{
+                      background: activeStage === idx ? '#0A0A0A' : '#ffffff',
+                      color: activeStage === idx ? '#ffffff' : '#0A0A0A',
+                      border: '1.5px solid #0A0A0A',
+                      borderRadius: '10px',
+                      padding: '10px 8px',
+                      cursor: 'pointer',
+                      textAlign: 'center',
+                      fontFamily: "var(--ff-mono, monospace)",
+                      fontSize: '11px',
+                      fontWeight: 900,
+                      boxShadow: activeStage === idx ? '2px 2px 0px #6D28FF' : 'none',
+                    }}
+                  >
+                    PHASE {s.step}
+                  </button>
+                ))}
+              </div>
+
+              <div style={{ background: '#ffffff', border: '1.5px solid #0A0A0A', borderRadius: '14px', padding: '18px 20px', display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <TreqoDoodle state={current.characterState} size={80} />
+                <div>
+                  <h4 style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '18px', fontWeight: 900, margin: '0 0 4px', textTransform: 'uppercase' }}>
+                    {current.title}
+                  </h4>
+                  <p style={{ fontSize: '14px', color: '#555555', margin: 0 }}>
+                    {current.desc}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2
+              style={{
+                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                fontSize: '28px',
+                fontWeight: 900,
+                color: '#0A0A0A',
+                textTransform: 'uppercase',
+                margin: '40px 0 16px',
+              }}
+            >
+              Why We Put Real Money Behind Every Student
+            </h2>
+
+            <p style={{ margin: '0 0 20px' }}>
+              Simulated dashboards make people complacent. When you know you are spending real ad money on Meta and Google, every hook, every headline, and every landing page friction point suddenly matters.
+            </p>
+
+            <p style={{ margin: '0 0 28px' }}>
+              You learn how to diagnose why a campaign has a 1.2% CTR, rewrite the creative angles, fix the audience targeting, and turn it into a 4.2x ROAS profit driver.
+            </p>
+
+            {/* Bottom Callout in Blog */}
+            <div
+              style={{
+                background: '#0A0A0A',
+                color: '#ffffff',
+                borderRadius: '20px',
+                padding: '32px 36px',
+                marginTop: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '20px',
+              }}
+            >
+              <div>
+                <h3 style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '22px', fontWeight: 900, margin: '0 0 6px', textTransform: 'uppercase' }}>
+                  Ready to experience real execution?
+                </h3>
+                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', margin: 0 }}>
+                  Explore our curated learning tracks and apply for the upcoming cohort.
+                </p>
+              </div>
+
               <Link
                 href="/"
                 style={{
@@ -396,7 +368,7 @@ export default function HowItWorksPage() {
                   color: '#ffffff',
                   border: '2px solid #ffffff',
                   borderRadius: '12px',
-                  padding: '14px 26px',
+                  padding: '14px 24px',
                   fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
                   fontSize: '14px',
                   fontWeight: 900,
@@ -407,21 +379,21 @@ export default function HowItWorksPage() {
                   boxShadow: '4px 4px 0px #ffffff',
                 }}
               >
-                <span>Return to Main Experience</span>
+                <span>Return to Tracks & Apply</span>
                 <ArrowRight size={16} />
               </Link>
             </div>
-          </div>
+          </article>
 
         </div>
 
         <style jsx>{`
           @media (max-width: 1024px) {
-            .how-it-works-main {
+            .blog-main {
               padding: 100px 24px 60px !important;
             }
-            .how-it-works-grid {
-              grid-template-columns: 1fr !important;
+            .stage-selector-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
             }
           }
         `}</style>
