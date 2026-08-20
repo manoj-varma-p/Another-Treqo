@@ -900,7 +900,7 @@ export default function UnifiedMasterStack() {
             )}
 
             {/* ══════════════════════════════════════════════════════════
-                SECTION 3: CERTIFICATIONS & CREDENTIALS VIEW
+                SECTION 3: CERTIFICATIONS & CREDENTIALS VIEW (50/50 Split)
             ══════════════════════════════════════════════════════════ */}
             {activeTab === 'certifications' && (
               <motion.div
@@ -909,107 +909,287 @@ export default function UnifiedMasterStack() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.25 }}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '36px',
+                  alignItems: 'stretch',
+                }}
+                className="cert-split-grid"
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
+                {/* ── LEFT: TREQO CERTIFICATION (50%) ── */}
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
-                    <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 900, color: '#6D28FF', letterSpacing: '0.12em', display: 'block', marginBottom: '4px' }}>
-                      GLOBAL RECOGNITION
-                    </span>
-                    <h3 style={{ fontFamily: "var(--ff-display, 'Outfit', sans-serif)", fontSize: '24px', fontWeight: 900, color: '#0A0A0A', margin: 0, textTransform: 'uppercase' }}>
-                      Industry-Standard Certifications & Proof Badges
-                    </h3>
-                  </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                      <span
+                        style={{
+                          background: '#6D28FF',
+                          color: '#ffffff',
+                          fontFamily: "var(--ff-mono, monospace)",
+                          fontSize: '11px',
+                          fontWeight: 900,
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          letterSpacing: '0.08em',
+                          border: '1.5px solid #0A0A0A',
+                        }}
+                      >
+                        CAPSTONE REVENUE PROOF
+                      </span>
+                    </div>
 
-                  <div style={{ background: '#6D28FF', color: '#ffffff', border: '1.5px solid #0A0A0A', borderRadius: '999px', padding: '6px 16px', fontSize: '12px', fontWeight: 900, fontFamily: "var(--ff-mono, monospace)" }}>
-                    🏆 All Official Exam Vouchers Covered Inside Cohort
+                    <h3
+                      style={{
+                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                        fontSize: '24px',
+                        fontWeight: 900,
+                        color: '#0A0A0A',
+                        margin: '0 0 6px',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      TREQO Certification
+                    </h3>
+
+                    <p style={{ fontSize: '13.5px', color: '#444444', margin: '0 0 16px', lineHeight: 1.5, fontWeight: 500 }}>
+                      Awarded on completion of your capstone project — a real campaign, built &amp; launched with real numbers attached.
+                    </p>
+
+                    {/* Certificate Image Frame */}
+                    <div
+                      style={{
+                        background: '#FAF9F8',
+                        border: '2.5px solid #0A0A0A',
+                        borderRadius: '18px',
+                        padding: '14px',
+                        boxShadow: '5px 5px 0px #0A0A0A',
+                        position: 'relative',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      <img
+                        src="/treqo-certificate.jpg"
+                        alt="TREQO Official Certificate of Completion"
+                        style={{
+                          width: '100%',
+                          height: 'auto',
+                          borderRadius: '10px',
+                          border: '1.5px solid #0A0A0A',
+                          display: 'block',
+                        }}
+                      />
+
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '6px',
+                          marginTop: '10px',
+                          fontSize: '11.5px',
+                          fontFamily: "var(--ff-mono, monospace)",
+                          fontWeight: 800,
+                          color: '#6D28FF',
+                        }}
+                      >
+                        <CheckCircle2 size={13} />
+                        <span>Shareable on LinkedIn &amp; verified by hiring managers</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Certifications Grid */}
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '20px',
-                  }}
-                  className="cert-card-grid"
-                >
-                  {CERTIFICATIONS.map((cert, idx) => {
-                    const CertIcon = cert.icon;
-                    return (
-                      <div
-                        key={idx}
+                {/* ── RIGHT: OTHER INDUSTRY CREDENTIALS WITH VERTICAL FLOWING MARQUEE (50%) ── */}
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                      <span
                         style={{
-                          background: '#FAF9F8',
-                          border: '2px solid #0A0A0A',
-                          borderRadius: '16px',
-                          padding: '20px',
-                          boxShadow: '4px 4px 0px #0A0A0A',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'space-between',
+                          background: '#F3F0E7',
+                          color: '#6D28FF',
+                          fontFamily: "var(--ff-mono, monospace)",
+                          fontSize: '11px',
+                          fontWeight: 900,
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          letterSpacing: '0.08em',
+                          border: '1.5px solid #0A0A0A',
                         }}
                       >
-                        <div>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                            <span
-                              style={{
-                                background: '#ffffff',
-                                border: '1.5px solid #0A0A0A',
-                                padding: '4px 10px',
-                                borderRadius: '6px',
-                                fontSize: '11px',
-                                fontWeight: 900,
-                                color: cert.color,
-                                fontFamily: "var(--ff-mono, monospace)",
-                              }}
-                            >
-                              {cert.provider}
-                            </span>
-                            <span style={{ fontSize: '10.5px', fontFamily: "var(--ff-mono, monospace)", fontWeight: 800, color: '#6D28FF' }}>
-                              {cert.value}
-                            </span>
-                          </div>
+                        GLOBAL CREDENTIALS
+                      </span>
+                    </div>
 
-                          <h4
-                            style={{
-                              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                              fontSize: '16px',
-                              fontWeight: 900,
-                              color: '#0A0A0A',
-                              margin: '0 0 8px',
-                              lineHeight: 1.25,
-                            }}
-                          >
-                            {cert.name}
-                          </h4>
+                    <h3
+                      style={{
+                        fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+                        fontSize: '24px',
+                        fontWeight: 900,
+                        color: '#0A0A0A',
+                        margin: '0 0 6px',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      Other Industry Certification
+                    </h3>
 
-                          <p style={{ fontSize: '12.5px', color: '#555555', margin: '0 0 14px', fontWeight: 600 }}>
-                            {cert.category}
-                          </p>
-                        </div>
+                    <p style={{ fontSize: '13.5px', color: '#444444', margin: '0 0 12px', lineHeight: 1.5, fontWeight: 500 }}>
+                      From Google &amp; Meta to HubSpot &amp; SEMrush — graduate with 30+ credentials recruiters look for.
+                    </p>
 
+                    {/* Provider Badges Row */}
+                    <div style={{ display: 'flex', gap: 6, marginBottom: 14, flexWrap: 'wrap' }}>
+                      {[
+                        { name: 'Google', bg: 'rgba(66,133,244,0.12)', text: '#4285F4', count: '8 certs' },
+                        { name: 'Meta', bg: 'rgba(0,130,251,0.12)', text: '#0082FB', count: '6 certs' },
+                        { name: 'HubSpot', bg: 'rgba(255,122,89,0.12)', text: '#FF7A59', count: '6 certs' },
+                        { name: 'SEMrush', bg: 'rgba(255,100,45,0.12)', text: '#FF642D', count: '4 certs' },
+                      ].map((p) => (
                         <div
+                          key={p.name}
                           style={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '6px',
-                            background: '#ffffff',
-                            border: '1px solid #0A0A0A',
-                            borderRadius: '8px',
-                            padding: '6px 10px',
-                            fontSize: '11px',
-                            fontFamily: "var(--ff-mono, monospace)",
-                            fontWeight: 800,
-                            color: '#0A0A0A',
+                            gap: 5,
+                            background: p.bg,
+                            border: `1.5px solid ${p.text}`,
+                            borderRadius: '999px',
+                            padding: '2px 8px',
                           }}
                         >
-                          <CheckCircle2 size={13} color="#6D28FF" />
-                          <span>{cert.badge}</span>
+                          <span style={{ fontSize: '10px', fontWeight: 900, color: p.text, fontFamily: "var(--ff-mono, monospace)" }}>
+                            {p.name}
+                          </span>
+                          <span style={{ fontSize: '9.5px', fontWeight: 800, color: '#555555', fontFamily: "var(--ff-mono, monospace)" }}>
+                            {p.count}
+                          </span>
                         </div>
+                      ))}
+                    </div>
+
+                    {/* ── VERTICAL FLOWING MARQUEE (UP & DOWN) ── */}
+                    <div
+                      style={{
+                        height: '320px',
+                        overflow: 'hidden',
+                        position: 'relative',
+                        maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr',
+                        gap: 12,
+                        background: '#FAF9F8',
+                        border: '2px solid #0A0A0A',
+                        borderRadius: '16px',
+                        padding: '12px',
+                        boxShadow: '4px 4px 0px #0A0A0A',
+                      }}
+                    >
+                      {/* Column 1: Flows Downward */}
+                      <div style={{ overflow: 'hidden', height: '100%' }}>
+                        <motion.div
+                          animate={{ y: ['-33.33%', '0%'] }}
+                          transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+                        >
+                          {[...CERTIFICATIONS, ...CERTIFICATIONS, ...CERTIFICATIONS].map((cert, i) => (
+                            <div
+                              key={i}
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between',
+                                width: '100%',
+                                background: '#ffffff',
+                                border: '1.5px solid #0A0A0A',
+                                borderRadius: '12px',
+                                padding: '10px 12px',
+                                boxShadow: '2px 2px 0px #0A0A0A',
+                                marginBottom: '10px',
+                              }}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                                <span
+                                  style={{
+                                    fontSize: '9px',
+                                    fontWeight: 900,
+                                    color: cert.color,
+                                    border: `1px solid ${cert.color}`,
+                                    borderRadius: '4px',
+                                    padding: '1px 5px',
+                                    fontFamily: "var(--ff-mono, monospace)",
+                                  }}
+                                >
+                                  {cert.provider}
+                                </span>
+                                <span style={{ fontSize: '9px', fontWeight: 800, color: '#6D28FF', fontFamily: "var(--ff-mono, monospace)" }}>
+                                  {cert.value}
+                                </span>
+                              </div>
+                              <p style={{ margin: '0 0 6px', fontSize: '11px', fontWeight: 800, color: '#0A0A0A', lineHeight: 1.2, fontFamily: "var(--ff-display, 'Outfit', sans-serif)" }}>
+                                {cert.name}
+                              </p>
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '9px', color: '#6D28FF', fontWeight: 800 }}>
+                                <span>Verified</span>
+                                <CheckCircle2 size={10} color="#6D28FF" />
+                              </div>
+                            </div>
+                          ))}
+                        </motion.div>
                       </div>
-                    );
-                  })}
+
+                      {/* Column 2: Flows Upward */}
+                      <div style={{ overflow: 'hidden', height: '100%' }}>
+                        <motion.div
+                          animate={{ y: ['0%', '-33.33%'] }}
+                          transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+                        >
+                          {[...CERTIFICATIONS.slice().reverse(), ...CERTIFICATIONS.slice().reverse(), ...CERTIFICATIONS.slice().reverse()].map((cert, i) => (
+                            <div
+                              key={i}
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between',
+                                width: '100%',
+                                background: '#ffffff',
+                                border: '1.5px solid #0A0A0A',
+                                borderRadius: '12px',
+                                padding: '10px 12px',
+                                boxShadow: '2px 2px 0px #0A0A0A',
+                                marginBottom: '10px',
+                              }}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                                <span
+                                  style={{
+                                    fontSize: '9px',
+                                    fontWeight: 900,
+                                    color: cert.color,
+                                    border: `1px solid ${cert.color}`,
+                                    borderRadius: '4px',
+                                    padding: '1px 5px',
+                                    fontFamily: "var(--ff-mono, monospace)",
+                                  }}
+                                >
+                                  {cert.provider}
+                                </span>
+                                <span style={{ fontSize: '9px', fontWeight: 800, color: '#6D28FF', fontFamily: "var(--ff-mono, monospace)" }}>
+                                  {cert.value}
+                                </span>
+                              </div>
+                              <p style={{ margin: '0 0 6px', fontSize: '11px', fontWeight: 800, color: '#0A0A0A', lineHeight: 1.2, fontFamily: "var(--ff-display, 'Outfit', sans-serif)" }}>
+                                {cert.name}
+                              </p>
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '9px', color: '#6D28FF', fontWeight: 800 }}>
+                                <span>Verified</span>
+                                <CheckCircle2 size={10} color="#6D28FF" />
+                              </div>
+                            </div>
+                          ))}
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             )}
