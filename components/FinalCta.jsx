@@ -1,7 +1,10 @@
 'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import ApplyModal from './ApplyModal';
+import { DoodleArrow } from './Doodles';
 
 export default function FinalCta() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -19,26 +22,27 @@ export default function FinalCta() {
           justifyContent: 'center',
           alignItems: 'center',
           textAlign: 'center',
-          background: '#0A0A0A',
-          color: '#FAF9F8',
-          padding: '90px 80px 100px',
+          background: '#E5DFD0',
+          color: '#0A0A0A',
+          padding: '100px 80px 110px',
           position: 'relative',
           overflow: 'hidden',
+          borderTop: '2.5px solid #0A0A0A',
           boxSizing: 'border-box',
         }}
       >
-        {/* Subtle purple radial glow in background */}
+        {/* Subtle Background Grid Pattern */}
         <div
           style={{
             position: 'absolute',
-            top: '30%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '600px',
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%)',
-            filter: 'blur(90px)',
+            inset: 0,
+            backgroundImage: `
+              linear-gradient(to right, rgba(10, 10, 10, 0.04) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(10, 10, 10, 0.04) 1px, transparent 1px)
+            `,
+            backgroundSize: '48px 48px',
             pointerEvents: 'none',
+            zIndex: 0,
           }}
         />
 
@@ -55,30 +59,46 @@ export default function FinalCta() {
             zIndex: 2,
           }}
         >
-          {/* Eyebrow */}
-          <div style={{ marginBottom: '20px' }}>
-            <span
+          {/* Admissions Pill */}
+          <div style={{ marginBottom: '24px' }}>
+            <div
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                background: '#ffffff',
+                border: '1.5px solid #0A0A0A',
+                color: '#0A0A0A',
+                padding: '6px 16px',
+                borderRadius: '999px',
                 fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                fontSize: '12.5px',
-                fontWeight: 900,
-                letterSpacing: '0.22em',
+                fontSize: '11.5px',
+                fontWeight: 800,
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: 'rgba(255, 255, 255, 0.55)',
-                display: 'inline-block',
+                boxShadow: '2px 2px 0px #0A0A0A',
               }}
             >
-              YOUR TURN
-            </span>
+              <div
+                style={{
+                  width: 7,
+                  height: 7,
+                  borderRadius: '50%',
+                  background: '#22C55E',
+                  boxShadow: '0 0 8px #22C55E',
+                }}
+              />
+              <span>YOUR TURN · COHORT 2026</span>
+            </div>
           </div>
 
-          {/* 3-Line Stacked Headline (Centered & Scaled Down) */}
+          {/* 3-Line Stacked Headline in Neo-Brutalist Theme */}
           <h2
             style={{
               fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-              fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)',
+              fontSize: 'clamp(2.6rem, 5.5vw, 4.8rem)',
               fontWeight: 900,
-              letterSpacing: '-0.035em',
+              letterSpacing: '-0.04em',
               lineHeight: 1.05,
               textTransform: 'uppercase',
               margin: '0 0 20px',
@@ -87,16 +107,22 @@ export default function FinalCta() {
               alignItems: 'center',
             }}
           >
-            <span style={{ color: '#777777' }}>
+            <span style={{ color: '#0A0A0A' }}>
               READY TO
             </span>
-            <span style={{ color: '#E0E0E0' }}>
+            <span style={{ color: '#0A0A0A' }}>
               ACTUALLY DO
             </span>
             <span
               style={{
-                color: '#8B5CF6',
-                textShadow: '0 0 40px rgba(139, 92, 246, 0.45)',
+                background: '#6D28FF',
+                color: '#ffffff',
+                padding: '4px 24px',
+                display: 'inline-block',
+                border: '3px solid #0A0A0A',
+                boxShadow: '3px 3px 0px #0A0A0A',
+                transform: 'rotate(-1deg)',
+                marginTop: '6px',
               }}
             >
               MARKETING?
@@ -106,52 +132,60 @@ export default function FinalCta() {
           {/* Subtitle */}
           <p
             style={{
-              fontSize: 'clamp(16px, 1.4vw, 20px)',
-              color: 'rgba(255, 255, 255, 0.75)',
-              maxWidth: '560px',
-              margin: '0 auto 36px',
+              fontSize: 'clamp(16px, 1.35vw, 20px)',
+              color: '#333333',
+              maxWidth: '580px',
+              margin: '0 auto 34px',
               fontWeight: 500,
-              lineHeight: 1.5,
+              lineHeight: 1.55,
             }}
           >
-            Your first campaign starts here.
+            Your first live campaign starts here. Zero theory lectures, real budgets, and verified placement support.
           </p>
 
           {/* Centered CTA Button */}
           <motion.button
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ y: -2, x: -2, boxShadow: '4px 4px 0px #0A0A0A' }}
+            whileTap={{ y: 0, x: 0, boxShadow: '2px 2px 0px #0A0A0A' }}
             onClick={() => setModalOpen(true)}
             style={{
-              background: '#8B5CF6',
-              color: '#0A0A0A',
-              border: 'none',
+              background: '#6D28FF',
+              color: '#ffffff',
+              border: '2.5px solid #0A0A0A',
               borderRadius: '999px',
-              padding: '18px 44px',
+              padding: '18px 46px',
               fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
               fontWeight: 900,
-              fontSize: '16px',
-              letterSpacing: '0.02em',
+              fontSize: '15.5px',
+              letterSpacing: '0.04em',
               textTransform: 'uppercase',
               cursor: 'pointer',
               display: 'inline-flex',
               alignItems: 'center',
               gap: 10,
-              boxShadow: '0 0 16px rgba(139, 92, 246, 0.25)',
-              transition: 'background 0.2s, box-shadow 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#A78BFA';
-              e.currentTarget.style.boxShadow = '0 0 24px rgba(167, 139, 250, 0.35)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#8B5CF6';
-              e.currentTarget.style.boxShadow = '0 0 16px rgba(139, 92, 246, 0.25)';
+              boxShadow: '3px 3px 0px #0A0A0A',
+              transition: 'background 0.2s',
             }}
           >
             <span>APPLY TO TREQO</span>
-            <span style={{ fontSize: '18px', fontWeight: 900 }}>→</span>
+            <ArrowRight size={18} />
           </motion.button>
+
+          {/* Handwritten Annotation */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 24 }}>
+            <DoodleArrow direction="right" color="#6D28FF" size={32} />
+            <span
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontStyle: 'italic',
+                fontWeight: 600,
+                fontSize: '16px',
+                color: '#6D28FF',
+              }}
+            >
+              Admissions reviewed on a rolling basis.
+            </span>
+          </div>
         </div>
       </section>
     </>
