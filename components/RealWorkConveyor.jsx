@@ -133,7 +133,7 @@ export default function RealWorkConveyor() {
                 border: '2.5px solid #0A0A0A',
                 borderRadius: '20px',
                 padding: '24px',
-                boxShadow: '6px 6px 0px #0A0A0A',
+                boxShadow: '2.5px 2.5px 0px #0A0A0A',
                 transform: `rotate(${item.rotate}deg)`,
                 transition: 'transform 0.25s, box-shadow 0.25s',
                 display: 'flex',
@@ -144,11 +144,11 @@ export default function RealWorkConveyor() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.04) rotate(0deg)';
-                e.currentTarget.style.boxShadow = '10px 10px 0px #6D28FF';
+                e.currentTarget.style.boxShadow = '4px 4px 0px #6D28FF';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = `rotate(${item.rotate}deg)`;
-                e.currentTarget.style.boxShadow = '6px 6px 0px #0A0A0A';
+                e.currentTarget.style.boxShadow = '2.5px 2.5px 0px #0A0A0A';
               }}
             >
               {/* Top Meta */}

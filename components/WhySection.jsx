@@ -148,8 +148,8 @@ export default function WhySection() {
                   background: '#6D28FF',
                   padding: '2px 14px',
                   display: 'inline-block',
-                  border: '2.5px solid #0A0A0A',
-                  boxShadow: '4px 4px 0px #0A0A0A',
+                  border: '2px solid #0A0A0A',
+                  boxShadow: '2px 2px 0px #0A0A0A',
                   transform: 'rotate(-1deg)',
                 }}
               >

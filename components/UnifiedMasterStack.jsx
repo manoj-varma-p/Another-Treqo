@@ -317,7 +317,7 @@ export default function UnifiedMasterStack() {
                   padding: '16px 20px',
                   cursor: 'pointer',
                   textAlign: 'left',
-                  boxShadow: isActive ? '5px 5px 0px #6D28FF' : '3px 3px 0px #0A0A0A',
+                  boxShadow: isActive ? '3px 3px 0px #6D28FF' : '2px 2px 0px #0A0A0A',
                   transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                   display: 'flex',
                   alignItems: 'center',
@@ -380,9 +380,9 @@ export default function UnifiedMasterStack() {
         <div
           style={{
             background: '#ffffff',
-            border: '3px solid #0A0A0A',
-            borderRadius: '28px',
-            boxShadow: '10px 10px 0px #0A0A0A',
+            border: '2.5px solid #0A0A0A',
+            borderRadius: '24px',
+            boxShadow: '3px 3px 0px #0A0A0A',
             padding: '36px clamp(20px, 3.5vw, 44px)',
             position: 'relative',
             overflow: 'hidden',
@@ -568,10 +568,10 @@ export default function UnifiedMasterStack() {
                               width: '560px',
                               maxWidth: '85vw',
                               height: '350px',
-                              borderRadius: '24px',
+                              borderRadius: '20px',
                               overflow: 'hidden',
-                              border: '3px solid #0A0A0A',
-                              boxShadow: isActive ? '10px 10px 0px #0A0A0A' : '4px 4px 0px #0A0A0A',
+                              border: '2.5px solid #0A0A0A',
+                              boxShadow: isActive ? '4px 4px 0px #0A0A0A' : '2px 2px 0px #0A0A0A',
                               position: 'relative',
                               background: '#0A0A0A',
                             }}
@@ -736,10 +736,10 @@ export default function UnifiedMasterStack() {
                     <div
                       style={{
                         background: '#FAF9F8',
-                        border: '2.5px solid #0A0A0A',
-                        borderRadius: '18px',
+                        border: '2px solid #0A0A0A',
+                        borderRadius: '16px',
                         padding: '14px',
-                        boxShadow: '5px 5px 0px #0A0A0A',
+                        boxShadow: '2px 2px 0px #0A0A0A',
                         position: 'relative',
                         overflow: 'hidden',
                       }}
@@ -858,7 +858,7 @@ export default function UnifiedMasterStack() {
                         border: '2px solid #0A0A0A',
                         borderRadius: '16px',
                         padding: '16px 12px 28px',
-                        boxShadow: '4px 4px 0px #0A0A0A',
+                        boxShadow: '2px 2px 0px #0A0A0A',
                       }}
                     >
                       <div style={{ overflow: 'hidden', height: '100%' }}>
@@ -1042,7 +1042,7 @@ export default function UnifiedMasterStack() {
                       border: '2px solid #0A0A0A',
                       borderRadius: '12px',
                       padding: '8px 14px',
-                      boxShadow: '4px 4px 0px #6D28FF',
+                      boxShadow: '2px 2px 0px #6D28FF',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
@@ -1070,7 +1070,7 @@ export default function UnifiedMasterStack() {
                       border: '2px solid #22C55E',
                       borderRadius: '12px',
                       padding: '8px 14px',
-                      boxShadow: '4px 4px 0px #0A0A0A',
+                      boxShadow: '2px 2px 0px #0A0A0A',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',

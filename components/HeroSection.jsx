@@ -125,8 +125,8 @@ export default function HeroSection() {
                   color: '#ffffff',
                   padding: '4px 22px',
                   display: 'inline-block',
-                  border: '3.5px solid #0A0A0A',
-                  boxShadow: '7px 7px 0px #0A0A0A',
+                  border: '3px solid #0A0A0A',
+                  boxShadow: '3px 3px 0px #0A0A0A',
                   transform: 'rotate(-1deg)',
                   marginTop: '8px',
                 }}
@@ -154,8 +154,8 @@ export default function HeroSection() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
               <Link href="/how-it-works" style={{ textDecoration: 'none' }}>
                 <motion.div
-                  whileHover={{ y: -2, x: -2, boxShadow: '8px 8px 0px #0A0A0A' }}
-                  whileTap={{ y: 0, x: 0, boxShadow: '4px 4px 0px #0A0A0A' }}
+                  whileHover={{ y: -2, x: -2, boxShadow: '4px 4px 0px #0A0A0A' }}
+                  whileTap={{ y: 0, x: 0, boxShadow: '2px 2px 0px #0A0A0A' }}
                   style={{
                     background: 'transparent',
                     color: '#0A0A0A',
@@ -169,7 +169,7 @@ export default function HeroSection() {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 10,
-                    boxShadow: '6px 6px 0px #0A0A0A',
+                    boxShadow: '3px 3px 0px #0A0A0A',
                     cursor: 'pointer',
                   }}
                 >
@@ -213,7 +213,7 @@ export default function HeroSection() {
               damping: 20,
               mass: 0.9,
             }}
-            whileHover={{ y: -3, boxShadow: '6px 6px 0px #6D28FF' }}
+            whileHover={{ y: -2, boxShadow: '3px 3px 0px #6D28FF' }}
             style={{
               position: 'fixed',
               bottom: '20px',
@@ -223,7 +223,7 @@ export default function HeroSection() {
               border: '2px solid #0A0A0A',
               borderRadius: '14px',
               padding: '14px 18px',
-              boxShadow: '4px 4px 0px #0A0A0A',
+              boxShadow: '2px 2px 0px #0A0A0A',
               width: 'calc(100vw - 40px)',
               maxWidth: '580px',
               transition: 'box-shadow 0.2s ease',

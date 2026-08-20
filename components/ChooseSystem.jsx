@@ -263,10 +263,10 @@ export default function ChooseSystem() {
                     key={course.id}
                     style={{
                       background: '#ffffff',
-                      border: '3px solid #0A0A0A',
-                      borderRadius: '26px',
+                      border: '2.5px solid #0A0A0A',
+                      borderRadius: '24px',
                       padding: '30px 28px',
-                      boxShadow: '10px 10px 0px #0A0A0A',
+                      boxShadow: '3px 3px 0px #0A0A0A',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
@@ -567,16 +567,16 @@ export default function ChooseSystem() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: '8px',
-                        boxShadow: '4px 4px 0px #0A0A0A',
+                        boxShadow: '2px 2px 0px #0A0A0A',
                         transition: 'all 0.2s',
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'translate(-2px, -2px)';
-                        e.currentTarget.style.boxShadow = '6px 6px 0px #6D28FF';
+                        e.currentTarget.style.boxShadow = '3px 3px 0px #6D28FF';
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = 'none';
-                        e.currentTarget.style.boxShadow = '4px 4px 0px #0A0A0A';
+                        e.currentTarget.style.boxShadow = '2px 2px 0px #0A0A0A';
                       }}
                     >
                       <span>{course.ctaText}</span>

@@ -137,16 +137,16 @@ export default function FinalCta() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 10,
-              boxShadow: '0 0 30px rgba(139, 92, 246, 0.35)',
+              boxShadow: '0 0 16px rgba(139, 92, 246, 0.25)',
               transition: 'background 0.2s, box-shadow 0.2s',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = '#A78BFA';
-              e.currentTarget.style.boxShadow = '0 0 45px rgba(167, 139, 250, 0.55)';
+              e.currentTarget.style.boxShadow = '0 0 24px rgba(167, 139, 250, 0.35)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = '#8B5CF6';
-              e.currentTarget.style.boxShadow = '0 0 30px rgba(139, 92, 246, 0.35)';
+              e.currentTarget.style.boxShadow = '0 0 16px rgba(139, 92, 246, 0.25)';
             }}
           >
             <span>APPLY TO TREQO</span>

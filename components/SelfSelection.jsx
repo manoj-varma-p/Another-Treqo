@@ -124,10 +124,10 @@ export default function SelfSelection() {
                   justifyContent: 'space-between',
                   cursor: 'pointer',
                   boxShadow: isHighlight
-                    ? '5px 5px 0px #0A0A0A'
+                    ? '3px 3px 0px #0A0A0A'
                     : isSelected
-                    ? '4px 4px 0px #6D28FF'
-                    : '3px 3px 0px #0A0A0A',
+                    ? '2px 2px 0px #6D28FF'
+                    : '2px 2px 0px #0A0A0A',
                   transition: 'background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease',
                   userSelect: 'none',
                 }}
