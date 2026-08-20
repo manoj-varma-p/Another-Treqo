@@ -152,40 +152,30 @@ export default function HeroSection() {
 
             {/* Primary CTA Button */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-              <Link
-                href="/how-it-works"
-                style={{
-                  background: 'transparent',
-                  color: '#0A0A0A',
-                  border: '2.5px solid #0A0A0A',
-                  borderRadius: '999px',
-                  padding: '20px 48px',
-                  fontWeight: 900,
-                  fontSize: '16px',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 10,
-                  boxShadow: '6px 6px 0px #0A0A0A',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translate(-2px, -2px)';
-                  e.currentTarget.style.boxShadow = '8px 8px 0px #0A0A0A';
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = '#0A0A0A';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'none';
-                  e.currentTarget.style.boxShadow = '6px 6px 0px #0A0A0A';
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = '#0A0A0A';
-                }}
-              >
-                <span>See How It Works</span>
-                <ArrowRight size={20} />
+              <Link href="/how-it-works" style={{ textDecoration: 'none' }}>
+                <motion.div
+                  whileHover={{ y: -2, x: -2, boxShadow: '8px 8px 0px #0A0A0A' }}
+                  whileTap={{ y: 0, x: 0, boxShadow: '4px 4px 0px #0A0A0A' }}
+                  style={{
+                    background: 'transparent',
+                    color: '#0A0A0A',
+                    border: '2.5px solid #0A0A0A',
+                    borderRadius: '999px',
+                    padding: '20px 48px',
+                    fontWeight: 900,
+                    fontSize: '16px',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    boxShadow: '6px 6px 0px #0A0A0A',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <span>See How It Works</span>
+                  <ArrowRight size={20} />
+                </motion.div>
               </Link>
             </div>
 
