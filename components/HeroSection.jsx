@@ -101,19 +101,18 @@ export default function HeroSection() {
                 />
                 <span>COHORT ADMISSIONS OPEN · 2026</span>
               </div>
-              <DoodleBadge text="ZERO SLIDES · 100% PROOF" rotate={-2} highlight={false} />
             </div>
 
             {/* Main Headline */}
             <h1
               style={{
                 fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                fontSize: 'clamp(3.2rem, 6vw, 5.5rem)',
+                fontSize: 'clamp(2.4rem, 4.5vw, 4.2rem)',
                 fontWeight: 900,
                 color: '#0A0A0A',
                 lineHeight: 1.0,
                 letterSpacing: '-0.04em',
-                margin: '0 0 24px',
+                margin: '0 0 20px',
                 textTransform: 'uppercase',
               }}
             >
@@ -138,11 +137,11 @@ export default function HeroSection() {
             {/* Subtitle */}
             <p
               style={{
-                fontSize: 'clamp(18px, 1.5vw, 22px)',
+                fontSize: 'clamp(14px, 1.1vw, 17px)',
                 color: '#2A2A2A',
                 lineHeight: 1.55,
-                maxWidth: '740px',
-                margin: '0 0 36px',
+                maxWidth: '680px',
+                margin: '0 0 28px',
                 fontWeight: 500,
               }}
             >
@@ -159,35 +158,35 @@ export default function HeroSection() {
                   style={{
                     background: 'transparent',
                     color: '#0A0A0A',
-                    border: '2.5px solid #0A0A0A',
+                    border: '2px solid #0A0A0A',
                     borderRadius: '999px',
-                    padding: '20px 48px',
+                    padding: '14px 36px',
                     fontWeight: 900,
-                    fontSize: '16px',
+                    fontSize: '13.5px',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: 10,
+                    gap: 8,
                     boxShadow: '3px 3px 0px #0A0A0A',
                     cursor: 'pointer',
                   }}
                 >
                   <span>See How It Works</span>
-                  <ArrowRight size={20} />
+                  <ArrowRight size={16} />
                 </motion.div>
               </Link>
             </div>
 
             {/* Handwritten Note Annotation */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 26 }}>
-              <DoodleArrow direction="right" color="#6D28FF" size={36} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 20 }}>
+              <DoodleArrow direction="right" color="#6D28FF" size={28} />
               <span
                 style={{
                   fontFamily: "'Fraunces', Georgia, serif",
                   fontStyle: 'italic',
                   fontWeight: 600,
-                  fontSize: '16px',
+                  fontSize: '13px',
                   color: '#6D28FF',
                 }}
               >
