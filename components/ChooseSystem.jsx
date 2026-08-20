@@ -128,13 +128,13 @@ export default function ChooseSystem() {
           justifyContent: 'center',
           background: '#F3F0E7',
           color: '#0A0A0A',
-          padding: '55px 0 60px',
+          padding: '70px 0 60px',
           position: 'relative',
           overflow: 'hidden',
           boxSizing: 'border-box',
         }}
       >
-        <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 15px', width: '100%' }}>
+        <div style={{ maxWidth: '1540px', margin: '0 auto', padding: '0 80px', width: '100%' }}>
 
           {/* ── HEADER ROW WITH CONTROLS ── */}
           <div

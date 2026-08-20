@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="wrap">
+    <footer className="site-footer" style={{ background: '#0A0A0A', color: '#FAF9F8', padding: '80px 80px 40px', borderTop: '2px solid rgba(255, 255, 255, 0.12)' }}>
+      <div style={{ maxWidth: '1540px', margin: '0 auto', width: '100%' }}>
 
         {/* Top row: brand + nav columns */}
         <div className="footer-top">
@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="footer-logo">TREQO</div>
             <p className="footer-tagline">The Marketing School</p>
             <p className="footer-brand-desc">
-              India's most rigorous marketing programme — built for thinkers who execute.
+              India&apos;s most rigorous marketing programme — built for thinkers who execute.
             </p>
             {/* Social icons row */}
             <div className="footer-socials">
@@ -31,28 +31,28 @@ export default function Footer() {
               <p className="footer-nav-heading">Program</p>
               <nav className="footer-nav-list">
                 <a href="#why">Why TREQO</a>
-                <a href="#system">Learning System</a>
+                <a href="#choose-system">Learning System</a>
                 <a href="#training">Training Model</a>
-                <a href="#tutors">Our Tutors</a>
+                <a href="#real-work">Projects</a>
               </nav>
             </div>
 
             <div className="footer-nav-col">
-              <p className="footer-nav-heading">Resources</p>
+              <p className="footer-nav-heading">Curriculum</p>
               <nav className="footer-nav-list">
-                <a href="#faq">FAQ</a>
-                <a href="#">Blog</a>
-                <a href="#">Case Studies</a>
+                <a href="#journey">Curriculum 01–16</a>
+                <a href="#journey">Interview Lab</a>
+                <a href="#journey">Certifications</a>
               </nav>
             </div>
 
             <div className="footer-nav-col">
               <p className="footer-nav-heading">Apply</p>
-              <a href="#demo" className="footer-apply-btn">
-                Book a Demo
+              <a href="#top" className="footer-apply-btn">
+                Apply Now
                 <span>›</span>
               </a>
-              <p className="footer-apply-note">Batch 14 — Applications Open</p>
+              <p className="footer-apply-note">Cohort 2026 — Applications Open</p>
             </div>
           </div>
         </div>

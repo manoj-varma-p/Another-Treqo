@@ -12,76 +12,73 @@ export default function StoryTransformation() {
     {
       num: '01',
       tag: 'EXECUTION PROOF',
-      shortTitle: 'Execution Proof',
-      title: '0 → 1. From Idea to First Paying Customer',
-      desc: 'Not theory. Not assignments. Revenue. At TREQO, you don’t graduate with notes, you graduate with verified proof that you can launch campaigns, test hypotheses, and generate real paying customers.',
-      quote: 'Tools change every 6 months. Revenue-driven execution compounds forever.',
+      shortTitle: '0 → 1 Execution',
+      title: '0 → 1',
+      desc: "Don't leave with just a certificate. By the time you're done, you should have work you can actually put your name on.",
+      quote: 'Your resume says you learned marketing. Your portfolio should prove it.',
       badge: '30+ Live Campaigns',
       highlights: [
-        { label: 'Real Spend', val: 'Live Budget Execution' },
-        { label: 'Hypothesis Testing', val: 'A/B & Funnel Validation' },
-        { label: 'Result', val: 'First Paying Customers' },
-        { label: 'Proof', val: 'Verified Performance ROI' }
+        { label: '30+ LIVE CAMPAIGNS', val: 'Not classroom exercises.' },
+        { label: 'REAL MONEY', val: 'Work with actual budgets.' },
+        { label: 'REAL RESULTS', val: 'Numbers you can show.' },
+        { label: 'REAL PROOF', val: 'Something better than “I completed a course.”' }
       ]
     },
     {
       num: '02',
       tag: 'STRATEGY FIRST',
       shortTitle: 'Strategy First',
-      title: 'Not Tools-First. Strategic Thinking-First.',
-      desc: 'Companies don’t hire you for basic software buttons, they hire you for strategic thinking: growth loops, CAC-to-LTV ratio math, retention funnel psychology, and channel scaling strategy.',
-      quote: 'Anyone can click ad buttons. Strategists build profitable growth engines.',
-      badge: 'Funnel & Unit Economics',
+      title: 'Tools get you started. Thinking takes you further.',
+      desc: 'Anyone can learn the tool. Good marketers know how to use it.',
+      quote: 'Tools can be replaced. Good marketers can’t.',
+      badge: 'Strategic Thinking',
       highlights: [
-        { label: 'Economics', val: 'CAC to LTV Modeling' },
-        { label: 'Funnel Math', val: 'TOFU → BOFU Conversion' },
-        { label: 'Retention', val: 'Lifecycle & LTV Loops' },
-        { label: 'Scaling', val: 'Multi-Channel Strategy' }
+        { label: 'NO TOOL COLLECTING', val: "You don't need 20 tools on your resume." },
+        { label: 'NO BUTTON PUSHING', val: "Knowing where to click isn't marketing." },
+        { label: 'REAL THINKING', val: "Know what you're doing and why." },
+        { label: 'GOOD MARKETERS', val: 'Think first. Execute second.' }
       ]
     },
     {
       num: '03',
       tag: 'DAY 1 READY',
       shortTitle: 'Day 1 Ready',
-      title: 'Real Brand Budgets. Verified Revenue Results.',
-      desc: 'Textbooks teach theory. TREQO puts you behind real marketing spend and live brand accounts, so you walk into job interviews with verified ROI case studies instead of fake resumes.',
-      quote: 'The job market isn’t broken. Generic preparation is.',
-      badge: 'Verified Portfolio Output',
+      title: 'No “I’ll learn once I join.” Start solving from Day 1.',
+      desc: 'Understand the problem before jumping to solutions. Take ownership and solve real problems without waiting to be spoonfed.',
+      quote: "Your first day shouldn't be your first time solving problems.",
+      badge: 'Day 1 Problem Solver',
       highlights: [
-        { label: 'Live Accounts', val: 'Active Brand Budgets' },
-        { label: 'Case Studies', val: 'Verified ROI Records' },
-        { label: 'Interview Ready', val: 'Proof of Execution' },
-        { label: 'Resume Standard', val: 'Zero Fluff Portfolio' }
+        { label: 'THINK LIKE A MARKETER', val: 'Understand the problem before jumping to solutions.' },
+        { label: 'TAKE OWNERSHIP', val: "Don't wait to be told every next step." },
+        { label: 'FIGURE IT OUT', val: "Don't freeze when you don't have the answer. Know how to find it." }
       ]
     },
     {
       num: '04',
       tag: 'GROWTH MENTORSHIP',
       shortTitle: 'Growth Mentorship',
-      title: '1-on-1 Teardowns by Active Growth Founders & CMOs',
-      desc: 'Learn directly from leaders who scale high-growth brands daily. Receive weekly 1-on-1 campaign teardowns, pitch deck reviews, and real-time optimization feedback on your live projects.',
-      quote: 'Mentorship built around live performance data, not classroom lectures.',
-      badge: 'Active Founder Teardowns',
+      title: "Learn from people who've done it.",
+      desc: 'Not just teachers. People in the game.',
+      quote: "Don't just learn from a curriculum. Learn from people who've lived it.",
+      badge: 'People In The Game',
       highlights: [
-        { label: '1-on-1 Reviews', val: 'Weekly Teardowns' },
-        { label: 'Mentors', val: 'CMOs & Growth Founders' },
-        { label: 'Feedback', val: 'Real-Time Campaign Tweaks' },
-        { label: 'Pitch Prep', val: 'Deck & Strategy Audits' }
+        { label: 'REAL EXPERIENCE', val: "Learn from founders and CMOs who've built and scaled." },
+        { label: 'REAL CONVERSATIONS', val: 'Ask questions. Challenge ideas. Get unstuck.' },
+        { label: 'REAL FEEDBACK', val: 'Get a second opinion when it actually matters.' }
       ]
     },
     {
       num: '05',
-      tag: 'PLACEMENT GUARANTEE',
+      tag: 'PLACEMENT SUPPORT',
       shortTitle: 'Placement Support',
-      title: 'A Proof-of-Work Portfolio That Commands Top Hiring',
-      desc: 'By graduation, you hold a complete proof-of-work portfolio demonstrating 30+ completed brand projects. Sit directly with hiring partners with 100% dedicated placement support.',
-      quote: 'Your real-world output speaks before your resume ever does.',
-      badge: '100% Placement Support',
+      title: "We don't just prepare you. We help you get hired.",
+      desc: 'Because learning marketing is only half the journey.',
+      quote: 'From learning marketing to landing the job.',
+      badge: 'Dedicated Placement',
       highlights: [
-        { label: 'Portfolio', val: '30+ Brand Projects' },
-        { label: 'Hiring Partners', val: 'Direct Introductions' },
-        { label: 'Interviewing', val: 'High-Salary Pitching' },
-        { label: 'Career Support', val: 'Dedicated Placement' }
+        { label: 'JOB READY', val: 'Get your resume, portfolio and interview game ready.' },
+        { label: 'HIRING ACCESS', val: 'Get opportunities with companies hiring marketing talent.' },
+        { label: 'PLACEMENT SUPPORT', val: 'Get guidance through applications, interviews and the hiring process.' }
       ]
     }
   ];

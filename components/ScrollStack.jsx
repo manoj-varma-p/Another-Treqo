@@ -26,13 +26,25 @@ const cards = [
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=900&auto=format&fit=crop',
     icon: Lightbulb,
     title: 'Idea Validation & Strategy',
-    quote: `"Don't build what you like. Build what people need."`,
+    quote: `"Talk → Find → Validate"`,
     bullets: [
-      { icon: Users, text: 'Talk to 50–100 real people before writing a single line of code' },
-      { icon: Lightbulb, text: 'If you can\'t explain the problem in one sentence, you haven\'t understood it yet' },
-      { icon: Target, text: 'Before TREQO was built, real graduates were asked \'what stopped you from getting hired?\' The answer became the curriculum' }
+      {
+        icon: Users,
+        label: 'TALK',
+        text: 'Talk to 20–50 real people before you build anything. Because “Bro, that\'s a great idea” isn\'t validation.'
+      },
+      {
+        icon: Target,
+        label: 'FIND',
+        text: 'Find a problem people actually want solved. Not one you convinced yourself they have.'
+      },
+      {
+        icon: Lightbulb,
+        label: 'VALIDATE',
+        text: 'Kill the bad idea early. It\'s cheaper than building it for six months.'
+      }
     ],
-    highlight: 'Talk to 100 Real Users'
+    highlight: 'Talk → Find → Validate'
   },
   {
     num: '02',
@@ -41,13 +53,25 @@ const cards = [
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=900&auto=format&fit=crop',
     icon: Cpu,
     title: 'MVP Development',
-    quote: `"Launch ugly. Learn fast."`,
+    quote: `"Build small. Learn fast."`,
     bullets: [
-      { icon: Cpu, text: 'Build the smallest version that solves the core problem.' },
-      { icon: Zap, text: 'Swiggy started with just WhatsApp + a bike. No app.' },
-      { icon: Rocket, text: 'Ship in days, not months.' }
+      {
+        icon: Cpu,
+        label: 'START SMALL',
+        text: 'Build the simplest version that can prove the idea.'
+      },
+      {
+        icon: Rocket,
+        label: 'LAUNCH IT',
+        text: 'Put it in front of real people.'
+      },
+      {
+        icon: Zap,
+        label: 'LEARN FAST',
+        text: "See what works. Fix what doesn't."
+      }
     ],
-    highlight: 'Ship In Days, Not Months'
+    highlight: "Perfect can wait. Real feedback can't."
   },
   {
     num: '03',
@@ -56,13 +80,25 @@ const cards = [
     image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=900&auto=format&fit=crop',
     icon: Compass,
     title: 'GTM Strategy & Positioning',
-    quote: `"The best product doesn't win. The best-positioned one does."`,
+    quote: `"Great product. Wrong audience. Dead on arrival."`,
     bullets: [
-      { icon: Target, text: 'Pick one customer, one channel, one message' },
-      { icon: Sparkles, text: 'Zepto didn\'t say \'groceries\' — they said \'10 minutes\'' },
-      { icon: Compass, text: 'Know exactly where your customer spends time' }
+      {
+        icon: Target,
+        label: 'ONE CUSTOMER',
+        text: "Know exactly who you're trying to win."
+      },
+      {
+        icon: Compass,
+        label: 'ONE CHANNEL',
+        text: 'Go where they already spend their time.'
+      },
+      {
+        icon: Sparkles,
+        label: 'ONE MESSAGE',
+        text: 'Give them a reason to care.'
+      }
     ],
-    highlight: '1 Customer · 1 Channel · 1 Message'
+    highlight: "Be the obvious choice for someone."
   },
   {
     num: '04',
@@ -71,13 +107,25 @@ const cards = [
     image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=900&auto=format&fit=crop',
     icon: Rocket,
     title: 'Launch Execution',
-    quote: `"Done beats perfect. Every time."`,
+    quote: `"Nobody cares that you launched. Give them a reason to."`,
     bullets: [
-      { icon: Users, text: 'Get your first 10 customers manually — call, DM, show up' },
-      { icon: Layers, text: 'OYO launched with just 1 hotel. Figure out the rest after' },
-      { icon: Activity, text: 'Create a launch moment, not just a launch' }
+      {
+        icon: Sparkles,
+        label: 'CREATE THE MOMENT',
+        text: "Don't just put it out there. Make people notice."
+      },
+      {
+        icon: Zap,
+        label: 'CREATE URGENCY',
+        text: 'Give people a reason to act now, not later.'
+      },
+      {
+        icon: Rocket,
+        label: 'DRIVE ACTION',
+        text: 'Make the next step obvious. Click. Buy. Sign up. Show up.'
+      }
     ],
-    highlight: 'First 10 Customers Manually'
+    highlight: "A launch isn't a post. It's an event."
   },
   {
     num: '05',
@@ -86,12 +134,25 @@ const cards = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=900&auto=format&fit=crop',
     icon: BarChart3,
     title: 'Real Numbers',
-    quote: `"Getting customers is hard. Keeping them is where money lives."`,
+    quote: `"Likes feel good. Numbers tell the truth."`,
     bullets: [
-      { icon: BarChart3, text: 'Track CAC, LTV, Churn — not likes and views' },
-      { icon: ShieldCheck, text: 'Find what\'s working and double down. Build systems so the business runs without you.' }
+      {
+        icon: BarChart3,
+        label: 'TRACK WHAT MATTERS',
+        text: 'CAC. LTV. Churn. Know where the money is going.'
+      },
+      {
+        icon: Activity,
+        label: 'DOUBLE DOWN',
+        text: "Find what's working. Do more of it."
+      },
+      {
+        icon: ShieldCheck,
+        label: 'BUILD SYSTEMS',
+        text: "Turn what works into a repeatable process. Don't let the business depend on you."
+      }
     ],
-    highlight: 'CAC · LTV · Retention Loops'
+    highlight: "If you can't measure it, you can't improve it."
   }
 ];
 
@@ -103,11 +164,11 @@ export default function TrainingSection() {
       style={{
         background: '#F3F0E7',
         color: '#0A0A0A',
-        padding: '65px clamp(20px, 4vw, 56px) 90px',
+        padding: '70px 80px 90px',
         position: 'relative',
       }}
     >
-      <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1540px', margin: '0 auto' }}>
 
         {/* ── SECTION HEADER ── */}
         <div style={{ textAlign: 'center', marginBottom: '50px' }}>
@@ -347,40 +408,12 @@ export default function TrainingSection() {
                           fontWeight: 900,
                           color: '#0A0A0A',
                           lineHeight: 1.2,
-                          margin: '0 0 12px',
+                          margin: '0 0 16px',
                           letterSpacing: '-0.02em',
                         }}
                       >
                         {card.title}
                       </h3>
-
-                      {/* Quote Strip */}
-                      <div
-                        style={{
-                          borderLeft: '3.5px solid #6D28FF',
-                          background: '#FAF9F8',
-                          borderTop: '1px solid rgba(10, 10, 10, 0.1)',
-                          borderRight: '1px solid rgba(10, 10, 10, 0.1)',
-                          borderBottom: '1px solid rgba(10, 10, 10, 0.1)',
-                          borderRadius: '0 12px 12px 0',
-                          padding: '10px 14px',
-                          marginBottom: '16px',
-                        }}
-                      >
-                        <p
-                          style={{
-                            fontFamily: "'Fraunces', Georgia, serif",
-                            fontStyle: 'italic',
-                            fontSize: '13px',
-                            color: '#6D28FF',
-                            margin: 0,
-                            lineHeight: 1.45,
-                            fontWeight: 600,
-                          }}
-                        >
-                          {card.quote}
-                        </p>
-                      </div>
                     </div>
 
                     {/* Bullets List */}
@@ -406,7 +439,7 @@ export default function TrainingSection() {
                                 width: '26px',
                                 height: '26px',
                                 borderRadius: '8px',
-                                background: '#6D28FF',
+                                background: '#0A0A0A',
                                 color: '#ffffff',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -417,16 +450,32 @@ export default function TrainingSection() {
                             >
                               <BulletIcon size={14} color="#ffffff" />
                             </div>
-                            <span
-                              style={{
-                                fontSize: '13px',
-                                color: '#222222',
-                                lineHeight: 1.5,
-                                fontWeight: 600,
-                              }}
-                            >
-                              {b.text}
-                            </span>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                              {b.label && (
+                                <span
+                                  style={{
+                                    fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
+                                    fontSize: '11px',
+                                    fontWeight: 900,
+                                    color: '#6D28FF',
+                                    letterSpacing: '0.08em',
+                                    textTransform: 'uppercase',
+                                  }}
+                                >
+                                  {b.label}
+                                </span>
+                              )}
+                              <span
+                                style={{
+                                  fontSize: '13px',
+                                  color: '#222222',
+                                  lineHeight: 1.45,
+                                  fontWeight: 600,
+                                }}
+                              >
+                                {b.text}
+                              </span>
+                            </div>
                           </div>
                         );
                       })}

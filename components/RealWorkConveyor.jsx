@@ -72,7 +72,7 @@ export default function RealWorkConveyor() {
         boxSizing: 'border-box',
       }}
     >
-      <div style={{ textAlign: 'center', marginBottom: '36px', padding: '0 clamp(20px, 4vw, 56px)', width: '100%' }}>
+      <div style={{ textAlign: 'center', marginBottom: '36px', padding: '0 80px', width: '100%' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '14px' }}>
           <DoodleBadge text="BEHANCE / IG STYLE FEED" highlight={true} rotate={-1} />
         </div>

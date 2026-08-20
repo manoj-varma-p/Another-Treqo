@@ -35,15 +35,15 @@ export default function SelfSelection() {
       style={{
         background: '#F3F0E7',
         color: '#0A0A0A',
-        padding: '60px clamp(20px, 4vw, 56px)',
+        padding: '70px 80px',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1540px', margin: '0 auto' }}>
         
         {/* ── EYEBROW / TAG ── */}
-        <div style={{ marginBottom: '14px' }}>
+        <div style={{ marginBottom: '16px' }}>
           <span
             style={{
               fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
@@ -64,7 +64,7 @@ export default function SelfSelection() {
           <h2
             style={{
               fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-              fontSize: 'clamp(2.4rem, 5vw, 4.4rem)',
+              fontSize: 'clamp(2.6rem, 5.5vw, 4.6rem)',
               fontWeight: 900,
               letterSpacing: '-0.04em',
               lineHeight: 0.95,
@@ -94,7 +94,7 @@ export default function SelfSelection() {
         </div>
 
         {/* ── 3 INTERACTIVE FILTER PILLS ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {criteria.map((item, idx) => {
             const isSelected = activeRow === idx;
             const isHighlight = item.isMatch;
@@ -102,7 +102,7 @@ export default function SelfSelection() {
             return (
               <motion.div
                 key={item.id}
-                whileHover={{ scale: 1.01, y: -2 }}
+                whileHover={{ scale: 1.008, y: -2 }}
                 whileTap={{ scale: 0.99 }}
                 onClick={() => setActiveRow(idx)}
                 style={{
@@ -118,7 +118,7 @@ export default function SelfSelection() {
                     : '#0A0A0A',
                   border: '2.5px solid #0A0A0A',
                   borderRadius: '999px',
-                  padding: '20px clamp(20px, 3.5vw, 36px)',
+                  padding: '22px 32px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
@@ -135,7 +135,7 @@ export default function SelfSelection() {
                 <span
                   style={{
                     fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                    fontSize: 'clamp(16px, 1.4vw, 20px)',
+                    fontSize: 'clamp(18px, 1.6vw, 22px)',
                     fontWeight: 900,
                     letterSpacing: '-0.01em',
                   }}
@@ -146,7 +146,7 @@ export default function SelfSelection() {
                 <span
                   style={{
                     fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                    fontSize: 'clamp(15px, 1.3vw, 19px)',
+                    fontSize: 'clamp(16px, 1.4vw, 20px)',
                     fontWeight: 900,
                     letterSpacing: '0.04em',
                     textTransform: 'uppercase',

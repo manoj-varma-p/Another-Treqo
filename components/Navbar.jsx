@@ -64,7 +64,7 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 9999,
-          padding: '16px clamp(20px, 4vw, 56px)',
+          padding: '16px 80px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -93,7 +93,7 @@ export default function Navbar() {
               fontWeight: 900,
               fontSize: '1.75rem',
               letterSpacing: '-0.03em',
-              color: '#0A0A0A',
+              color: '#6D28FF',
             }}
           >
             {stage}
@@ -151,68 +151,6 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Right Side Floating Stage Indicator */}
-      <div
-        style={{
-          position: 'fixed',
-          right: '24px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          zIndex: 900,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '16px',
-          pointerEvents: 'none',
-        }}
-        className="stage-indicator-wrap"
-      >
-        {[
-          { id: 'TREQO / LEARN', label: 'LEARN', target: '#why' },
-          { id: 'TREQO / LAUNCH', label: 'LAUNCH', target: '#choose-system' },
-          { id: 'TREQO / PROVE', label: 'PROVE', target: '#real-work' },
-        ].map((item) => {
-          const isActive = stage.includes(item.label);
-          return (
-            <a
-              key={item.label}
-              href={item.target}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                textDecoration: 'none',
-                pointerEvents: 'auto',
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                  fontSize: '9px',
-                  fontWeight: 800,
-                  color: isActive ? '#6D28FF' : 'rgba(10, 10, 10, 0.3)',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  transition: 'color 0.25s',
-                }}
-              >
-                {item.label}
-              </span>
-              <span
-                style={{
-                  width: isActive ? '12px' : '6px',
-                  height: isActive ? '12px' : '6px',
-                  borderRadius: '50%',
-                  background: isActive ? '#6D28FF' : 'rgba(10, 10, 10, 0.2)',
-                  border: isActive ? '2px solid #0A0A0A' : 'none',
-                  transition: 'all 0.25s',
-                  display: 'inline-block',
-                }}
-              />
-            </a>
-          );
-        })}
-      </div>
-
       <style jsx>{`
         .nav-link-item {
           font-family: var(--ff-mono, 'JetBrains Mono', monospace);
@@ -232,9 +170,6 @@ export default function Navbar() {
 
         @media (max-width: 860px) {
           .desktop-nav-wrap a {
-            display: none;
-          }
-          .stage-indicator-wrap {
             display: none;
           }
         }

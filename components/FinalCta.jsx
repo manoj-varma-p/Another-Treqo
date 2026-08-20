@@ -1,13 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { TreqoDoodle, DoodleBadge } from './Doodles';
 import ApplyModal from './ApplyModal';
 
 export default function FinalCta() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [portfolioOpen, setPortfolioOpen] = useState(false);
 
   return (
     <>
@@ -16,186 +13,145 @@ export default function FinalCta() {
       <section
         id="final-cta"
         style={{
-          minHeight: '100vh',
+          minHeight: '75vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
+          alignItems: 'center',
           textAlign: 'center',
           background: '#0A0A0A',
           color: '#FAF9F8',
-          padding: '60px clamp(20px, 4vw, 56px)',
+          padding: '90px 80px 100px',
           position: 'relative',
           overflow: 'hidden',
           boxSizing: 'border-box',
         }}
       >
-        {/* Glow ambient background in Treqo Purple */}
+        {/* Subtle purple radial glow in background */}
         <div
           style={{
             position: 'absolute',
-            top: '-20%',
+            top: '30%',
             left: '50%',
-            transform: 'translateX(-50%)',
-            width: '800px',
+            transform: 'translate(-50%, -50%)',
+            width: '600px',
             height: '400px',
-            background: 'radial-gradient(circle, rgba(109, 40, 255, 0.3) 0%, transparent 70%)',
-            filter: 'blur(80px)',
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%)',
+            filter: 'blur(90px)',
             pointerEvents: 'none',
           }}
         />
 
-        <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: '20px' }}>
-            <DoodleBadge text="FINAL ADMISSIONS CALL" highlight={true} rotate={-2} />
-          </div>
-
-          <h2
-            style={{
-              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-              fontSize: 'clamp(2rem, 3.8vw, 3.2rem)',
-              fontWeight: 900,
-              letterSpacing: '-0.04em',
-              lineHeight: 1.05,
-              margin: '0 0 20px',
-              textTransform: 'uppercase',
-              color: '#F3F0E7',
-            }}
-          >
-            BECOME THE MARKETER <br />
-            <span
-              style={{
-                color: '#6D28FF',
-                textShadow: '0 0 40px rgba(109, 40, 255, 0.4)',
-              }}
-            >
-              COMPANIES FIGHT FOR.
-            </span>
-          </h2>
-
-          <p
-            style={{
-              fontSize: 'clamp(15px, 1.2vw, 17px)',
-              color: 'rgba(243, 240, 231, 0.8)',
-              maxWidth: '520px',
-              margin: '0 auto 36px',
-              lineHeight: 1.6,
-            }}
-          >
-            Don&apos;t spend another 6 months collecting theoretical certificates. Build and deploy live revenue campaigns with Hyderabad&apos;s top growth leaders.
-          </p>
-
-          {/* Interactive Unfolding Portfolio Demonstration */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '40px' }}>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              onClick={() => setPortfolioOpen(!portfolioOpen)}
-              style={{
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1.5px solid #6D28FF',
-                borderRadius: '16px',
-                padding: '12px 24px',
-                boxShadow: '4px 4px 0px #6D28FF',
-              }}
-            >
-              <TreqoDoodle state="holding_portfolio" size={48} />
-              <div style={{ textAlign: 'left' }}>
-                <span style={{ fontSize: '11px', fontFamily: "var(--ff-mono, monospace)", color: '#ffffff', fontWeight: 800, textTransform: 'uppercase' }}>
-                  Click to {portfolioOpen ? 'Close' : 'Inspect'} Portfolio
-                </span>
-                <strong style={{ display: 'block', fontSize: '14px', color: '#6D28FF' }}>
-                  Rahul&apos;s Capstone Vault (30+ Projects)
-                </strong>
-              </div>
-            </motion.div>
-
-            {portfolioOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                style={{
-                  marginTop: '16px',
-                  display: 'flex',
-                  gap: '10px',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                }}
-              >
-                {['Meta 247 Leads', 'Google ₹42 CAC', 'SEO +186% Traffic', 'Brand 0-to-1', 'Retention CRM'].map((p, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      background: '#6D28FF',
-                      color: '#ffffff',
-                      fontFamily: "var(--ff-mono, monospace)",
-                      fontSize: '11px',
-                      fontWeight: 900,
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                    }}
-                  >
-                    ✓ {p}
-                  </span>
-                ))}
-              </motion.div>
-            )}
-          </div>
-
-          {/* Primary Action Button */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
-            <button
-              onClick={() => setModalOpen(true)}
-              style={{
-                background: '#6D28FF',
-                color: '#ffffff',
-                border: '3px solid #ffffff',
-                borderRadius: '999px',
-                padding: '18px 48px',
-                fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
-                fontWeight: 900,
-                fontSize: '16px',
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 12,
-                boxShadow: '8px 8px 0px #ffffff',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translate(-3px, -3px)';
-                e.currentTarget.style.boxShadow = '12px 12px 0px #ffffff';
-                e.currentTarget.style.background = '#581bd6';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '8px 8px 0px #ffffff';
-                e.currentTarget.style.background = '#6D28FF';
-              }}
-            >
-              <span>APPLY TO TREQO 2026</span>
-              <ArrowRight size={20} />
-            </button>
-
+        <div
+          style={{
+            maxWidth: '960px',
+            margin: '0 auto',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
+          {/* Eyebrow */}
+          <div style={{ marginBottom: '20px' }}>
             <span
               style={{
                 fontFamily: "var(--ff-mono, 'JetBrains Mono', monospace)",
-                fontSize: '11.5px',
-                color: 'rgba(243, 240, 231, 0.65)',
-                letterSpacing: '0.08em',
+                fontSize: '12.5px',
+                fontWeight: 900,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: 'rgba(255, 255, 255, 0.55)',
+                display: 'inline-block',
               }}
             >
-              Cohort 2026 · Applications Currently Open · 45-Second Fast Apply
+              YOUR TURN
             </span>
           </div>
 
+          {/* 3-Line Stacked Headline (Centered & Scaled Down) */}
+          <h2
+            style={{
+              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+              fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)',
+              fontWeight: 900,
+              letterSpacing: '-0.035em',
+              lineHeight: 1.05,
+              textTransform: 'uppercase',
+              margin: '0 0 20px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <span style={{ color: '#777777' }}>
+              READY TO
+            </span>
+            <span style={{ color: '#E0E0E0' }}>
+              ACTUALLY DO
+            </span>
+            <span
+              style={{
+                color: '#8B5CF6',
+                textShadow: '0 0 40px rgba(139, 92, 246, 0.45)',
+              }}
+            >
+              MARKETING?
+            </span>
+          </h2>
+
+          {/* Subtitle */}
+          <p
+            style={{
+              fontSize: 'clamp(16px, 1.4vw, 20px)',
+              color: 'rgba(255, 255, 255, 0.75)',
+              maxWidth: '560px',
+              margin: '0 auto 36px',
+              fontWeight: 500,
+              lineHeight: 1.5,
+            }}
+          >
+            Your first campaign starts here.
+          </p>
+
+          {/* Centered CTA Button */}
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => setModalOpen(true)}
+            style={{
+              background: '#8B5CF6',
+              color: '#0A0A0A',
+              border: 'none',
+              borderRadius: '999px',
+              padding: '18px 44px',
+              fontFamily: "var(--ff-display, 'Outfit', sans-serif)",
+              fontWeight: 900,
+              fontSize: '16px',
+              letterSpacing: '0.02em',
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 10,
+              boxShadow: '0 0 30px rgba(139, 92, 246, 0.35)',
+              transition: 'background 0.2s, box-shadow 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#A78BFA';
+              e.currentTarget.style.boxShadow = '0 0 45px rgba(167, 139, 250, 0.55)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#8B5CF6';
+              e.currentTarget.style.boxShadow = '0 0 30px rgba(139, 92, 246, 0.35)';
+            }}
+          >
+            <span>APPLY TO TREQO</span>
+            <span style={{ fontSize: '18px', fontWeight: 900 }}>→</span>
+          </motion.button>
         </div>
       </section>
     </>
